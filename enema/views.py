@@ -336,5 +336,5 @@ def roomates_grid(request,name):
 def roomy_form(request,name):
     roomates = Roomates.objects.filter(schoolname=name)
     school = Schools.objects.get(name=name)
-    location = Locations.objects.filter(school=name)
-    return render(request,'roomy-form.html',{'roomates':roomates,'school':school,'location':location})   
+    locations = Locations.objects.filter(school=name)
+    return render(request,'roomy-form.html',{'roomates':roomates,'school':school,'locations':locations})   

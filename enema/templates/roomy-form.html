@@ -52,8 +52,13 @@
                       	</p>
                       	 
                       	<p>
-                        	<strong>Address: </strong>
-                        	<textarea class="color-text-a form-control" value="" name="address"></textarea>
+                        	<strong>Lodge location</strong>
+                        	 <select class="color-text-a form-control" name="location">
+                        	 	<option value="">Select your location</option>
+                        	 {% for i in locations %}
+                        		<option value="{{i.location}}">{{i.location}}</option>
+                        	 {% endfor %}
+                        	</select>
                       	</p>
                       	
                       	<p>
