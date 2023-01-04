@@ -1,0 +1,259 @@
+{% extends 'agent-dash.html'%}
+
+
+
+{% block addproperty %}
+
+
+<form action="{% url 'add_property' %}" method="post" enctype="multipart/form-data">
+
+<div class="row">
+
+<div class="info-agents color-a col-lg-3 "style="color:white;">
+
+ 		  <div class="agent-title">
+                    <div class="title-box-d">
+                      <h3 class="title-d"style="color:white;">Add a Lodge</h3>
+                    </div>
+                  </div>
+	
+	
+			{% csrf_token %}
+	
+		
+		 
+		      <p>
+                        <strong>Lodge Name: </strong>
+                        <input class="color-text-a form-control"  name="name" required="">
+                      </p>
+                      
+                      <p>
+                        <strong>Price: </strong>
+                        <input class="color-text-a form-control" name="price" type="number" 
+                        placeholder="enter amount in digits"required="">
+                      </p>
+                      <p>
+                        <strong>Region: </strong>
+                        <select class="color-text-a form-control" name="region"required="">
+                        <option value="">Select Region</option>
+                        <option value="FPN">FPN</option>
+                     
+                        </select>
+                        
+                      </p>
+                      <p>
+                        <strong>Location: </strong>
+                        <select class="color-text-a form-control" name="location"required="">
+                        <option value="">Select Location</option>
+                        {% for i in locations %}
+                        <option value="{{i.location}}">{{i.location}}</option>
+                         {% endfor %}
+                        </select>
+                        
+                      </p>
+                      <p>
+                        <strong>Lodge Type: </strong>
+                        
+                        <select class="color-text-a form-control" name="lodgetype"required="">
+                        <option value="">Select lodge type</option>
+                        <option value="self-con">Self-con</option>
+                        <option value="single-room">Single room</option>
+                        <option value="2-bedroom-flat">2 bedroom flat</option>
+                        <option value="3-bedroom-flat">3 bedroom flat</option>
+                        </select>
+                      </p>
+                      <p>
+                        <strong>Tiled: </strong>
+                        <select class="color-text-a form-control" name="tiled"required="">
+                        <option value="">select an option</option>
+                        <option value="yes">yes</option>
+                        <option value="no">no</option>
+                        </select>
+                        
+                      </p>
+                      <p>
+                        <strong>Light: </strong>
+                         <select class="color-text-a form-control" name="light"required="">
+                        <option value="">select an option</option>
+                        <option value="yes">yes</option>
+                        <option value="no">no</option>
+                        </select>
+                        
+                      </p>
+                      <p>
+                        <strong>Water: </strong>
+                        <select class="color-text-a form-control" name="water"required="">
+                        <option value="">select an option</option>
+                        <option value="yes">yes</option>
+                        <option value="no">no</option>
+                        </select>
+                      </p>
+                      <p>
+                        <strong>Status: </strong>
+                        <select class="color-text-a form-control" name="status"required="">
+                        <option value="">select an option</option>
+                        <option value="available">Available</option>
+                        <option value="occupied">Occupied</option>
+                        </select>
+                      </p>
+                        
+                       
+                      
+              
+             
+ </div>
+ 
+ <div class="col-8" style="text-align:center">
+              <div class="agent-title col-12">
+                    <div class="title-box-d">
+                      <h6 class="title-d"style="color:white;"></h6>
+                      <h6 style="color:white;">Upload 9 pictures of the lodge. It should include the main room,kitchen, toilet etc.</h6>
+                    </div>
+               </div>
+       
+       
+       		<div class="row"style="text-align:center">
+       
+               		<div class="col" style="margin-bottom:5vw">
+        				<label style="cursor:pointer;" class="btn btn-secondary"for="first-image">
+        				
+        				<img id="img1" alt="Upload Main image" width="150" height="150">
+					
+					<input type="file" 
+					onchange="document.getElementById('img1').src = window.URL.createObjectURL(this.files[0])"
+					accept=".jpg,.png,.jpeg" style="display:none" id="first-image"class="afile"name="pic1">
+					</label>
+        		</div>
+               		<div class="col" style="margin-bottom:5vw">
+        				<label style="cursor:pointer;" class="btn btn-secondary"for="second-image">
+        				
+        				<img id="img2" alt="Upload 2nd image" width="150" height="150" 
+        				/>
+					
+					<input type="file" 
+					onchange="document.getElementById('img2').src = window.URL.createObjectURL(this.files[0])"
+					accept=".jpg,.png,.jpeg" style="display:none" id="second-image"class="afile"name="pic2">
+					</label>
+        		</div>
+        	
+        		<div class="col" style="margin-bottom:5vw" >
+        				<label style="cursor:pointer;" class="btn btn-secondary"for="third-image">
+        				
+        				<img id="img3" alt="Upload 3rd image" width="150" height="150">
+					
+					<input type="file" 
+					onchange="document.getElementById('img3').src = window.URL.createObjectURL(this.files[0])"
+					accept=".jpg,.png,.jpeg" style="display:none" id="third-image"class="afile"name="pic3">
+					</label>
+        		</div>
+      
+
+               
+               		<div class="col" style="margin-bottom:5vw" >
+        				<label style="cursor:pointer;" class="btn btn-secondary"for="fourth-image">
+        				
+        				<img id="img4" alt="Upload 4th image" width="150" height="150">
+					
+					<input type="file" 
+					onchange="document.getElementById('img4').src = window.URL.createObjectURL(this.files[0])"
+					accept=".jpg,.png,.jpeg" style="display:none" id="fourth-image"class="afile"name="pic4">
+					</label>
+        		</div>
+        		
+        		<div class="col" style="margin-bottom:5vw" >
+        				<label style="cursor:pointer;" class="btn btn-secondary"for="fifth-image">
+        				
+        				<img id="img5" alt="Upload 5th image" width="150" height="150">
+					
+					<input type="file" 
+					onchange="document.getElementById('img5').src = window.URL.createObjectURL(this.files[0])"
+					accept=".jpg,.png,.jpeg" style="display:none" id="fifth-image" class="afile"name="pic5">
+					</label>
+        		</div>
+        		<div class="col" style="margin-bottom:5vw" >
+        				<label style="cursor:pointer;" class="btn btn-secondary"for="six-image">
+        				
+        				<img id="img6" alt="Upload 6th image" width="150" height="150">
+					
+					<input type="file" 
+					onchange="document.getElementById('img6').src = window.URL.createObjectURL(this.files[0])"
+					accept=".jpg,.png,.jpeg" style="display:none" id="six-image" class="afile"name="pic6">
+					</label>
+        		</div>
+        		<div class="col" style="margin-bottom:5vw" >
+        				<label style="cursor:pointer;" class="btn btn-secondary"for="seven-image">
+        				
+        				<img id="img7" alt="Upload 7th image" width="150" height="150">
+					
+					<input type="file" 
+					onchange="document.getElementById('img7').src = window.URL.createObjectURL(this.files[0])"
+					accept=".jpg,.png,.jpeg" style="display:none" id="seven-image"class="afile"name="pic7">
+					</label>
+        		</div>
+        		<div class="col" style="margin-bottom:5vw" >
+        				<label style="cursor:pointer;" class="btn btn-secondary"for="eight-image">
+        				
+        				<img id="img8" alt="Upload 8th image" width="150" height="150">
+					
+					<input type="file" 
+					onchange="document.getElementById('img8').src = window.URL.createObjectURL(this.files[0])"
+					accept=".jpg,.png,.jpeg" style="display:none" id="eight-image"class="afile"name="pic8">
+					</label>
+        		</div>
+        		<div class="col" style="margin-bottom:5vw" >
+        				<label style="cursor:pointer;" class="btn btn-secondary"for="nine-image">
+        				
+        				<img id="img9" alt="Upload 9th image" width="150" height="150">
+					
+					<input type="file" 
+					onchange="document.getElementById('img9').src = window.URL.createObjectURL(this.files[0])"
+					accept=".jpg,.png,.jpeg" style="display:none" id="nine-image"class="afile"name="pic9">
+					</label>
+        		</div>
+               </div>
+ </div>
+ 
+ 
+</div>
+              <button type="submit" class="btn btn-success" onclick="
+              
+		 let validator = (e)=> {
+			var allfiles = document.getElementsByClassName('afile');
+		
+			if(allfiles[5].value == '' || allfiles[1].value =='' || allfiles[8].value=='' || allfiles[3].value==''|| allfiles[2].value=='' || allfiles[4].value==''|| allfiles[6].value==''|| allfiles[7].value==''|| allfiles[9].value=='')
+					{
+					alert('ensure all pictures are uploaded.');
+					e.preventDefault();;
+					}	
+			  }
+			  validator(event)
+              ">
+              
+              		Add Lodge
+              
+              </button>
+        </form>
+ 
+{% endblock addproperty %}
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

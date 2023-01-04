@@ -1,0 +1,107 @@
+{% extends 'property-grid.html'%}
+
+ {% block content %}
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8"style="margin-top:-9vh;">
+            <div class="title-single-box">{% if record %}
+              <h1 class="title-single"style="color:white;">{{record.name}}</h1>         
+              <span class="color-text-a"style="color:white;">Location: {{record.location}}</span><br>
+              <button class="color-text-a"style="color:white;border-color:orange;background-color:black;border-radius:20px;"onclick="return false;">{{record.price}} naira/yr</button>
+            </div>
+          </div>          
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+    <!-- ======= Property Single ======= -->
+    <section class="property-single nav-arrow-b">
+      <div class="container">
+        <div class="row justify-content-center">
+        
+          <div class="col-lg-8">
+            <div id="property-single-carousel" class="swiper">
+              <div class="swiper-wrapper"style="margin-bottom:-10vh">
+              {% if allpics %}
+              		{% for pic in allpics %}
+              		{% if pic.lodgeid_id == record.id %}
+                <div class="carousel-item-b swiper-slide" style="text-align:center;max-height:70vh">{% load static %}
+                  <img src="{% get_media_prefix %}{{pic.picname}}" alt=""class="img-fluid"id="img-caro">
+                </div>
+                	{% endif %}
+                	{% endfor %}
+                {% endif %}
+              </div>
+            </div>
+            <div class="property-single-carousel-pagination carousel-pagination"></div>
+          </div>
+        </div>
+        
+ 
+        <div class="row">
+          <div class="col-sm-12"style="color:white;">
+
+            <div class="row justify-content-between">
+            
+              <div class="col-md-5 col-lg-4">
+                
+                <div class="property-summary">
+                  <div class="row">
+                 
+                    <div class="col-sm-12">
+                      <div class="title-box-d section-t4">
+                        <h3 class="title-d"style="color:white;">Quick Summary</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="summary-list">
+                    <ul class="list"style="color:white;">
+                      <li class="d-flex justify-content-between">
+                        <strong>Room-type:</strong>
+                        <span style="color:white;">{{record.lodgetype}}</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Status:</strong>
+                        <span style="color:white;">{{record.status}}</span>
+                      </li>
+                       
+                       
+                      <li class="d-flex justify-content-between">
+                        <strong>Tiled:</strong>
+                        <span style="color:white;">{{record.Tiled}}
+                          <!--<sup>2</sup>-->
+                        </span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>In-house Water:</strong>
+                        <span style="color:white;">{{record.water}}</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Light:</strong>
+                        <span style="color:white;">{{record.light}}</span>
+                      </li>
+                       
+                    </ul>
+                  </div>  
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+     
+          <div class="col-md-12"style="margin-bottom:20vh">
+            
+                      <a href="https://wa.me/{{record.phone}}/?text=I%20am%20interested%20in%20this%20lodge%20http://127.0.0.1:8000/property%20details/{{record.id}}/"><button class="btn btn-success"style="color:white;border-color:orange;">Chat on Whatsapp</button></a>
+                      <p style="color:white;"> or call >> 08168420165 <span style="color:orange"> Note that: </span>We respond twice as fast when you contact us via whatsapp.</p>
+                   
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </section><!-- End Property Single-->
+{% endblock %}
+  

@@ -1,0 +1,58 @@
+{% extends 'agent-dash.html' %}
+
+
+{% block head %}Profile Update {% endblock head %}
+
+{% block edit %}
+ 
+	<form action="{% url 'edit_profile' %}" method="post" enctype="multipart/form-data">
+	
+	{% csrf_token %}
+	
+		<div class="info-agents color-a"style="color:white;">
+		 
+		      <p>
+                        <strong>Full Name: </strong>
+                        <input class="color-text-a form-control" value="{{record.name}}" name="name">
+                      </p>
+                      
+                      <p>
+                        <strong>Phone: </strong>
+                        <input class="color-text-a form-control" value="{{record.phone}}"name="phone">
+                      </p>
+                      
+                      <p>
+                        <strong>Email: </strong>
+                        <input class="color-text-a form-control" value="{{record.email}}"name="email">
+                      </p>
+                      <p>
+                        <strong>Address: </strong>
+                        <textarea class="color-text-a form-control" value="{{record.address}}" name="address">{{record.address}}</textarea>
+                      </p>
+                      <p>
+                        <strong>Means of identification: </strong>
+                        <select class="color-text-a form-control" name="identity">
+                        <option value="{{record.id_type}}">{{record.id_type}}</option>
+                        <option value="Voters card">Voters card</option>
+                        <option value="NIN">NIN</option>
+                        </select>
+                        
+                      </p>
+                      <p>
+                        <strong>Card Number: </strong>
+                        <input class="color-text-a form-control" value="{{record.id_numb}}" type="text" name="identitynum">
+                        
+                      </p>
+                      <p>
+                        <strong>Change profile picture: </strong>
+                        <input class="color-text-a form-control" type="file" name="pix" accept=".jpeg,.png,.jpg"
+                        onchange="document.getElementById('profile-img').src = window.URL.createObjectURL(this.files[0])">
+                        
+                      </p>
+                     
+			<p class="alert alert-danger dismissible-alert">Please note: Image should be in jpeg/png/jpg format.</p
+              </div>
+              <button type="submit" class="btn btn-success">Update</button>
+        </form>
+ 
+{% endblock edit %}

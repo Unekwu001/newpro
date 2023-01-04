@@ -1,0 +1,228 @@
+{% extends 'agent-single.html' %}
+
+{% block content %}
+ 
+ {% block header %}
+    <!-- ======= Intro Single ======= -->
+ 
+    <section class="intro-single">
+      <div class="container"style="margin-top:-8vh;">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single"style="color:white;">{{record.name}}</h1>
+              
+              <a href="{% url 'agent_dash' %}" ><button  class="color-text-a"
+              	style="background-color:white;color:black;border-color:orange;border-radius:10px;">My dashboard</button>
+              </a>
+             
+             <a href="{% url 'edit_profile' %}"><button  class="color-text-a"
+             	style="background-color:white;color:black;border-color:orange;border-radius:20px;">Update profile</button>
+             </a>
+             <a href="{% url 'add_property' %}"><button class="color-text-a"
+             	style="background-color:white;color:black;border-color:orange;border-radius:20px;">Add a Lodge</button>
+             </a>
+             <a href="#"><button class="color-text-a"
+             	style="background-color:green;color:white;border-color:blue;border-radius:20px;"
+             	onclick="alert('This feature is coming soon!. Stay glued.')">Boost my profile</button>
+             </a>
+              <a href="{% url 'agent_logout' %}"><button class="color-text-a"
+              	style="background-color:black;color:orange;">Log out</button>
+              </a>
+              
+            </div>
+          </div>
+           
+        </div>
+      </div>
+    </section><!-- End Intro Single -->
+{% endblock header %}
+    <!-- ======= Agent Single ======= -->
+    
+
+    <section class="agent-single">
+      <div class="container">
+        <div class="row">
+        
+{% block addproperty %}
+          <div class="col-sm-12">
+          
+            <div class="row">
+            
+              <div class="col-md-6">
+        {% if messages %}
+        	{% for message in messages %}
+        		<p {% if message.tags %} class="alert alert-success{{message.tags}}"{% endif %}
+        			style="background-color:rgb(0,106,86);color:white;" >
+        		 {{message}} 
+        		 </p>
+        	{% endfor %}
+        {% endif %}
+        
+                <div class="agent-avatar-box">
+                {% load static %}
+                
+                
+                	<div >
+                	
+                  		<img src="{% get_media_prefix %}{{record.pic}}" alt="Your image wil appear here after upload" class="agent-avatar img-fluid"style="border-radius:50%;color:white;max-height:80vh;"id="profile-img">
+                	</div>
+              	
+                </div>
+              </div>
+              <div class="col-md-5 section-md-t3">
+                <div class="agent-info-box">
+                  <div class="agent-title">
+                    <div class="title-box-d">
+                      <h3 class="title-d"style="color:white;">{% block head %}Summary{% endblock head %}</h3>
+                    </div>
+                  </div>
+                  <div class="agent-content mb-3">
+                  {% block edit %}
+                  
+                   
+                    <div class="info-agents color-a"style="color:white;">
+                      <p>
+                        <strong>Phone: </strong>
+                        <span class="color-text-a" style="color:white;">{{record.phone}}</span>
+                      </p>
+                      
+                      <p>
+                        <strong>Email: </strong>
+                        <span class="color-text-a" style="color:white;">{{record.email}}</span>
+                      </p>
+                      <p>
+                        <strong>Address: </strong>
+                        <span class="color-text-a" style="color:white;">{{record.address}}</span>
+                      </p>
+                      <p>
+                        <strong>Means of identification: </strong>
+                        <span class="color-text-a" style="color:white;">{{record.id_type}}</span>
+                        
+                      </p>
+                      
+                      <p> 
+                        <strong>ID-Number: </strong>
+                        <span class="color-text-a" style="color:white;">{{record.id_numb}}</span>
+                        
+                      </p> 
+                       
+                      {% endblock edit %}
+                    </div>
+                  </div>
+                   
+                </div>
+              </div>
+            </div>
+          </div>
+{% endblock addproperty %}
+          <div class="col-md-12 section-t8">
+            <div class="title-box-d">
+              <h3 class="title-d"style="color:white;">My Properties({{agentlodges.count}})</h3>            
+            </div>
+          </div>
+          
+          
+          <div class="row property-grid grid">
+          {% for i in agentlodges %}
+          	 
+          	 
+<!-------------------->   
+       
+            <div class="col-md-4">
+            
+            
+              <div class="card-box-a card-shadow">
+              {% if allpics %}
+            
+              	 		{% for pic in allpics %}
+                		{% if pic.lodgeid_id == i.id and pic.sn == 1 %}
+            			
+                		<div class="img-box-a"style="color:white;max-height:40vh">
+                		
+                  		<img src="{% get_media_prefix %}{{pic.picname}}" alt="an image is here" class="img-a img-fluid">
+                  		
+                		</div>
+                		
+                		{% endif %}
+                		{% endfor %}
+               {% endif %}
+             
+                <div class="card-overlay">
+                  <div class="card-overlay-a-content">
+                    <div class="card-header-a">
+                      <h2 class="card-title-a">
+                        <a href="{% url 'single_property' i.id %}">{{i.name}}
+                          <br/><h5 style="color:skyblue;">{{i.location}}</h5></a>
+                      </h2>
+                    </div>
+                    <div class="card-body-a">
+                      <div class="price-box d-flex">
+                        <span class="price-a">{{i.lodgetype}} | ₦{{i.price}}.00 </span>
+                      </div>
+                      <div>
+                      <a href="{% url 'editlodge' i.id %}" onclick="
+                      const x = confirm('You will be redirected to the edit page for {{i.name}} if you click ok .')
+                      if(x == false){
+         		return false;
+         	}
+                      "><button class="btn btn-primary">Edit Lodge</button></a>
+                      <a href="{% url 'deletelodge' i.id %}" onclick="
+         	const x = confirm('Are you sure you want to delete {{i.name}}?');
+         	if(x == false){
+         		return false;
+         	}
+         	
+       		"><button class="btn btn-danger">Delete Lodge</button></a>
+                      
+                      </div>
+                      <a href="{% url 'single_property' i.id %}" class="link-a">Click here to view
+                        <span class="bi bi-chevron-right"></span>
+                      </a>
+                    </div>
+                    <div class="card-footer-a">
+                      <ul class="card-info d-flex justify-content-around">
+                        <li>
+                          <h4 class="card-info-title">Status</h4>
+                          <span>{{i.status}}
+                            
+                          </span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Tiled</h4>
+                          <span>{{i.Tiled}}</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Light</h4>
+                          <span>{{i.light}}</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Water</h4>
+                          <span>{{i.water}}</span>
+                        </li>
+                      </ul>
+                      
+       	           </div>
+                    
+                 </div>
+                </div>
+              </div>
+           
+            </div> 
+        
+            {% endfor %}
+            <!------------------------------>  
+         
+         
+         
+         
+         
+         
+          </div>
+        </div>
+      </div>
+    </section><!-- End Agent Single -->
+{% endblock %}
+{% block js %}
+
+  {% endblock js %} 

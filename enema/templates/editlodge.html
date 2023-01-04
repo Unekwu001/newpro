@@ -1,0 +1,126 @@
+{% extends 'add-property.html' %}
+
+{% block addproperty %}
+
+<form action="{% url 'editlodge' lodge.id %}" method="post" enctype="multipart/form-data">
+
+<div class="row">
+
+<div class="info-agents color-a col-lg-8 "style="color:white;">{% csrf_token %}
+
+ 		  <div class="agent-title">
+                    <div class="title-box-d">
+                      <h3 class="title-d"style="color:white;">Edit {{lodge.name}}</h3>
+                    </div>
+                  </div>
+	
+		 
+		      <p>
+                        <strong>Lodge Name: </strong>
+                        <input class="color-text-a form-control"  name="name" value="{{lodge.name}}">
+                      </p>
+                      
+                      <p>
+                        <strong>Price: </strong>
+                        <input class="color-text-a form-control" name="price" type="number" 
+                        placeholder="enter amount in digits" value="{{lodge.price}}">
+                      </p>
+                      <p>
+                        <strong>Region: </strong>
+                        <select class="color-text-a form-control" name="region">
+                        <option value="{{lodge.region}}">Select Region</option>
+                        <option value="FPN">FPN</option>
+                     
+                        </select>
+                        
+                      </p>
+                      <p>
+                        <strong>Location: </strong>
+                        <select class="color-text-a form-control" name="location">
+                        <option value="{{lodge.location}}">Select Location</option>
+                        {% for i in locations %}
+                        <option value="{{i.location}}">{{i.location}}</option>
+                         {% endfor %}
+                        </select>
+                        
+                      </p>
+                      <p>
+                        <strong>Lodge Type: </strong>
+                        
+                        <select class="color-text-a form-control" name="lodgetype">
+                        <option value="{{lodge.lodgetype}}">Select lodge type</option>
+                        <option value="self-con">Self-con</option>
+                        <option value="single-room">Single room</option>
+                        <option value="2-bedroom-flat">2 bedroom flat</option>
+                        <option value="3-bedroom-flat">3 bedroom flat</option>
+                        </select>
+                      </p>
+                      <p>
+                        <strong>Tiled: </strong>
+                        <select class="color-text-a form-control" name="tiled">
+                        <option value="{{lodge.Tiled}}">select an option</option>
+                        <option value="yes">yes</option>
+                        <option value="no">no</option>
+                        </select>
+                        
+                      </p>
+                      <p>
+                        <strong>Light: </strong>
+                         <select class="color-text-a form-control" name="light">
+                        <option value="{{lodge.light}}">select an option</option>
+                        <option value="yes">yes</option>
+                        <option value="no">no</option>
+                        </select>
+                        
+                      </p>
+                      <p>
+                        <strong>Water: </strong>
+                        <select class="color-text-a form-control" name="water">
+                        <option value="{{lodge.water}}">select an option</option>
+                        <option value="yes">yes</option>
+                        <option value="no">no</option>
+                        </select>
+                      </p>
+                      <p>
+                        <strong>Status: </strong>
+                        <select class="color-text-a form-control" name="status">
+                        <option value="{{lodge.status}}">select an option</option>
+                        <option value="available">Available</option>
+                        <option value="occupied">Occupied</option>
+                        </select>
+                      </p>
+         <button type="submit" class="btn btn-success" onclick="
+         	const x = confirm('Are you sure ?');
+         	if(x == false){
+         		return false;
+         	}
+         	
+       		">
+       		Update
+         </button>
+                                 
+ </div> 
+  
+</div>
+              
+
+</form>
+
+
+{% endblock addproperty %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+{% extends 'index.html'%}
+
+{% block content %}
+<section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row gy-4 d-flex justify-content-between">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+	<form method="" action=""style="color:black;padding:5%">
+		{% csrf_token %}
+		<h3 data-aos="fade-up">Forgot password </h3>
+		<span data-aos="fade-up">We know these things happen. Enter your email to get a reset link.</span>
+		<div class="col-3-lg col-6">
+		<label ><input data-aos="fade-up" class="form-control-lg" data-aos="fade-up"text="text"
+		placeholder="Enter your email" name="email"></label>
+		</div>
+
+		<button class="btn btn-success mt-3" >OK</button>
+		
+	</form>
+	</div>
+      </div>
+    </div>
+</section>
+{% endblock content %}

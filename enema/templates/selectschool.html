@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+    	<div class="row" ><!--row starts-->
+    	
+    		<div class="col-12"><!--Header-->
+    			<h4 data-aos="fade-up">Hurray! Roomies are waiting for you here. Click your school.</h4> 
+    		
+    		
+    					<!--FLash message code-->
+    					{% if messages %}
+        				{% for message in messages %}
+        				<p class="col-6" {% if message.tags %} class="alert alert-success{{message.tags}}"{% endif %}
+        					style="background-color:pink;color:black;border-radius:5px;padding:2vh;text-align:center" >
+        		 			{{message}} 
+        		 		</p>
+        				{% endfor %}
+        				{% endif %}
+        				<!--end of flash message code-->
+    		</div><!--Header ends-->
+    		
+    	{% for i in schools %}
+    		<div class="col-12 col-lg-12">
+    		
+            	
+                			<a href="{% url 'roomates_grid' i.name %}">
+                			<button  class="btn btn-success"style="border-color:white;height:10vh;width:50vw;">{{i.name}}
+                			</button>
+                			</a>
+               
+    		</div><!--col ends-->
+    	{% endfor %}  
+    	
+    
+    	</div><!--row ends-->
+    
+    </div><!--container ends-->
+    
+  </section>
+  {% endblock %}  

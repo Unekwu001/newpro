@@ -1,0 +1,96 @@
+{% extends 'roomates_grid.html' %}
+
+
+{% block roomyformheader %}
+	<h5 style="color:white;">(Only for students <span style="color:orange;"> who have a room</span> but need a room mate.)</h5>
+{% endblock roomyformheader %}
+
+
+
+
+
+
+{% block roomy %}
+<div class="container">
+<div class="row" style="margin-top:-6vh;">
+     <div class="col-12">
+
+	<form action="" method="" enctype="multipart/form-data">
+		{% csrf_token %}
+
+		<div class="col-lg-6">
+			<div class="info-agents color-a"style="color:white;">
+		 
+		      	 <p>
+                        	<strong>School: </strong>
+                        	<select class="color-text-a form-control" name="school">
+                        		<option value="{{school.name}}">{{school.name}}</option>
+                        	</select>
+                      	</p>
+                      	
+                      	<p>
+                        	<strong>Comment: </strong>
+                        	<select class="color-text-a form-control" name="school">
+                        		<option value="">I have a lodge, but i need a room mate</option>
+                        	</select>
+                        
+                      	</p>
+                      	
+                      	<p>
+                        	<strong>Lodge rent (₦):  </strong>
+                        	<input class="color-text-a form-control" type="number" name="lodgerent">
+                      	</p>
+                      	
+                      	<p>
+                        	<strong> Whats the Sharing formula: (e.g 60:40 for a lodge of ₦100,000 means you will pay ₦60,000 while your intended roomy pays ₦40,000)</strong>
+                        	<select class="color-text-a form-control" name="school">
+                        		<option value="">Select a sharing formula</option>
+                        		<option value="60">60:40</option>
+                        		<option value="50">50:50</option>
+                        	</select>
+                        
+                      	</p>
+                      	 
+                      	<p>
+                        	<strong>Address: </strong>
+                        	<textarea class="color-text-a form-control" value="" name="address"></textarea>
+                      	</p>
+                      	
+                      	<p>
+                        	<strong>Card Number: </strong>
+                        	<input class="color-text-a form-control" value="" type="text" name="identitynum">
+                        
+                      	</p>
+                      	<p>
+                        	<strong>Change profile picture: </strong>
+                        	<input class="color-text-a form-control" type="file" name="pix" accept=".jpeg,.png,.jpg"
+                        	onchange="document.getElementById('profile-img').src = window.URL.createObjectURL(this.files[0])">
+                        
+                      	</p>
+                     
+			<p class="alert alert-danger dismissible-alert">
+				Please note: Image should be in jpeg/png/jpg format.
+			</p>
+              
+              	</div>
+              
+           </div><!--ending col-5-->
+           
+           <div class="col-lg-5 mb-4"style="text-align:center;">
+           	{% load static %}
+           	<img src="{% static 'assets2/img/RE.jpg' %}" alt="Your image wil appear here after upload" 
+           	class="agent-avatar img-fluid"style="border-radius:20px;color:white;max-height:30vh;"id="profile-img">
+           
+              <button type="submit" class="btn btn-success"onclick="
+                      const x = confirm('Please take a second look. Press ok only when you are okay with all details entered')
+                      if(x == false){
+         		return false;
+         	}" style="margin-bottom:2vh">Submit my form</button>
+            </div>
+        
+        </form>       
+ </div><!--col ends-->
+ </div>
+ </div>
+{% endblock roomy %}
+

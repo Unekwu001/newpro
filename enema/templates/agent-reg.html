@@ -1,0 +1,93 @@
+{% extends 'index.html'%}
+
+{% block content %}
+<section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row gy-4 d-flex justify-content-between">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+        {% if messages %}
+        	{% for message in messages %}
+        		<p {% if message.tags %} class="{{message.tags}}"{% endif %}> {{message}} </p>
+        	{% endfor %}
+        {% endif %}
+	<form method="post" action="{% url 'agent_reg' %}"style="color:black;padding:5%">
+		{% csrf_token %}
+		<h3 data-aos="fade-up">Agent Registration </h3>
+		
+		{% if message %}
+		<h6 class="alert alert-danger" role="alert">{{message}}</h6>
+		{% endif %}
+		
+		<div class="col-3-lg col-6">
+		<label data-aos="fade-up">Full name <input class="form-control-sm" data-aos="fade-up" type="text"placeholder="full name" name="name"id="name"></label>
+		</div>
+		<div class="col-3-lg col-6">
+		<label data-aos="fade-up">Email <br><input class="form-control-sm" data-aos="fade-up" type="email" placeholder="Email" name="email"id="email"></label>
+		</div>
+		<div class="col-3-lg col-6">
+		<label data-aos="fade-up">Password<input class="form-control-sm" data-aos="fade-up" type="password"placeholder="password" name="pwd"id="pwd">
+		</label>
+		</div>
+		<div class="col-3-lg col-6">
+		<label data-aos="fade-up">Confirm Password<input class="form-control-sm" data-aos="fade-up" type="password"
+		placeholder="password" name="cpwd"id="cpwd"></label><br>
+		</div>
+		
+		<button class="btn btn-success mt-3" type="submit" onclick="validator(event)">Sign up</button>
+	</form>
+	</div>
+      </div>
+    </div>
+</section>
+{% endblock content %}
+
+
+{% block js %}
+<script type="text/javascript" language="javascript">
+
+let validator = (e) => {
+		var pwdPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+		var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+		
+		var name = document.getElementById('name').value;
+		var mail = document.getElementById('email').value;
+		var pass1 = document.getElementById('pwd').value;
+		var pass2 = document.getElementById('cpwd').value;
+		
+		if(name == "")
+				{
+				Swal.fire("please enter your full name.");
+				e.preventDefault();;
+				}	
+		else if(!mail.match(mailformat))
+				{
+				Swal.fire("You have entered an invalid email address!");
+				e.preventDefault();;
+				}					
+		else if(!pass1.match(pwdPattern)) 
+				{
+				Swal.fire('Password should have a combination of at least 6 characters made up of lowercase,uppercased letters, and number(s)')
+				e.preventDefault();;
+				}
+		else if(pass1 != pass2)
+				{
+				Swal.fire('Oops! Please make sure both passwords match.')
+				e.preventDefault();;
+				}
+	 	else
+	 			{
+	 			Swal.fire('Loading.....')
+	 			}
+		}
+ 
+
+</script> 
+{% endblock js %} 
+
+
+
+
+
+
+
+

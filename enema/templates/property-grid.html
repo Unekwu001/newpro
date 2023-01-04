@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Enema -  {{uniq_schul.name}} Properties</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  {% load static %}
+  <link href="{% static 'assets/img/enemalogo.png' %}" rel="icon">
+  
+  
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets2/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets2/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets2/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets2/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets2/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Author: Neku Theo
+  * Date: 20th December, 2022.
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Property Search Section ======= -->
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <h3 class="title-d">Search Property</h3>
+    </div>
+    <span class="close-box-collapse right-boxed bi bi-x"></span>
+    <div class="box-collapse-wrap form">
+      <form class="form-a">
+        <div class="row">
+          
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="Type">Type</label>
+              <select class="form-control form-select form-control-a" id="Type">
+                
+                <option>For Rent</option>
+                 
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="city">Location</label>
+              <select class="form-control form-select form-control-a" id="city">
+                <option>Around {{uniq_schul.name}}</option>
+                
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="bedrooms">Bedroom type</label>
+              <select class="form-control form-select form-control-a" id="bedrooms">
+                <option>Any</option>
+                <option>self-con</option>
+                <option>2 bedroom apartment</option>
+                <option>3 bedroom apartment</option>
+              </select>
+            </div>
+          </div>
+           
+           
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="price">Maximum Price</label>
+              <select class="form-control form-select form-control-a" id="price">
+                <option>All</option>
+                <option>0 - 50,000 naira</option>
+                <option>50,000 - 100,000 naira</option>
+                <option>150,000 - 200,000 naira</option>
+                <option>Above 200,000</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-b">Search Property</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><!-- End Property Search Section -->>
+
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top"style="background-color:rgb(14,29,52);color:white;">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation"style="background-color:white;">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="{% url 'index' %}"style="color:white;"><img src="{% static 'assets/img/enema2.png' %}" alt="enema"class="img-fluid"height="100vh"width="100vw"> </a>
+
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault"style="color:white;">
+        <ul class="navbar-nav">
+        
+        {% block navitem %}
+        
+        
+        {% endblock navitem %}
+
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'index' %}"style="color:white;">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="#about"style="color:white;">About</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link " href="https://wa.me/08168420165"style="color:white;">Chat us </a>
+          </li>
+
+
+           
+        </ul>
+      </div>
+
+      <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+        <i class="bi bi-search"></i>
+      </button>
+
+    </div>
+  </nav><!-- End Header/Navbar -->
+  
+  <main id="main">
+{% block content %}
+
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container"style="margin-top:-8vh;">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box ">
+            
+              <h1 class="title-single"style="color:white">{% block roomyformheader %} Properties Around {{uniq_schul.name}}
+              {% endblock roomyformheader %}</h1>
+              
+            </div>
+          </div>
+       
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+
+    <!-- ======= Property Grid ======= -->
+    
+    <section class="property-grid grid">
+      <div class="container"style="margin-top:-6vh;">
+        <div class="row" >
+        
+  <!-------->
+  {% for lodge in lodges %}
+  		
+            
+              	 		
+          <div class="col-md-4">
+            <div class="card-box-a card-shadow">
+            {% if allpics %}
+            			{% for pic in allpics %}
+                		{% if pic.lodgeid_id == lodge.id and pic.sn == 1 %}
+            			
+              <div class="img-box-a"style="text-align:center;max-height:30vh">
+                <img src="{% get_media_prefix %}{{pic.picname}}" alt="" class="img-a img-fluid" width="500vw" height="500vh">
+              </div>
+              			{% endif %}
+                		{% endfor %}
+               {% endif %}
+               
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  
+                  <div class="card-header-a ">
+                    <h2 class="card-title-a mt-4">
+                      <a href="{% url 'single_property' lodge.id %}">{{lodge.name}}
+                        <br /><h5 style="color:skyblue;">{{lodge.location}}</h5></a>
+                    </h2>
+                  </div>
+                  
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">{{lodge.lodgetype}} | {{lodge.price}}</span>
+                    </div>
+                    <a href="{% url 'single_property' lodge.id %}" class="link-a" ">Click here to view
+                      <span class="bi bi-chevron-right"></span>
+                    </a>
+                  </div>
+                  
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Status</h4>
+                        <span>{{lodge.status}}
+                          
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Tiled</h4>
+                        <span>{{lodge.Tiled}}</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Light</h4>
+                        <span>{{lodge.light}}</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Water</h4>
+                        <span>{{lodge.water}}</span>
+                      </li>
+                    </ul>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}  
+       
+        </div>
+        
+        <div class="row">
+          <div class="col-sm-12">
+      
+            <nav class="pagination-a">
+              <ul class="pagination justify-content-end">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1">
+                    <span class="bi bi-chevron-left"></span>
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item next">
+                  <a class="page-link" href="#">
+                    <span class="bi bi-chevron-right"></span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        
+      </div>
+    </section><!-- End Property Grid Single-->.social-links 
+    {% endblock %}
+
+
+
+  </main><!-- End #main -->
+ 
+    <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer" style="background-color:rgb(14,29,52);color:white;">
+
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-info">
+          <a href="{% url 'index' %}" class="logo d-flex align-items-center"style="color:orange;">
+            <span id="about">Enema</span>
+          </a>
+          <p>
+              At Enema, we ensure students find the right apartment based on proximity to school, budget, and other factors. We also serve as a linkage between students who are in need of a room mate.
+           </p>
+          <div class="social-links d-flex mt-4"style="color:white;">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-12 footer-links"style="text-align: center">
+          <h4 style="color:orange;">Terms and policies</h4>
+          <ul>
+            
+            <li><a href="#" style="color:white;">Terms of service</a></li>
+            <li><a href="#" style="color:white;">Privacy policy</a></li>
+          </ul>
+        </div>
+
+         
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4 id="contact"style="color:orange;">Contact Us</h4>
+          <p>
+            The Cans, IBB Boulevard<br>
+            Maitama, Abuja<br>
+            Nigeria. <br><br>
+            <strong>Phone:</strong> +2348168420165<br>
+            <strong>Email:</strong> tusedor180@gmail.com<br>
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container mt-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Enema</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        
+        Designed by <a href="https://theo-neku.netlify.app" target="_blank">Neku group</a>
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+    
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets2/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets2/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  {% block js %}
+
+  {% endblock js %} 
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets2/js/main.js' %}"></script>
+ 
+</body>
+
+</html>
+

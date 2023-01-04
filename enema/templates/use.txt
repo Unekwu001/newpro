@@ -1,0 +1,29 @@
+ <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/images/touch-icons/similarweb-60x60.png" />
+        <link rel="apple-touch-icon" href="/images/touch-icons/similarweb-76x76.png" sizes="76x76" />
+        <link rel="apple-touch-icon" href="/images/touch-icons/similarweb-120x120.png" sizes="120x120" />
+        <link rel="apple-touch-icon" href="/images/touch-icons/similarweb-152x152.png" sizes="152x152" />
+
+        <meta property="fb:pages" content="171738362968027" />
+
+        <meta property="og:url" content="https://www.similarweb.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Website Traffic - Check and Analyze Any Website | Similarweb" />
+        <meta property="og:description" content="All in one Website analytics & competitive traffic intelligence platform - Compare website traffic and performance, analyze strategies & grow your market share!" />
+        <meta property="og:site_name" content="Similarweb" />
+        <meta property="og:image" content="/images/similarweb.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="627" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@similarweb" />
+        <meta name="twitter:url" content="https://www.similarweb.com/" />
+        <meta name="twitter:title" content="Website Traffic - Check and Analyze Any Website | Similarweb" />
+        <meta name="twitter:description" content="All in one Website analytics & competitive traffic intelligence platform - Compare website traffic and performance, analyze strategies & grow your market share!" />
+        <meta name="twitter:image" content="/images/similarweb.png" />
+
+        <meta name="facebook-domain-verification" content="rpn5gg7jj3povoia0i2isrbpbjhhoj" />
+
+        <meta name="google-site-verification" content="bv-IihuLs4AaRhmOHJR6cYqdDlhOYB--TYDajI3TBJw" />
+
+        <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/hoklmmgfnpapgjgcpechhaamimifchmp" />
