@@ -324,7 +324,7 @@ def selectschool(request):
 
 
 def roomates_grid(request,name):
-    roomates = Roomates.objects.filter(schoolname=name)
+    roomates = Roomates.objects.filter(schoolname=name).order_by('-date_uploaded')
     if roomates:
         return render(request,'roomates_grid.html',{'roomates':roomates})
     else:
@@ -334,7 +334,38 @@ def roomates_grid(request,name):
 
 
 def roomy_form(request,name):
-    roomates = Roomates.objects.filter(schoolname=name)
-    school = Schools.objects.get(name=name)
-    locations = Locations.objects.filter(school=name)
-    return render(request,'roomy-form.html',{'roomates':roomates,'school':school,'locations':locations})   
+    if request.method == "GET":
+        roomates = Roomates.objects.filter(schoolname=name)
+        school = Schools.objects.get(name=name)
+        locations = Locations.objects.filter(school=name)
+        return render(request,'roomy-form.html',{'roomates':roomates,'school':school,'locations':locations})
+    if request.method == "POST":
+        schul = request.POST.get('school') 
+        lodgerent = request.POST.get('lodgerent')
+        pricesharing = request.POST.get('sharingformula')
+        location =request.POST.get('location')
+        tiled = request.POST.get('tiled')
+        water = request.POST.get('water') 
+        light = request.POST.get('light')
+        lodgetype = request.POST.get('lodgetype')
+        religion = request.POST.get('religion')
+        pix = request.FILES.get('pix')
+        if pix is not None:
+                fss = FileSystemStorage()
+                image_name = fss.save(pix.name,pix)
+        
+        record = Roomates(
+        pic = image_name,
+        schoolname = schul,
+        lodgerent = lodgerent,
+        location = location,
+        tiled = tiled,
+        water = water,
+        light = light,
+        pricesharing = pricesharing,
+        lodgetype = lodgetype,
+        religion = religion
+        )
+        record.save()
+        messages.info(request,f'You have been added as a roomy. Congratulations!. You will be matched within the next 48 hours.')
+        return redirect(roomates_grid,name)

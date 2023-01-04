@@ -48,14 +48,15 @@
       <a href="{% url 'index' %}" class=" d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
        
-        <img src="{% static 'assets/img/enema2.png' %}" class="img-fluid" alt="enema"height="100vh"width="100vw"> 
+        <img src="{% static 'assets/img/enems.png' %}" class="img-fluid" alt="enema"height="100vh"width="80vw"> 
         
       </a>
 
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-      <nav id="navbar" class="navbar">
-        <ul>
+      <nav id="navbar" class="navbar" >
+        <ul >
+          <li><a href="{% url 'selectschool' %}" class="active btn" >Need a room mate ?</a></li>
           <li><a href="{% url 'index' %}" class="active">Home</a></li>
           <li><a href="#about">About</a></li>       
           
@@ -74,10 +75,9 @@
       <div class="row gy-4 d-flex justify-content-between">
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
         
-          <h2 data-aos="fade-up">Fast and seamless </h2> 
-          <p data-aos="fade-up" data-aos-delay="100"> We have a range of verified agents on our platform. Just make your choice and 
-          get your desired lodge.</p>
- 	<h3 data-aos="fade-up">Choose your school</h3><span data-aos="fade-up"><b></b></span> 
+          <h2 data-aos="fade-up">Fast and seamless Lodging </h2> 
+          
+ 	<h3 data-aos="fade-up">To get a lodge, select your school below.</h3><span data-aos="fade-up"><b></b></span> 
  	<!--FLash message code-->
     					{% if messages %}
         				{% for message in messages %}
@@ -121,10 +121,10 @@
       <div class="row gy-4 d-flex justify-content-between">
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
         
-          <h2 data-aos="fade-up">Get a Room Mate Asap!.</h2> 
+          <h2 data-aos="fade-up">Get a Room Mate Asap!</h2> 
           <h4 data-aos="fade-up" data-aos-delay="100">You are one step away from meeting your Roomy </h4>
       	
- 	<a href="{% url 'selectschool' %}"><button class="btn btn-success" data-aos="fade-up"><b>Click here</b></button></a> 
+ 	<a href="{% url 'selectschool' %}"><button class="btn btn-success col-12" data-aos="fade-up"><b>Click here</b></button></a> 
 	</div>
       </div>
     </div>
@@ -138,8 +138,8 @@
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
-          <a href="index.html" class="logo d-flex align-items-center">
-            <span id="about" style="color:orange;">About Us</span>
+          <a href="{% url 'index' %}" class="logo d-flex align-items-center">
+            <span id="about" >About Us</span>
           </a>
           <p>
            At Enema, we ensure students find the right apartment based on proximity to school, budget, and other factors. We also serve as a linkage between students who are in need of a room mate.
@@ -153,7 +153,7 @@
         </div>
 
         <div class="col-lg-2 col-12 footer-links"style="text-align: center">
-          <h4 style="color:orange;">Terms and policies</h4>
+          <h4 >Terms and policies</h4>
           <ul>
             
             <li><a href="#">Terms of service</a></li>
@@ -164,7 +164,7 @@
          
 
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-          <h4 id="contact"style="color:orange;">Contact Us</h4>
+          <h4 id="contact">Contact Us</h4>
           <p>
             The Cans, IBB Boulevard<br>
             Maitama, 900271, Abuja<br>

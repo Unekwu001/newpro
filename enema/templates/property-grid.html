@@ -108,7 +108,7 @@
         <span></span>
         <span></span>
       </button>
-      <a class="navbar-brand text-brand" href="{% url 'index' %}"style="color:white;"><img src="{% static 'assets/img/enema2.png' %}" alt="enema"class="img-fluid"height="100vh"width="100vw"> </a>
+      <a class="navbar-brand text-brand" href="{% url 'index' %}"style="color:white;"><img src="{% static 'assets/img/enems.png' %}" alt="enema"class="img-fluid"height="100vh"width="70vw"> </a>
 
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault"style="color:white;">
         <ul class="navbar-nav">
@@ -117,7 +117,9 @@
         
         
         {% endblock navitem %}
-
+	  <li class="nav-item">
+	  <a  href="{% url 'selectschool' %}" class="active btn" >Need a room mate ?</a>
+	  </li>
           <li class="nav-item">
             <a class="nav-link " href="{% url 'index' %}"style="color:white;">Home</a>
           </li>

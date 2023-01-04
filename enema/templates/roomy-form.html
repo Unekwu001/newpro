@@ -2,7 +2,10 @@
 
 
 {% block roomyformheader %}
-	<h5 style="color:white;">(Only for students <span style="color:orange;"> who have a room</span> but need a room mate.)</h5>
+	<h5 style="color:white;">(Fill this form only if <span style="color:orange;"> you have a lodge </span> but need a room mate.)
+		If you dont have a lodge and you need a roomy , <a  href="{% url 'roomates_grid' school.name %}"><button 
+		class="btn btn-secondary">click here</button></a> to find your match. 
+	</h5>
 {% endblock roomyformheader %}
 
 
@@ -15,7 +18,7 @@
 <div class="row" style="margin-top:-6vh;">
      <div class="col-12">
 
-	<form action="" method="" enctype="multipart/form-data">
+	<form action="{% url 'roomy_form' school.name %}" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
 
 		<div class="col-lg-6">
@@ -23,14 +26,14 @@
 		 
 		      	 <p>
                         	<strong>School: </strong>
-                        	<select class="color-text-a form-control" name="school">
+                        	<select class="color-text-a form-control" name="school" required="">
                         		<option value="{{school.name}}">{{school.name}}</option>
                         	</select>
                       	</p>
                       	
                       	<p>
                         	<strong>Comment: </strong>
-                        	<select class="color-text-a form-control" name="school">
+                        	<select class="color-text-a form-control" name="comment">
                         		<option value="">I have a lodge, but i need a room mate</option>
                         	</select>
                         
@@ -38,22 +41,22 @@
                       	
                       	<p>
                         	<strong>Lodge rent (₦):  </strong>
-                        	<input class="color-text-a form-control" type="number" name="lodgerent">
+                        	<input class="color-text-a form-control" type="number" name="lodgerent"required="">
                       	</p>
                       	
                       	<p>
                         	<strong> Whats the Sharing formula: (e.g 60:40 for a lodge of ₦100,000 means you will pay ₦60,000 while your intended roomy pays ₦40,000)</strong>
-                        	<select class="color-text-a form-control" name="school">
+                        	<select class="color-text-a form-control" name="sharingformula"required="">
                         		<option value="">Select a sharing formula</option>
-                        		<option value="60">60:40</option>
-                        		<option value="50">50:50</option>
+                        		<option value="60:40">60:40</option>
+                        		<option value="50:50">50:50</option>
                         	</select>
                         
                       	</p>
                       	 
                       	<p>
                         	<strong>Lodge location</strong>
-                        	 <select class="color-text-a form-control" name="location">
+                        	 <select class="color-text-a form-control" name="location"required="">
                         	 	<option value="">Select your location</option>
                         	 {% for i in locations %}
                         		<option value="{{i.location}}">{{i.location}}</option>
@@ -62,13 +65,52 @@
                       	</p>
                       	
                       	<p>
-                        	<strong>Card Number: </strong>
-                        	<input class="color-text-a form-control" value="" type="text" name="identitynum">
-                        
+                      		<strong>Is your lodge Tiled ?: </strong>
+                        	<select class="color-text-a form-control" name="tiled"required="">
+                        		<option value="">Select an option</option>
+                        		<option value="yes">yes</option>
+                        		<option value="no">no</option>
+                        	</select>
+                          
+                      	</p>
+                      	<p>	
+                      		<strong>Is there an in-house water supply ?: </strong>
+                        	<select class="color-text-a form-control" name="water"required="">
+                        		<option value="">Select an option</option>
+                        		<option value="yes">yes</option>
+                        		<option value="no">no</option>
+                        	</select>
                       	</p>
                       	<p>
-                        	<strong>Change profile picture: </strong>
-                        	<input class="color-text-a form-control" type="file" name="pix" accept=".jpeg,.png,.jpg"
+                      		<strong>Is electricity available ?: </strong>
+                        	<select class="color-text-a form-control" name="light"required="">
+                        		<option value="">Select an option</option>
+                        		<option value="yes">yes</option>
+                        		<option value="no">no</option>
+                        	</select>
+                      	</p>
+                      	<p>	
+                      		<strong>Whats the lodge type ?: </strong>
+                        	<select class="color-text-a form-control" name="lodgetype"required="">
+                        		<option value="">Select an option</option>
+                        		<option value="single-room">single-room</option>
+                        		<option value="self-con">self-con</option>
+                        		<option value="2-bedroom-flat">2-bedroom-flat</option>
+                        		<option value="3-bedroom-flat">3-bedroom-flat</option>
+                        	</select>
+                      	</p>
+                      	<p>	
+                      		<strong>Religion: </strong>
+                        	<select class="color-text-a form-control" name="religion"required="">
+                        		<option value="">Select an option</option>
+                        		<option value="christian">Christian</option>
+                        		<option value="muslim">Muslim</option>
+                        		<option value="prefer not to say">Prefer not to say</option>
+                        	</select>
+                      	</p>
+                      	<p>
+                        	<strong>Add profile picture: </strong>
+                        	<input class="color-text-a form-control" type="file" name="pix" accept=".jpeg,.png,.jpg"required=""
                         	onchange="document.getElementById('profile-img').src = window.URL.createObjectURL(this.files[0])">
                         
                       	</p>
@@ -83,7 +125,7 @@
            
            <div class="col-lg-5 mb-4"style="text-align:center;">
            	{% load static %}
-           	<img src="{% static 'assets2/img/RE.jpg' %}" alt="Your image wil appear here after upload" 
+           	<img src="{% static 'assets2/img/pic.png' %}" alt="Your image wil appear here after upload" 
            	class="agent-avatar img-fluid"style="border-radius:20px;color:white;max-height:30vh;"id="profile-img">
            
               <button type="submit" class="btn btn-success"onclick="

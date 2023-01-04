@@ -20,8 +20,10 @@ urlpatterns = [
     path('home/selectschool/',selectschool,name='selectschool'),
     path('home/selectschool/',selectschool,name='selectschool'),
     path('home/selectschool/roomates/<str:name>/',roomates_grid,name='roomates_grid'),
-    path('roomates/fillform/<str:name>',roomy_form,name='roomy_form')
-
+    path('schools/roomates/',roomates_grid,name='roomates_grid'),
+    path('roomates/fillform/<str:name>',roomy_form,name='roomy_form'),  
+    path('roomates/submitform/',roomy_form,name='roomy_form'),
+    
 ]
 
 if settings.DEBUG:

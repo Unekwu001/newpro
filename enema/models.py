@@ -61,8 +61,9 @@ class Roomates(models.Model):
     pic = models.CharField(max_length=100,unique=False,default="Null",null=True,blank=True)
     lodgetype = models.CharField(max_length=30,unique=False,default="Null")
     pricesharing = models.CharField(max_length=15,unique=False,default="Null")
-    Tiled = models.CharField(max_length=15,unique=False,default="Null")
+    tiled = models.CharField(max_length=15,unique=False,default="Null")
     light = models.CharField(max_length=15,unique=False,default="Null")
+    water = models.CharField(max_length=15,unique=False,default="Null")
     date_uploaded = models.DateTimeField(auto_now_add=True)
     class Meta:
         db_table='roomates'

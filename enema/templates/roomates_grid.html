@@ -6,7 +6,7 @@
 {% block navitem %}
 <li class="btn btn-success">
  	<a class="nav-link " href="{% url 'roomy_form' roomates.0.schoolname %}"style="color:white;">
-            Add me ({{roomates.0.schoolname}}) 
+            Add me to this list 
 	</a>
 </li>
 {% endblock navitem %}
@@ -22,16 +22,33 @@
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box ">
             
-              <h4 class="title-single"style="color:white">
-              	{% block roomyformheader %}({{roomates.0.schoolname}}) <span class="btn btn-success">Pick a Roomy below</span>{% endblock roomyformheader %}
+              <h4  class="title-single"style="color:white">
+              	{% block roomyformheader %} 
+              		Roomies around {{roomates.0.schoolname}}
+              	{% endblock roomyformheader %}
               </h4>
               
+<!--flashed messages-->
+        {% if messages %}
+        	{% for message in messages %}
+        		<p {% if message.tags %} class="alert alert-success{{message.tags}}"{% endif %}
+        			style="background-color:rgb(0,106,86);color:white;" >
+        		 {{message}} 
+        		 </p>
+        	{% endfor %}
+        {% endif %}
+<!--end of flashed messages-->
+                  
             </div>
           </div>
        
         </div>
       </div>
     </section><!-- End Intro--> 
+    
+    
+    
+    
 
 {% block roomy %}
  <!-- ======= Roomates grid ======= -->
@@ -44,29 +61,31 @@
         
  	{% for roomate in roomates %} 
         
+        {% load static %}
         <!-----------------forloop begins------------------------------->
          <div class="col-md-4">
             <div class="card-box-a card-shadow">
  
-            			
-              <div class="img-box-a"style="text-align:center;max-height:100vh">
-                <img src="" alt="" class="img-a img-fluid" width="500vw" height="500vh">
+            {% if roomate.pic %}		
+              <div class="img-box-a"style="text-align:center;max-height:70vh">
+                <img src="{% get_media_prefix %}{{roomate.pic}}" alt="" class="img-a img-fluid" width="500vw" height="500vh">
               </div>
-              			 
+            {% endif %}		 
                
               <div class="card-overlay">
                 <div class="card-overlay-a-content">
                   
                   <div class="card-header-a ">
-                    <h2 class="card-title-a mt-4">
-                      <a href=""> lodgenam
-                        <br /><h5 style="color:skyblue;">location</h5></a>
-                    </h2>
+                    <h4 class="card-title-a mt-4">
+                      <a href="">I stay in a {{roomate.lodgetype}}<br/>
+                      <h5 style="color:orange;">located at {{roomate.location}}</h5>
+                      </a>
+                    </h4>
                   </div>
                   
                   <div class="card-body-a">
                     <div class="price-box d-flex">
-                      <span class="price-a">lodge.lodgetype | lodge.price</span>
+                      <span class="price-a">Price ₦{{roomate.lodgerent}} | sharing {{roomate.pricesharing}}</span>
                     </div>
                     <a href="" class="link-a" ">Click here to view
                       <span class="bi bi-chevron-right"></span>
