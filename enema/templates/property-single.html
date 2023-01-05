@@ -91,10 +91,16 @@
             </div>
           </div>
      
-          <div class="col-md-12"style="margin-bottom:20vh">
-            
-                      <a href="https://wa.me/{{record.phone}}/?text=I%20am%20interested%20in%20this%20lodge%20http://127.0.0.1:8000/property%20details/{{record.id}}/"><button class="btn btn-success"style="color:white;border-color:orange;">Chat on Whatsapp</button></a>
-                      <p style="color:white;"> or call >> 08168420165 <span style="color:orange"> Note that: </span>We respond twice as fast when you contact us via whatsapp.</p>
+          <div class="col-md-6"style="margin-bottom:20vh;color:white;">
+          	<div class="col-6" style="max-height:30;">
+          		<span>Agent name: {{agent.name}}</span>
+          		<img src="{% get_media_prefix %}{{agent.pic}}" class="img-fluid" style="border-radius:5px">
+          	</div>
+          
+          	<a href="https://wa.me/{{record.phone}}/send?text=I%20am%20interested%20in%20this%20lodge%20http://127.0.0.1:8000/property%20details/{{record.id}}/" target="_blank">
+          	<button class="btn btn-success"style="color:white;border-color:orange;">Chat me up on Whatsapp</button>
+          	</a>
+                <p style="color:white;"> or call me on <button class="btn btn-success">{{agent.phone}}</button></p>
                    
              
             </div>

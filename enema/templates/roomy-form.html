@@ -2,10 +2,12 @@
 
 
 {% block roomyformheader %}
-	<h5 style="color:white;">(Fill this form only if <span style="color:orange;"> you have a lodge </span> but need a room mate.)
+<div class="col-9">
+	<h5 style="color:white;">(Fill this form only when <span style="color:orange;"> you have a lodge </span> but need a room mate.)
 		If you dont have a lodge and you need a roomy , <a  href="{% url 'roomates_grid' school.name %}"><button 
 		class="btn btn-secondary">click here</button></a> to find your match. 
 	</h5>
+</div>
 {% endblock roomyformheader %}
 
 

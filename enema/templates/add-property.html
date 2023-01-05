@@ -36,8 +36,9 @@
                         <strong>Region: </strong>
                         <select class="color-text-a form-control" name="region"required="">
                         <option value="">Select Region</option>
-                        <option value="FPN">FPN</option>
-                     
+                        {% for school in schools %}
+                        <option value="{{school.name}}">{{school.name}}</option>
+                     	{% endfor %}
                         </select>
                         
                       </p>

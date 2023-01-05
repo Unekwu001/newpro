@@ -25,8 +25,9 @@ def property_grid(request,id):
 
 def single_property(request,id):
     record = Lodges.objects.get(id=id)
+    agent= Agents.objects.get(id=record.agentid)
     allpics=Lodgepics.objects.all()
-    return render(request,'property-single.html',{'record':record,'allpics':allpics})
+    return render(request,'property-single.html',{'record':record,'allpics':allpics,'agent':agent})
 
 
 
@@ -369,3 +370,8 @@ def roomy_form(request,name):
         record.save()
         messages.info(request,f'You have been added as a roomy. Congratulations!. You will be matched within the next 48 hours.')
         return redirect(roomates_grid,name)
+
+
+
+def agent_single(request):
+    return render(request,'agent-single.html')
