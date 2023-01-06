@@ -22,9 +22,9 @@ urlpatterns = [
     path('home/selectschool/roomates/<str:name>/',roomates_grid,name='roomates_grid'),
     path('schools/roomates/',roomates_grid,name='roomates_grid'),
     path('roomates/fillform/<str:name>',roomy_form,name='roomy_form'),  
-    path('home/agentsingle/',agent_single,name='agent_single'),
     
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+

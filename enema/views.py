@@ -341,6 +341,7 @@ def roomy_form(request,name):
         locations = Locations.objects.filter(school=name)
         return render(request,'roomy-form.html',{'roomates':roomates,'school':school,'locations':locations})
     if request.method == "POST":
+        phone = request.POST.get('phone')
         schul = request.POST.get('school') 
         lodgerent = request.POST.get('lodgerent')
         pricesharing = request.POST.get('sharingformula')
@@ -365,13 +366,10 @@ def roomy_form(request,name):
         light = light,
         pricesharing = pricesharing,
         lodgetype = lodgetype,
-        religion = religion
+        religion = religion,
+        phone = phone
         )
         record.save()
         messages.info(request,f'You have been added as a roomy. Congratulations!. You will be matched within the next 48 hours.')
         return redirect(roomates_grid,name)
 
-
-
-def agent_single(request):
-    return render(request,'agent-single.html')

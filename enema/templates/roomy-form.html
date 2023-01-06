@@ -25,10 +25,19 @@
 
 		<div class="col-lg-6">
 			<div class="info-agents color-a"style="color:white;">
+			
+			<p>
+                        	<strong>Phone Number : </strong>
+                        		<small>(your phone number will not be visible to the public, it will be used to get in touch 
+                        			with you as soon as you are matched)
+                        		</small>
+                        	<input class="color-text-a form-control afile" name="phone" required=""type="number">
+                        		  
+                      	</p>
 		 
 		      	 <p>
                         	<strong>School: </strong>
-                        	<select class="color-text-a form-control" name="school" required="">
+                        	<select class="color-text-a form-control afile" name="school" required="">
                         		<option value="{{school.name}}">{{school.name}}</option>
                         	</select>
                       	</p>
@@ -43,22 +52,21 @@
                       	
                       	<p>
                         	<strong>Lodge rent (₦):  </strong>
-                        	<input class="color-text-a form-control" type="number" name="lodgerent"required="">
+                        	<input class="color-text-a form-control afile" type="number" name="lodgerent"required="">
                       	</p>
                       	
                       	<p>
-                        	<strong> Whats the Sharing formula: (e.g 60:40 for a lodge of ₦100,000 means you will pay ₦60,000 while your intended roomy pays ₦40,000)</strong>
-                        	<select class="color-text-a form-control" name="sharingformula"required="">
-                        		<option value="">Select a sharing formula</option>
-                        		<option value="60:40">60:40</option>
-                        		<option value="50:50">50:50</option>
+                        	<strong> Your intended roomy will pay</strong>
+                        	<select class="color-text-a form-control afile" name="sharingformula"required="">
+                        		<option value="50%">50%</option>
+                        		<option value="40%">40%</option>
                         	</select>
                         
                       	</p>
                       	 
                       	<p>
                         	<strong>Lodge location</strong>
-                        	 <select class="color-text-a form-control" name="location"required="">
+                        	 <select class="color-text-a form-control afile" name="location"required="">
                         	 	<option value="">Select your location</option>
                         	 {% for i in locations %}
                         		<option value="{{i.location}}">{{i.location}}</option>
@@ -68,7 +76,7 @@
                       	
                       	<p>
                       		<strong>Is your lodge Tiled ?: </strong>
-                        	<select class="color-text-a form-control" name="tiled"required="">
+                        	<select class="color-text-a form-control afile" name="tiled"required="">
                         		<option value="">Select an option</option>
                         		<option value="yes">yes</option>
                         		<option value="no">no</option>
@@ -77,7 +85,7 @@
                       	</p>
                       	<p>	
                       		<strong>Is there an in-house water supply ?: </strong>
-                        	<select class="color-text-a form-control" name="water"required="">
+                        	<select class="color-text-a form-control afile" name="water"required="">
                         		<option value="">Select an option</option>
                         		<option value="yes">yes</option>
                         		<option value="no">no</option>
@@ -85,7 +93,7 @@
                       	</p>
                       	<p>
                       		<strong>Is electricity available ?: </strong>
-                        	<select class="color-text-a form-control" name="light"required="">
+                        	<select class="color-text-a form-control afile" name="light"required="">
                         		<option value="">Select an option</option>
                         		<option value="yes">yes</option>
                         		<option value="no">no</option>
@@ -93,7 +101,7 @@
                       	</p>
                       	<p>	
                       		<strong>Whats the lodge type ?: </strong>
-                        	<select class="color-text-a form-control" name="lodgetype"required="">
+                        	<select class="color-text-a form-control afile" name="lodgetype"required="">
                         		<option value="">Select an option</option>
                         		<option value="single-room">single-room</option>
                         		<option value="self-con">self-con</option>
@@ -103,7 +111,7 @@
                       	</p>
                       	<p>	
                       		<strong>Religion: </strong>
-                        	<select class="color-text-a form-control" name="religion"required="">
+                        	<select class="color-text-a form-control afile" name="religion"required="">
                         		<option value="">Select an option</option>
                         		<option value="christian">Christian</option>
                         		<option value="muslim">Muslim</option>
@@ -112,7 +120,7 @@
                       	</p>
                       	<p>
                         	<strong>Add profile picture: </strong>
-                        	<input class="color-text-a form-control" type="file" name="pix" accept=".jpeg,.png,.jpg"required=""
+                        	<input class="color-text-a form-control afile" type="file" name="pix" accept=".jpeg,.png,.jpg"required=""
                         	onchange="document.getElementById('profile-img').src = window.URL.createObjectURL(this.files[0])">
                         
                       	</p>
@@ -130,11 +138,37 @@
            	<img src="{% static 'assets2/img/pic.png' %}" alt="Your image wil appear here after upload" 
            	class="agent-avatar img-fluid"style="border-radius:20px;color:white;max-height:30vh;"id="profile-img">
            
-              <button type="submit" class="btn btn-success"onclick="
-                      const x = confirm('Please take a second look. Press ok only when you are okay with all details entered')
+              <button type="submit" class="btn btn-success"style='margin-bottom:2vh'
+              	onclick="
+                      
+              
+		 let validator = (e)=> {
+		      var allfiles = document.getElementsByClassName('afile');
+		
+	              if(allfiles[5].value == '' || allfiles[1].value =='' || allfiles[8].value=='' || allfiles[3].value=='' ||
+	              allfiles[2].value=='' || allfiles[4].value==''|| allfiles[6].value==''|| allfiles[7].value=='' ||
+	               allfiles[9].value=='' || allfiles[0].value=='' || allfiles[10].value=='')
+					{
+					Swal.fire('ensure all fields are filled.');
+					e.preventDefault();;
+					}
+		      else{
+		      const x = confirm('Are you sure ?')
                       if(x == false){
-         		return false;
-         	}" style="margin-bottom:2vh">Submit my form</button>
+         				e.preventDefault();;
+         			    }
+         		  }		
+					
+			
+			  		}
+			  
+			  validator(event)
+			  
+			  
+			  ">Add me
+         	
+             </button>
+             
             </div>
         
         </form>       
