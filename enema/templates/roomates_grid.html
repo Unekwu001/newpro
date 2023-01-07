@@ -6,7 +6,7 @@
 {% block navitem %}
 <li class="btn btn-success">
  	<a class="nav-link " href="{% url 'roomy_form' roomates.0.schoolname %}"style="color:white;">
-            Add me to this list 
+            Add me as roomy
 	</a>
 </li>
 {% endblock navitem %}
@@ -89,7 +89,7 @@
                     </div>
                     
                     <a href="https://api.whatsapp.com/send?phone=2348168420165" class="link-a" ">CLICK HERE TO CONNECT WITH ME
-                      <p class="bi bi-chevron-right">You will be paying 50% of ₦{{roomate.lodgerent}} to stay with me</p>
+                      <p class="bi bi-chevron-right">You will be paying {{roomate.pricesharing}}  of ₦{{roomate.lodgerent}} to stay with me</p>
                     </a>
                   </div>
                   
