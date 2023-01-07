@@ -1,0 +1,87 @@
+{% extends 'index.html'%}
+
+
+{% block content %}
+<section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row gy-4 d-flex justify-content-between">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+        
+ <!--flashed messages-->
+        {% if messages %}
+        	{% for message in messages %}
+        		<p {% if message.tags %} class="alert alert-success{{message.tags}}"{% endif %}
+        			style="background-color:rgb(0,106,86);color:white;" >
+        		 {{message}} 
+        		 </p>
+        	{% endfor %}
+        {% endif %}
+<!--end of flashed messages-->
+          
+	<form method="post" action="{% url 'pwd_reset' email %}" style="color:black;padding:5%">
+		{% csrf_token %}
+		<h3 data-aos="fade-up">Enter your new password. </h3>
+		
+		<div class="col-3-lg col-6 mb-3">
+		<label ><input data-aos="fade-up" class="form-control-sm" data-aos="fade-up"type="password"
+		placeholder="Enter your  new password" name="pwd" id="pwd"></label>
+		</div>
+		
+		<div class="col-3-lg col-6">
+		<label ><input data-aos="fade-up" class="form-control-sm" data-aos="fade-up"type="password"
+		placeholder="Retype your new password" name="cpwd" id="chkpwd"></label>
+		</div>
+
+		<button class="btn btn-success mt-3" type="submit" onclick="validator(event)" >Reset</button>
+		
+	</form>
+	</div>
+      </div>
+    </div>
+</section>
+{% endblock content %}
+
+
+
+{% block js %}
+<script type="text/javascript"> 
+   
+    let validator = (e) => {
+    
+		var pwdPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+		var pass1 = document.getElementById('pwd').value;
+		var pass2 = document.getElementById('chkpwd').value;
+		 			
+		if(!pass1.match(pwdPattern)) 
+				{
+				Swal.fire('Password should have a combination of at least 6 characters made up of lowercase,uppercased letters, and number(s)')
+				e.preventDefault();
+				}
+		else if(pass1 != pass2)
+				{
+				Swal.fire('Oops! Please make sure both passwords match.')
+				e.preventDefault();
+				}
+	 	else
+	 			{
+	 			Swal.fire('Loading.....')
+	 			}
+		}
+		
+    </script> 
+{% endblock js %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

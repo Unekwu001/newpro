@@ -1,5 +1,7 @@
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render,redirect
+from django.core.mail import send_mail
+from django.utils.html import strip_tags
 from django.contrib import messages
 from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates
 
@@ -52,10 +54,9 @@ def agent_reg(request):
             else:
                 record = Agents(name=name,email=email,pwd=pwd)
                 record.save()
-                #flash(message)
-                # message="Congratulations! You can login."
-                # send email
+                send_mail('Welcome to enema Inc.',f'Your login credentials are as follows: \n Email: {email} \n Password: {pwd} \n\n Students in need of lodges are waiting for you!','unekwutheophilus@gmail.com',[f'{email}'],fail_silently=False)
                 return redirect(agent_login)
+
 
 def agent_login(request):
     session_collected=request.session.get('loggedin')
@@ -249,13 +250,42 @@ def add_property(request):
 
 
 
-
-
-        
+def resetmail_sent(request):
+    return render(request,'resetmail_sent.html')
 
 
 def forgot_pwd(request):
-    return render(request,'4got-pwd.html')
+    if request.method == "GET":
+        return render(request,'4got-pwd.html')
+    else:
+        email = request.POST.get('email')
+        records = Agents.objects.filter(email=email)
+        if records:
+            html_message = f'Click the link below to reset your password. \n \n <a href="http://127.0.0.1:8000/passwordreset/{email}/">Password reset Link</a>'
+            send_mail('enema Inc - Reset Password','','unekwutheophilus@gmail.com',[f'{email}'],fail_silently=False,html_message=html_message)
+            return redirect(resetmail_sent)
+        else:
+            messages.info(request,f'{email} is not a registered user.')
+            return redirect(forgot_pwd)
+
+
+def pwd_reset(request,email):
+    if request.method == "GET":
+        messages.info(request,'Reset your password in a few seconds.')
+        return render(request,'reset_pwd.html',{'email':email})
+    if request.method == "POST":
+        pwd = request.POST.get('pwd')
+        record = Agents.objects.get(email=email)
+        if record:
+            record.pwd = pwd
+            record.save()
+            send_mail('enema Inc - New credentials',f'Congratulations!. Below are your new login details. \n Email: {email} \n Password: {pwd}','unekwutheophilus@gmail.com',[f'{email}'],fail_silently=False)
+            messages.success(request,f'Congratulations!. You can login here with your new details.')
+            return redirect(agent_login)
+        else:
+            messages.info(request,f'something went wrong')
+            return redirect(forgot_pwd)
+
 
 
 def editlodge(request,id):

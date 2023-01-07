@@ -196,13 +196,13 @@
                   <div class="card-header-a ">
                     <h2 class="card-title-a mt-4">
                       <a href="{% url 'single_property' lodge.id %}">{{lodge.name}}
-                        <br /><h5 style="color:skyblue;">{{lodge.location}}</h5></a>
+                        <br /><h5 style="color:orange;">{{lodge.location}}</h5></a>
                     </h2>
                   </div>
                   
                   <div class="card-body-a">
                     <div class="price-box d-flex">
-                      <span class="price-a">{{lodge.lodgetype}} | {{lodge.price}}</span>
+                      <span class="price-a">{{lodge.lodgetype}} | ₦{{lodge.price}}</span>
                     </div>
                     <a href="{% url 'single_property' lodge.id %}" class="link-a" ">Click here to view
                       <span class="bi bi-chevron-right"></span>
