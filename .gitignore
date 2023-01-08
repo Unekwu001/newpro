@@ -46,9 +46,7 @@ env/
 /media/
 !/media/.gitkeep
 
-/static/
-!/static/.gitkeep
-staticfiles
+
 
 
 # Secrets
