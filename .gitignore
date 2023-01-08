@@ -39,7 +39,8 @@ ipython_config.py
 
 # Environments
 env/
-/vager/
+*vager
+
 
 # Media and Static directories
 /media/
@@ -47,6 +48,8 @@ env/
 
 /static/
 !/static/.gitkeep
+staticfiles
+
 
 # Secrets
 secrets.json
