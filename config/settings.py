@@ -152,3 +152,6 @@ EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = 'default from email'
+
+
+CSRF_TRUSTED_ORIGINS = ['https://web-production-ee0e.up.railway.app/']
