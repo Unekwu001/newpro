@@ -43,8 +43,7 @@ env/
 
 
 # Media and Static directories
-/media/
-!/media/.gitkeep
+
 
 
 
