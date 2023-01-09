@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+CSRF_TRUSTED_ORIGINS = ['https://web-production-ee0e.up.railway.app','enema.ng']
 
 ROOT_URLCONF = 'config.urls'
 
@@ -154,4 +155,4 @@ EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = 'default from email'
 
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-ee0e.up.railway.app/']
+
