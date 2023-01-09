@@ -47,10 +47,10 @@ def agent_reg(request):
             name = request.POST.get('name')
             email = request.POST.get('email')
             pwd = request.POST.get('pwd')
-            record_exists = Agents.objects.filter(email=email)
-            if record_exists != None:
-                message="User already exists"
-                return render(request,'agent-reg.html',{'message':message})
+            record_exists = Agents.objects.all().filter(email=email)
+            if record_exists:
+                messages.success(request,'User already exists.')
+                return render(request,'agent-reg.html')
             else:
                 record = Agents(name=name,email=email,pwd=pwd)
                 record.save()
@@ -261,7 +261,7 @@ def forgot_pwd(request):
         email = request.POST.get('email')
         records = Agents.objects.filter(email=email)
         if records:
-            html_message = f'Click the link below to reset your password. \n \n <a href="http://127.0.0.1:8000/passwordreset/{email}/">Password reset Link</a>'
+            html_message = f'Click the link below to reset your password. \n \n <a href="https://web-production-ee0e.up.railway.app/passwordreset/{email}/">Password reset Link</a>'
             send_mail('enema Inc - Reset Password','','unekwutheophilus@gmail.com',[f'{email}'],fail_silently=False,html_message=html_message)
             return redirect(resetmail_sent)
         else:
