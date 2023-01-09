@@ -47,15 +47,16 @@ def agent_reg(request):
             name = request.POST.get('name')
             email = request.POST.get('email')
             pwd = request.POST.get('pwd')
-            record_exists = Agents.objects.all().filter(email=email)
-            if record_exists != None:
-                messages.success(request,'User already exists.')
-                return render(request,'agent-reg.html')
-            else:
+            record_exists = Agents.objects.filter(email=email)
+            if record_exists == None:
                 record = Agents(name=name,email=email,pwd=pwd)
                 record.save()
                 send_mail('Welcome to enema Inc.',f'Your login credentials are as follows: \n Email: {email} \n Password: {pwd} \n\n Students in need of lodges are waiting for you!','unekwutheophilus@gmail.com',[f'{email}'],fail_silently=False)
                 return redirect(agent_login)
+            else:
+                messages.success(request,'User already exists.')
+                return render(request,'agent-reg.html')
+                
 
 
 def agent_login(request):
