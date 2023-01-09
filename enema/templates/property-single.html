@@ -97,7 +97,7 @@
           		<img src="{% get_media_prefix %}{{agent.pic}}" class="img-fluid" style="border-radius:5px">
           	</div>
           
-          	<a href="https://api.whatsapp.com/send/?phone={{agent.phone}}&text=Hello%2C+I%E2%80%99m+interested+in+this+lodge+with+ID+{{record.id}}+https%3A%2F%2Fweb-production-ee0e.up.railway.app%2Fproperty%20details%2F{{record.id}}&type=phone_number&app_absent=0" " target="_blank">
+          	<a href="https://api.whatsapp.com/send/?phone={{agent.phone}}&text=Hello%2C+I%E2%80%99m+interested+in+this+lodge+with+ID+{{record.id}}+https%3A%2F%2Fweb-production-ee0e.up.railway.app%2Fproperty%20details%2F{{record.id}}%2F&type=phone_number&app_absent=0" " target="_blank">
           	<button class="btn btn-success"style="color:white;border-color:orange;">Chat me up on Whatsapp</button>
           	</a>
                 <p style="color:white;"> or call me on <button class="btn btn-success">{{agent.phone}}</button></p>
