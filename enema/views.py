@@ -47,8 +47,8 @@ def agent_reg(request):
             name = request.POST.get('name')
             email = request.POST.get('email')
             pwd = request.POST.get('pwd')
-            record_exists = Agents.objects.get(email=email)
-            if record_exists:
+            record_exists = Agents.objects.filter(email=email)
+            if record_exists != None:
                 message="User already exists"
                 return render(request,'agent-reg.html',{'message':message})
             else:
