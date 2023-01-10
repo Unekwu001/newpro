@@ -108,7 +108,7 @@
               <div class="agent-title col-12">
                     <div class="title-box-d">
                       <h6 class="title-d"style="color:white;"></h6>
-                      <h6 style="color:white;">Upload 9 pictures of the lodge. It should include the main room,kitchen, toilet etc.</h6>
+                      <h6 style="color:white;">Upload 7 pictures of the lodge. It should include the main room,kitchen, toilet etc.</h6>
                     </div>
                </div>
        
@@ -191,26 +191,7 @@
 					accept=".jpg,.png,.jpeg" style="display:none" id="seven-image"class="afile"name="pic7">
 					</label>
         		</div>
-        		<div class="col" style="margin-bottom:5vw" >
-        				<label style="cursor:pointer;" class="btn btn-secondary"for="eight-image">
-        				
-        				<img id="img8" alt="Upload 8th image" width="150" height="150">
-					
-					<input type="file" 
-					onchange="document.getElementById('img8').src = window.URL.createObjectURL(this.files[0])"
-					accept=".jpg,.png,.jpeg" style="display:none" id="eight-image"class="afile"name="pic8">
-					</label>
-        		</div>
-        		<div class="col" style="margin-bottom:5vw" >
-        				<label style="cursor:pointer;" class="btn btn-secondary"for="nine-image">
-        				
-        				<img id="img9" alt="Upload 9th image" width="150" height="150">
-					
-					<input type="file" 
-					onchange="document.getElementById('img9').src = window.URL.createObjectURL(this.files[0])"
-					accept=".jpg,.png,.jpeg" style="display:none" id="nine-image"class="afile"name="pic9">
-					</label>
-        		</div>
+        		 
                </div>
  </div>
  
@@ -221,7 +202,7 @@
 		 let validator = (e)=> {
 			var allfiles = document.getElementsByClassName('afile');
 		
-			if(allfiles[5].value == '' || allfiles[1].value =='' || allfiles[8].value=='' || allfiles[3].value==''|| allfiles[2].value=='' || allfiles[4].value==''|| allfiles[6].value==''|| allfiles[7].value==''|| allfiles[9].value=='')
+			if(allfiles[0].value == '' || allfiles[1].value =='' || allfiles[2].value=='' || allfiles[3].value==''|| allfiles[4].value=='' || allfiles[5].value==''|| allfiles[6].value=='')
 					{
 					alert('ensure all pictures are uploaded.');
 					e.preventDefault();;
