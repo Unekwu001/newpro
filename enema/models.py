@@ -38,7 +38,7 @@ class Lodges(models.Model):
 
 
 class Lodgepics(models.Model):
-    picname = models.ImageField(max_length=100,null=True,blank=True)
+    picname = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
     lodgeid = models.ForeignKey(Lodges,on_delete=models.CASCADE)
     agentid = models.CharField(max_length=15,unique=False,default="Null")
     sn=models.IntegerField(null=True,blank=True)

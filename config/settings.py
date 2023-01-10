@@ -154,5 +154,10 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = 'default from email'
 
+# boto3 library needed for connecting uploads to aws s3 bucket
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-
+AWS_ACCESS_KEY_ID = 'AKIAVDZVUS5WHDKL7RTB'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'enema'
+AWS_QUERYSTRING_AUTH = False

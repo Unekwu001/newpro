@@ -206,34 +206,22 @@ def add_property(request):
             upload5 = request.FILES.get('pic5')
             upload6 = request.FILES.get('pic6')
             upload7 = request.FILES.get('pic7')
-            upload8 = request.FILES.get('pic8')
-            upload9 = request.FILES.get('pic9')
+             
 
-            """name conversion of retrieved files.After conversion,file is saved to media folder while filename is saved in database"""
-            fss = FileSystemStorage()
-            image_name1 = fss.save(upload1.name,upload1)
-            image_name2 = fss.save(upload2.name,upload2)
-            image_name3 = fss.save(upload3.name,upload3)
-            image_name4 = fss.save(upload4.name,upload4)
-            image_name5 = fss.save(upload5.name,upload5)
-            image_name6 = fss.save(upload6.name,upload6)
-            image_name7 = fss.save(upload7.name,upload7)
-            image_name8 = fss.save(upload8.name,upload8)
-            image_name9 = fss.save(upload9.name,upload9)
+             
 
             """record formation for each image"""
-            record1=Lodgepics(picname=image_name1,lodgeid=lodgeid,agentid=session_collected,sn=1)
-            record2=Lodgepics(picname=image_name2,lodgeid=lodgeid,agentid=session_collected,sn=2)
-            record3=Lodgepics(picname=image_name3,lodgeid=lodgeid,agentid=session_collected,sn=3)
-            record4=Lodgepics(picname=image_name4,lodgeid=lodgeid,agentid=session_collected,sn=4)
-            record5=Lodgepics(picname=image_name5,lodgeid=lodgeid,agentid=session_collected,sn=5)
-            record6=Lodgepics(picname=image_name6,lodgeid=lodgeid,agentid=session_collected,sn=6)
-            record7=Lodgepics(picname=image_name7,lodgeid=lodgeid,agentid=session_collected,sn=7)
-            record8=Lodgepics(picname=image_name8,lodgeid=lodgeid,agentid=session_collected,sn=8)
-            record9=Lodgepics(picname=image_name9,lodgeid=lodgeid,agentid=session_collected,sn=9)
+            record1=Lodgepics(picname=upload1,lodgeid=lodgeid,agentid=session_collected,sn=1)
+            record2=Lodgepics(picname=upload2,lodgeid=lodgeid,agentid=session_collected,sn=2)
+            record3=Lodgepics(picname=upload3,lodgeid=lodgeid,agentid=session_collected,sn=3)
+            record4=Lodgepics(picname=upload4,lodgeid=lodgeid,agentid=session_collected,sn=4)
+            record5=Lodgepics(picname=upload5,lodgeid=lodgeid,agentid=session_collected,sn=5)
+            record6=Lodgepics(picname=upload6,lodgeid=lodgeid,agentid=session_collected,sn=6)
+            record7=Lodgepics(picname=upload7,lodgeid=lodgeid,agentid=session_collected,sn=7)
             
-            """saving all 9 records to database"""
-            finallist=[record1,record2,record3,record4,record5,record6,record7,record8,record9]
+            
+            """saving all 7 records to database"""
+            finallist=[record1,record2,record3,record4,record5,record6,record7]
             for y in finallist:
                 y.save()
             messages.info(request,f'{name} has been successfully created and added to your list of lodges. Great!') 
