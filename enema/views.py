@@ -361,8 +361,7 @@ def roomy_form(request,name):
         religion = request.POST.get('religion')
         pix = request.FILES.get('pix')
         if pix is not None:
-                fss = FileSystemStorage()
-                image_name = fss.save(pix.name,pix)
+                image_name = pix
         
         record = Roomates(
         pic = image_name,
