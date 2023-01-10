@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+from enema.deets import Collect
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ipogu4bbwhl9fi-yr9*przc_ft33n-@44vjgl1&3l#1c783^r3'
+SECRET_KEY = Collect.djangsecretkey
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -154,7 +155,7 @@ DEFAULT_FROM_EMAIL = 'default from email'
 # boto3 library needed for connecting uploads to aws s3 bucket
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = 'AKIAVDZVUS5WHDKL7RTB'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = Collect.id4aws
+AWS_SECRET_ACCESS_KEY = Collect.secretkey4aws
 AWS_STORAGE_BUCKET_NAME = 'enema'
 AWS_QUERYSTRING_AUTH = False
