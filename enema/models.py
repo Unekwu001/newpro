@@ -38,7 +38,7 @@ class Lodges(models.Model):
 
 
 class Lodgepics(models.Model):
-    picname = models.CharField(max_length=100,null=True,blank=True)
+    picname = models.ImageField(max_length=100,null=True,blank=True)
     lodgeid = models.ForeignKey(Lodges,on_delete=models.CASCADE)
     agentid = models.CharField(max_length=15,unique=False,default="Null")
     sn=models.IntegerField(null=True,blank=True)
@@ -59,7 +59,7 @@ class Roomates(models.Model):
     religion = models.CharField(max_length=30,unique=False,default="Null")
     lodgerent = models.CharField(max_length=30,unique=False,default="Null")
     location = models.CharField(max_length=100,unique=False,default="Null")
-    pic = models.CharField(max_length=100,unique=False,default="Null",null=True,blank=True)
+    pic = models.ImageField(max_length=100,unique=False,default="Null",null=True,blank=True,upload_to="images")
     lodgetype = models.CharField(max_length=30,unique=False,default="Null")
     pricesharing = models.CharField(max_length=15,unique=False,default="Null")
     tiled = models.CharField(max_length=15,unique=False,default="Null")
