@@ -199,9 +199,6 @@ def add_property(request):
             upload5 = request.FILES.get('pic5')
             upload6 = request.FILES.get('pic6')
             upload7 = request.FILES.get('pic7')
-             
-
-             
 
             """record formation for each image"""
             record1=Lodgepics(picname=upload1,lodgeid=lodgeid,agentid=session_collected,sn=1)
@@ -280,7 +277,7 @@ def editlodge(request,id):
             status=request.POST.get('status')
             agentid=session_collected
 
-            """fetch record for to be updated"""
+            """fetch record to be updated"""
             record = Lodges.objects.get(id=id)
 
             """updating the fetched records"""
