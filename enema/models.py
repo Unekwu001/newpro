@@ -59,7 +59,7 @@ class Roomates(models.Model):
     religion = models.CharField(max_length=30,unique=False,default="Null")
     lodgerent = models.CharField(max_length=30,unique=False,default="Null")
     location = models.CharField(max_length=100,unique=False,default="Null")
-    pic = models.ImageField(max_length=100,unique=False,default="Null",null=True,blank=True,upload_to="media")
+    pic = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
     lodgetype = models.CharField(max_length=30,unique=False,default="Null")
     pricesharing = models.CharField(max_length=15,unique=False,default="Null")
     tiled = models.CharField(max_length=15,unique=False,default="Null")

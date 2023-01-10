@@ -28,7 +28,7 @@
               		{% for pic in allpics %}
               		{% if pic.lodgeid_id == record.id %}
                 <div class="carousel-item-b swiper-slide" style="text-align:center;max-height:70vh">{% load static %}
-                  <img src="{% get_media_prefix %}{{pic.picname}}" alt=""class="img-fluid"id="img-caro">
+                  <img src="https://enema.s3.amazonaws.com/{{pic.picname}}" alt=""class="img-fluid"id="img-caro">
                 </div>
                 	{% endif %}
                 	{% endfor %}
@@ -94,7 +94,7 @@
           <div class="col-md-6"style="margin-bottom:20vh;color:white;">
           	<div class="col-6" style="max-height:30;">
           		<span>Agent name: {{agent.name}}</span>
-          		<img src="{% get_media_prefix %}{{agent.pic}}" class="img-fluid" style="border-radius:5px">
+          		<img src="https://enema.s3.amazonaws.com/{{agent.pic}}" class="img-fluid" style="border-radius:5px">
           	</div>
           
           	<a href="https://api.whatsapp.com/send/?phone={{agent.phone}}&text=Hello%2C+I%E2%80%99m+interested+in+this+lodge+with+ID+{{record.id}}+https%3A%2F%2Fweb-production-ee0e.up.railway.app%2Fpropertydetails%2F{{record.id}}%2F&type=phone_number&app_absent=0" " target="_blank">
