@@ -102,8 +102,8 @@ def edit_profile(request):
             uploaded_file = request.FILES.get('pix')
             
             if uploaded_file is not None:
-                fss = FileSystemStorage()
-                image_name = fss.save(uploaded_file.name,uploaded_file)
+                
+                image_name = uploaded_file
                 
                 if image_name.endswith('.jpg') or image_name.endswith('.png') or image_name.endswith('.jpeg') or image_name.endswith('.JPEG') or image_name.endswith('.JPG') or image_name.endswith('.PNG'):
 
