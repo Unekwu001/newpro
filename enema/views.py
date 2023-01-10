@@ -360,11 +360,10 @@ def roomy_form(request,name):
         lodgetype = request.POST.get('lodgetype')
         religion = request.POST.get('religion')
         pix = request.FILES.get('pix')
-        if pix is not None:
-                image_name = pix
-        
+         
+        """inserting a new record"""
         record = Roomates(
-        pic = image_name,
+        pic = pix,
         schoolname = schul,
         lodgerent = lodgerent,
         location = location,
