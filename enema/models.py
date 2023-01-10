@@ -15,7 +15,7 @@ class Agents(models.Model):
     address = models.CharField(max_length=230,unique=False,default="Null")
     id_type = models.CharField(max_length=30,unique=False,default="Null")
     id_numb = models.CharField(max_length=30,unique=False,default="Null")
-    pic = models.ImageField(null=True,blank=True)
+    pic = models.ImageField(null=True,blank=True,upload_to="media")
     points= models.CharField(max_length=15,unique=False,default="Null")
     class Meta:
         db_table='agents'
@@ -59,7 +59,7 @@ class Roomates(models.Model):
     religion = models.CharField(max_length=30,unique=False,default="Null")
     lodgerent = models.CharField(max_length=30,unique=False,default="Null")
     location = models.CharField(max_length=100,unique=False,default="Null")
-    pic = models.ImageField(max_length=100,unique=False,default="Null",null=True,blank=True,upload_to="images")
+    pic = models.ImageField(max_length=100,unique=False,default="Null",null=True,blank=True,upload_to="media")
     lodgetype = models.CharField(max_length=30,unique=False,default="Null")
     pricesharing = models.CharField(max_length=15,unique=False,default="Null")
     tiled = models.CharField(max_length=15,unique=False,default="Null")

@@ -7,8 +7,9 @@
     	<div class="row" ><!--row starts-->
     	
     		<div class="col-12"><!--Header-->
+    		{% block fortypeofroomy %}
     			<h4 data-aos="fade-up">Hurray! Roomies are waiting for you here. Click your school.</h4> 
-    		
+    		{% endblock fortypeofroomy %}
     		
     					<!--FLash message code-->
     					{% if messages %}
@@ -26,7 +27,7 @@
     		<div class="col-12 col-lg-12">
     		
             	
-                			<a href="{% url 'roomates_grid' i.name %}">
+                			<a href="{% url 'typeofroomy' i.name %}">
                 			<button  class="btn btn-success"style="border-color:white;height:10vh;width:50vw;">{{i.name}}
                 			</button>
                 			</a>

@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+    	<div class="row" ><!--row starts-->
+    	
+    		<div class="col-12"><!--Header-->
+    			{% block fortypeofroomy %}
+    			    <h4 data-aos="fade-up">Amazing! Just one more click. What type of room mate are you ?</h4> 
+    			{% endblock fortypeofroomy %}
+    		
+    			
+    					<!--FLash message code-->
+    					{% if messages %}
+        				{% for message in messages %}
+        				<p class="col-6" {% if message.tags %} class="alert alert-success{{message.tags}}"{% endif %}
+        					style="background-color:pink;color:black;border-radius:5px;padding:2vh;text-align:center" >
+        		 			{{message}} 
+        		 		</p>
+        				{% endfor %}
+        				{% endif %}
+        				<!--end of flash message code-->
+    		</div><!--Header ends-->
+    		
+    		
+    		<div class="col-12">
+    			<a href="{% url 'roomates_grid' school.name %}">
+    			<button class="btn btn-success">I <span style="color:orange;">DONT</span> have a lodge. I need a room mate i can
+    			 stay with around {{school.name}}.
+    			</button>
+    			</a>
+    			
+    			&nbsp;
+    			
+    			<a href="{% url 'roomy_form' school.name %}">
+    			<button class="btn btn-success">I <span style="color:orange;">HAVE</span> a lodge. I need a room mate around
+    		 	{{school.name}} to stay with me.
+    			</button>
+    			</a>
+    		
+    		</div>
+    		
+    		
+    		
+    		
+    		
+    		
+    	</div><!--row ends-->
+    
+    </div><!--container ends-->
+</section>
+
+{% endblock %}  

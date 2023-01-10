@@ -22,16 +22,11 @@ def property_grid(request,id):
         return redirect(index)
 
 
-
-
-
 def single_property(request,id):
     record = Lodges.objects.get(id=id)
     agent= Agents.objects.get(id=record.agentid)
     allpics=Lodgepics.objects.all()
     return render(request,'property-single.html',{'record':record,'allpics':allpics,'agent':agent})
-
-
 
 
 
@@ -353,6 +348,10 @@ def selectschool(request):
     schools=Schools.objects.all()
     return render(request,'selectschool.html',{'schools':schools})
 
+
+def typeofroomy(request,name):
+    school = Schools.objects.get(name=name)
+    return render(request,'typeofroomy.html',{'school':school})
 
 
 def roomates_grid(request,name):
