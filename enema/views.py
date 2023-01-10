@@ -101,49 +101,42 @@ def edit_profile(request):
             
             uploaded_file = request.FILES.get('pix')
             
-            if uploaded_file is not None:
-                
-                image_name = uploaded_file
-                
-                if image_name.endswith('.jpg') or image_name.endswith('.png') or image_name.endswith('.jpeg') or image_name.endswith('.JPEG') or image_name.endswith('.JPG') or image_name.endswith('.PNG'):
-
-                    name = request.POST.get('name')
-                    phone = request.POST.get('phone')
-                    email =  request.POST.get('email')
-                    address =  request.POST.get('address')
-                    identity = request.POST.get('identity')
-                    identitynum = request.POST.get('identitynum')
-                    record = Agents.objects.get(id=session_collected)
-                    record.name=name
-                    record.phone=phone
-                    record.email=email
-                    record.address=address
-                    record.id_type=identity
-                    record.id_numb=identitynum 
-                    record.pic=image_name           
-                    record.save()
-                    messages.success(request,'Your profile has been updated successfully.')
-                    return redirect(agent_dash)
-                else:
-                    
-                    return redirect(edit_profile)
+            if uploaded_file is not None:   
+                image = uploaded_file
+                name = request.POST.get('name')
+                phone = request.POST.get('phone')
+                email =  request.POST.get('email')
+                address =  request.POST.get('address')
+                identity = request.POST.get('identity')
+                identitynum = request.POST.get('identitynum')
+                record = Agents.objects.get(id=session_collected)
+                record.name=name
+                record.phone=phone
+                record.email=email
+                record.address=address
+                record.id_type=identity
+                record.id_numb=identitynum 
+                record.pic=image          
+                record.save()
+                messages.success(request,'Your profile has been updated successfully.')
+                return redirect(agent_dash)
             else:
-                    name = request.POST.get('name')
-                    phone = request.POST.get('phone')
-                    email =  request.POST.get('email')
-                    address =  request.POST.get('address')
-                    identity = request.POST.get('identity')
-                    identitynum = request.POST.get('identitynum')
-                    record = Agents.objects.get(id=session_collected)
-                    record.name=name
-                    record.phone=phone
-                    record.email=email
-                    record.address=address
-                    record.id_type=identity
-                    record.id_numb=identitynum           
-                    record.save()
-                    messages.success(request,'Your profile has been updated successfully.')
-                    return redirect(agent_dash)
+                name = request.POST.get('name')
+                phone = request.POST.get('phone')
+                email =  request.POST.get('email')
+                address =  request.POST.get('address')
+                identity = request.POST.get('identity')
+                identitynum = request.POST.get('identitynum')
+                record = Agents.objects.get(id=session_collected)
+                record.name=name
+                record.phone=phone
+                record.email=email
+                record.address=address
+                record.id_type=identity
+                record.id_numb=identitynum           
+                record.save()
+                messages.success(request,'Your profile has been updated successfully.')
+                return redirect(agent_dash)
     else:
         messages.info(request,'Kindly login to continue.')   
         return redirect(agent_login)
