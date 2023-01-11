@@ -21,6 +21,7 @@ value: "{{phone}}"
 },
 callback: function(response){
 alert('success. transaction ref is ' + response.reference);
+window.location.replace("https://web-production-ee0e.up.railway.app/");
 },
 onClose: function(){
 alert('window closed');
