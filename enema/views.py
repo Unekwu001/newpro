@@ -378,7 +378,7 @@ def roomy_form(request,name):
         return redirect(roomates_grid,name)
 
 
-def pay(request):
+def pay(request,id):
     if request.method == "POST":
         fullname=request.POST.get('fullname')
         email=request.POST.get('email')
@@ -392,7 +392,9 @@ def pay(request):
             amount=amount
         )
         customer.save()
-        return render(request, 'payment.html',{"email":email,'phone':phone,'amount':amount})
+        roomate = Roomates.objects.get(id=id)
+        return render(request, 'payment.html',{"email":email,'phone':phone,'amount':amount,'roomate':roomate})
     else:
-        return render(request,'pay.html')
+        roomate = Roomates.objects.get(id=id)
+        return render(request,'pay.html',{'roomate':roomate})
         

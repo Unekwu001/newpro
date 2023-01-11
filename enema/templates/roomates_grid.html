@@ -69,7 +69,7 @@
                   
                   <div class="card-header-a "><span class="price-a">{{roomate.id}}</span>
                     <h6 class="card-title-a mt-4">
-                      <a href="https://api.whatsapp.com/send/?phone=2348165408132&text=Hello%2C+I%E2%80%99m+interested+in+speaking+with+this+roomy+with+ID+{{roomate.id}}+https%3A%2F%2Fweb-production-ee0e.up.railway.app%2Fhome%2Fselectschool%2Froomates%2FFPN%2F&type=phone_number&app_absent=0">I stay in a {{roomate.lodgetype}}<br/>
+                      <a href="{% url 'pay' roomate.id %}">I stay in a {{roomate.lodgetype}}<br/>
                       <h6 style="color:orange;">located at {{roomate.location}}</h6>
                       </a>
                     </h6>
@@ -80,7 +80,7 @@
                       <span class="price-a">My rent is ₦{{roomate.lodgerent}}</span>
                     </div>
                     
-                    <a href="https://api.whatsapp.com/send/?phone=2348165408132&text=Hello%2C+I%E2%80%99m+interested+in+speaking+with+this+roomy+with+ID+{{roomate.id}}+https%3A%2F%2Fweb-production-ee0e.up.railway.app%2Fhome%2Fselectschool%2Froomates%2FFPN%2F&type=phone_number&app_absent=0" class="link-a" >CLICK HERE TO CONNECT WITH ME
+                    <a href= "{% url 'pay' roomate.id %}" class="link-a" >CLICK HERE TO CONNECT WITH ME
                       <p class="bi bi-chevron-right">You will be paying {{roomate.pricesharing}}  of ₦{{roomate.lodgerent}} to stay with me</p>
                     </a>
                   </div>

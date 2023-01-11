@@ -24,7 +24,7 @@
 		<div class="col-12">
 		  <img src="{% static 'assets/img/enems.png' %}" class="img-fluid" alt="enema"height="100vh"width="80vw">
 		</div>
-		<h5 data-aos="fade-up">On payment, you will be matched with this roomy. You will also receive the phone number of this room mate (ID )</h5>
+		<h5 data-aos="fade-up">On payment, you will be matched with this roomy. You will also receive the phone number of this room mate (ID {{roomate.id}})</h5>
 	
 <div class="row justify-content-between">
 	<div class="col-5 ">
@@ -61,7 +61,7 @@
 	</div>
 	
 	<div class="col-5 ">
-		<img src="{% static 'assets/img/k.jpg' %}" class="img-fluid" alt="enema"style="border-radius:20px">
+		<img src="https://enema.s3.amazonaws.com/{{roomate.pic}}" class="img-fluid" alt="enema"style="border-radius:20px">
 	</div>
 </div>
 			
