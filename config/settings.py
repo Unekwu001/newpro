@@ -144,14 +144,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #gmail_configuration
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'unekwutheophilus@gmail.com'
-EMAIL_HOST_PASSWORD = 'nhichanaffghfdko'
-EMAIL_PORT = 465
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = True
-DEFAULT_FROM_EMAIL = 'default from email'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'unekwutheophilus@gmail.com'
+# EMAIL_HOST_PASSWORD = 'nhichanaffghfdko'
+# EMAIL_PORT = 465
+# EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = True
+# DEFAULT_FROM_EMAIL = 'default from email'
 
 # boto3 library needed for connecting uploads to aws s3 bucket
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
