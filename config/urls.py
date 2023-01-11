@@ -11,16 +11,14 @@ Class-based views
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.conf import settings
-from django.conf.urls.static import static
-#the above 2 imports help to serve media files
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))"""
+
+
 from django.contrib import admin
 from django.urls import path,include
 from enema import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include(urls))
-]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+    path('',include(urls)),
+]

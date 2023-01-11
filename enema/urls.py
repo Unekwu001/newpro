@@ -23,7 +23,8 @@ urlpatterns = [
     path('schools/roomates/',roomates_grid,name='roomates_grid'),
     path('roomates/fillform/<str:name>',roomy_form,name='roomy_form'),  
     path('passwordreset/<str:email>/',pwd_reset,name='pwd_reset'),
-    path('reset mail sent/',resetmail_sent,name='resetmail_sent')
+    path('reset mail sent/',resetmail_sent,name='resetmail_sent'),
+    path('pay/',pay,name='pay'),
 ]
 
 if settings.DEBUG:

@@ -27,3 +27,26 @@
         <meta name="google-site-verification" content="bv-IihuLs4AaRhmOHJR6cYqdDlhOYB--TYDajI3TBJw" />
 
         <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/hoklmmgfnpapgjgcpechhaamimifchmp" />
+        
+        
+        
+       my servers = ns1.qservers.net, ns2.qservers.net 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

@@ -68,3 +68,13 @@ class Roomates(models.Model):
     date_uploaded = models.DateTimeField(auto_now_add=True)
     class Meta:
         db_table='roomates'
+
+
+class CustomerInfo(models.Model):
+    fullname= models.CharField(max_length=150)
+    email= models.EmailField()
+    phonenumber = models.IntegerField()
+    amount = models.IntegerField(default=1000)
+    class Meta:
+        db_table='customer_infos'
+   

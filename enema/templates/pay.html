@@ -1,0 +1,116 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block content %}
+ <section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row gy-4 d-flex justify-content-between">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+        
+      	{% if messages %}
+        	{% for message in messages %}
+        	
+        	<p {% if message.tags %} class="alert alert-danger{{message.tags}}"{% endif %}
+        		style="background-color:pink;text-align:center;color:black;" >
+        		 {{message}} 
+        	</p>
+        	
+        	{% endfor %}
+        {% endif %}
+      
+      
+	<form method="post" action="{% url 'pay' %}" style="color:white;padding:5%;background-color:rgb(25,135,84);text-align:center">
+		<div class="col-12">
+		  <img src="{% static 'assets/img/enems.png' %}" class="img-fluid" alt="enema"height="100vh"width="80vw">
+		</div>
+		<h5 data-aos="fade-up">On payment, you will be matched with this roomy. You will also receive the phone number of this room mate (ID )</h5>
+	
+<div class="row justify-content-between">
+	<div class="col-5 ">
+		
+		{% csrf_token %}
+		
+		
+		<div class="col-3-lg col-3">
+			<label data-aos="fade-up">Enter your full name <input class="form-control-sm" data-aos="fade-up" type="text"
+			placeholder="full name" name="name"id="fullname"></label>
+		</div>
+		<div class="col-3-lg col-3">
+			<label data-aos="fade-up">Enter your email<input class="form-control-sm" data-aos="fade-up" type="email"
+			 placeholder="Email" name="email"id="email"></label>
+		</div>
+		<div class="col-3-lg col-3">
+			<label data-aos="fade-up">Amount payable (₦)<input class="form-control-sm" data-aos="fade-up"
+		 	type="number" placeholder="Amount" name="amount"id="amount" value="1000" readonly="">
+		</label>
+		</div>
+		<div class="col-3-lg col-3">
+			<label data-aos="fade-up">Enter Your phone number<input class="form-control-sm" data-aos="fade-up" type="number"
+			placeholder="Phone number" name="phone"id="phone"></label><br>
+		</div>
+		
+		<button class="btn btn-success mt-3" type="submit" onclick="validate(event)" style="border-color:white;">Pay</button>
+	</div>
+	
+	<div class="col-5 ">
+		<img src="{% static 'assets/img/k.jpg' %}" class="img-fluid" alt="enema"style="border-radius:20px">
+	</div>
+</div>
+			
+	</form>
+		
+	</div>
+	
+	
+	
+      </div>
+    </div>
+</section> 
+ 
+{% endblock content %}
+
+
+{% block js %}
+<script type="text/javascript" language="javascript">
+
+let validate = (e) => {
+		var pwdPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+		var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+		
+		var fullname = document.getElementById('fullname').value;
+		var email = document.getElementById('email').value;
+		var phone = document.getElementById('phone').value;
+		
+		if(fullname == "")
+				{
+				Swal.fire("please enter your full name.");
+				e.preventDefault();;
+				}	
+		 if(!email.match(mailformat))
+				{
+				Swal.fire("You have entered an invalid email address!");
+				e.preventDefault();;
+				}					
+		 
+		if(phone == "")
+				{
+				Swal.fire('Please enter a valid phone number.')
+				e.preventDefault();;
+				}
+			}
+
+</script> 
+{% endblock js %} 
+
+
+
+
+
+
+
+
+
+
+
+

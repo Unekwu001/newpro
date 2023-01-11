@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.core.mail import send_mail
 from django.utils.html import strip_tags
 from django.contrib import messages
-from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates
+from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo
 
 # Create your views here.
 def index(request):
@@ -379,3 +379,21 @@ def roomy_form(request,name):
         messages.info(request,f'You have been added as a roomy. Congratulations!. You will be matched within the next 48 hours.')
         return redirect(roomates_grid,name)
 
+
+def pay(request):
+    if request.method == "POST":
+        fullname=request.POST.get('fullname')
+        email=request.POST.get('email')
+        amount=request.POST.get('amount')
+        phone=request.POST.get('phone')
+
+        customer = CustomerInfo(
+            fullname=fullname,
+            email=email,
+            phonenumber=phone,
+            amount=amount
+        )
+        customer.save()
+        return render(request, 'payment.html',{"email":email,'phone':phone,'amount':amount})
+    else:
+        return render(request,'pay.html')
