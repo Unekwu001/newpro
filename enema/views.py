@@ -393,7 +393,7 @@ def pay(request,id):
         )
         customer.save()
         roomate = Roomates.objects.get(id=id)
-        return render(request, 'payment.html',{"email":email,'phone':phone,'amount':amount,'roomate':roomate})
+        return render(request, 'payment.html',{"email":email,'phone':phone,'amount':amount,'roomate':roomate,'fullname':fullname})
     else:
         roomate = Roomates.objects.get(id=id)
         return render(request,'pay.html',{'roomate':roomate})
