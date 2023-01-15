@@ -49,7 +49,7 @@ def agent_reg(request):
                 record = Agents(name=name,email=email,pwd=pwd)
                 record.save()
                 mail = EmailMessage(
-                    subject = 'Welcome to enema Inc.',
+                    subject = 'Welcome to Enema.ng.',
                     body = f'Your login credentials are as follows: \n Email: {email} \n Password: {pwd} \n\n Students in need of lodges are waiting for you!',
                     from_email = 'info@enema.ng',
                     to = [email],
