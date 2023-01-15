@@ -149,9 +149,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # EMAIL_HOST_USER = 'unekwutheophilus@gmail.com'
 # EMAIL_HOST_PASSWORD = 'nhichanaffghfdko'
 # EMAIL_PORT = 465
-# EMAIL_USE_TLS = True
+# EMAIL_USE_TLS = False
 # EMAIL_USE_SSL = True
 # DEFAULT_FROM_EMAIL = 'default from email'
+
+#zohomail setup
+EMAIL_HOST = 'smtppro.zoho.com'
+EMAIL_HOST_USER = 'info@enema.ng'
+EMAIL_HOST_PASSWORD = '-8qijjUd'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
 
 # boto3 library needed for connecting uploads to aws s3 bucket
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

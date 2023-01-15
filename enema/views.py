@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 # from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.contrib import messages
 from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo
 
@@ -47,7 +48,14 @@ def agent_reg(request):
             else:
                 record = Agents(name=name,email=email,pwd=pwd)
                 record.save()
-#                send_mail('Welcome to enema Inc.',f'Your login credentials are as follows: \n Email: {email} \n Password: {pwd} \n\n Students in need of lodges are waiting for you!','unekwutheophilus@gmail.com',[f'{email}'],fail_silently=False)
+                mail = EmailMessage(
+                    subject = 'Welcome to enema Inc.',
+                    body = f'Your login credentials are as follows: \n Email: {email} \n Password: {pwd} \n\n Students in need of lodges are waiting for you!',
+                    from_email = 'info@enema.ng',
+                    to = [email],
+                    reply_to = [email],
+                    headers={'Content-Type': 'text/plain'},)
+                mail.send()
                 return redirect(agent_login)
 
 
