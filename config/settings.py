@@ -154,9 +154,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # DEFAULT_FROM_EMAIL = 'default from email'
 
 #zohomail setup
-EMAIL_HOST = 'smtppro.zoho.com'
-EMAIL_HOST_USER = 'info@enema.ng'
-EMAIL_HOST_PASSWORD = '-8qijjUd'
+EMAIL_HOST = Collect.emailhost
+EMAIL_HOST_USER = Collect.hostuser
+EMAIL_HOST_PASSWORD = Collect.emailhostpwd
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
