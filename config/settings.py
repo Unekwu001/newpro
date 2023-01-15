@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-CSRF_TRUSTED_ORIGINS = ['https://web-production-ee0e.up.railway.app','https://enema.ng']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-ee0e.up.railway.app','https://enema.ng','https://www.enema.ng']
 
 ROOT_URLCONF = 'config.urls'
 
