@@ -366,10 +366,16 @@ def roomy_form(request,name):
         lodgetype = request.POST.get('lodgetype')
         religion = request.POST.get('religion')
         pix = request.FILES.get('pix')
+        pic1 = request.FILES.get('pic1')
+        pic2 = request.FILES.get('pic2')
+        pic3 = request.FILES.get('pic3')
          
         """inserting a new record"""
         record = Roomates(
         pic = pix,
+        pic1 = pic1,
+        pic2 = pic2,
+        pic3 = pic3,
         schoolname = schul,
         lodgerent = lodgerent,
         location = location,
@@ -405,4 +411,14 @@ def pay(request,id):
     else:
         roomate = Roomates.objects.get(id=id)
         return render(request,'pay.html',{'roomate':roomate})
-        
+
+
+
+def roomate_single(request,id):
+    roomate = Roomates.objects.get(id=id)
+    pricetopay = (int(roomate.pricesharing)/100)*(int(roomate.lodgerent))
+    return render(request,'roomate-single.html',{'roomate':roomate, 'pricetopay':pricetopay})
+
+
+
+

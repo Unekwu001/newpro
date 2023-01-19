@@ -69,7 +69,7 @@
                   
                   <div class="card-header-a "><span class="price-a">{{roomate.id}}</span>
                     <h6 class="card-title-a mt-4">
-                      <a href="{% url 'pay' roomate.id %}">I stay in a {{roomate.lodgetype}}<br/>
+                      <a href="{% url 'roomate_single' roomate.id %}">I stay in a {{roomate.lodgetype}}<br/>
                       <h6 style="color:orange;">located at {{roomate.location}}</h6>
                       </a>
                     </h6>
@@ -80,8 +80,8 @@
                       <span class="price-a">My rent is ₦{{roomate.lodgerent}}</span>
                     </div>
                     
-                    <a href= "{% url 'pay' roomate.id %}" class="link-a" >CLICK HERE TO CONNECT WITH ME
-                      <p class="bi bi-chevron-right">You will be paying {{roomate.pricesharing}}  of ₦{{roomate.lodgerent}} to stay with me</p>
+                    <a href= "{% url 'roomate_single' roomate.id %}" class="link-a" >CLICK HERE TO CONNECT WITH ME
+                      <p class="bi bi-chevron-right">You will be paying {{roomate.pricesharing}}%  of ₦{{roomate.lodgerent}} to stay with me</p>
                     </a>
                   </div>
                   

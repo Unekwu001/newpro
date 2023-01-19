@@ -66,6 +66,10 @@ class Roomates(models.Model):
     light = models.CharField(max_length=15,unique=False,default="Null")
     water = models.CharField(max_length=15,unique=False,default="Null")
     date_uploaded = models.DateTimeField(auto_now_add=True)
+    pic1 = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
+    pic2 = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
+    pic3 = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
+
     class Meta:
         db_table='roomates'
 

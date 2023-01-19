@@ -61,8 +61,8 @@
                       	<p>
                         	<strong> Your intended roomy will pay</strong>
                         	<select class="color-text-a form-control afile" name="sharingformula"required="">
-                        		<option value="50%">50%</option>
-                        		<option value="40%">40%</option>
+                        		<option value="50">50%</option>
+                        		<option value="40">40%</option>
                         	</select>
                         
                       	</p>
@@ -113,12 +113,12 @@
                         	</select>
                       	</p>
                       	<p>	
-                      		<strong>Religion: </strong>
+                      		<strong>What religion should he/she be ?: </strong>
                         	<select class="color-text-a form-control afile" name="religion"required="">
                         		<option value="">Select an option</option>
                         		<option value="christian">Christian</option>
                         		<option value="muslim">Muslim</option>
-                        		<option value="prefer not to say">Prefer not to say</option>
+                        		<option value="prefer not to say">Any religion</option>
                         	</select>
                       	</p>
                       	<p>
@@ -133,6 +133,8 @@
 			</p>
               
               	</div>
+              	
+              	
               
            </div><!--ending col-5-->
            
@@ -140,6 +142,51 @@
            	{% load static %}
            	<img src="{% static 'assets2/img/pic.png' %}" alt="Your image wil appear here after upload" 
            	class="agent-avatar img-fluid"style="border-radius:20px;color:white;max-height:30vh;"id="profile-img">
+           	
+           	<div class="col-12">
+              		<div class="col" style="margin-bottom:5vw">
+        				<label style="cursor:pointer;" class="btn btn-secondary"for="first-image">
+        				
+        				<img id="img1" alt="Click here to upload your room's image" width="150" height="150">
+					
+					<input type="file" 
+					onchange="document.getElementById('img1').src = window.URL.createObjectURL(this.files[0])"
+					accept=".jpg,.png,.jpeg" style="display:none" id="first-image"class="afile"name="pic1">
+					</label>
+        		</div>
+              		
+              		<div class="col" style="margin-bottom:5vw">
+        				<label style="cursor:pointer;" class="btn btn-secondary"for="second-image">
+        				
+        				<img id="img2" alt="Click here to upload your room's toilet" width="150" height="150">
+					
+					<input type="file" 
+					onchange="document.getElementById('img2').src = window.URL.createObjectURL(this.files[0])"
+					accept=".jpg,.png,.jpeg" style="display:none" id="second-image"class="afile"name="pic2">
+					</label>
+        		</div>
+              	
+              		<div class="col" style="margin-bottom:5vw">
+        				<label style="cursor:pointer;" class="btn btn-secondary"for="third-image">
+        				
+        				<img id="img3" alt="Click here to upload your room's bathroom" width="150" height="150">
+					
+					<input type="file" 
+					onchange="document.getElementById('img3').src = window.URL.createObjectURL(this.files[0])"
+					accept=".jpg,.png,.jpeg" style="display:none" id="third-image"class="afile"name="pic3">
+					</label>
+        		</div>
+              	
+              	
+              	</div>
+           	
+           	
+           	
+           	
+           	
+           	
+           	
+           	
            
               <button type="submit" class="btn btn-success"style='margin-bottom:2vh'
               	onclick="
@@ -150,13 +197,14 @@
 		
 	              if(allfiles[5].value == '' || allfiles[1].value =='' || allfiles[8].value=='' || allfiles[3].value=='' ||
 	              allfiles[2].value=='' || allfiles[4].value==''|| allfiles[6].value==''|| allfiles[7].value=='' ||
-	               allfiles[9].value=='' || allfiles[0].value=='' || allfiles[10].value=='')
+	               allfiles[9].value=='' || allfiles[0].value=='' || allfiles[10].value=='' || allfiles[11].value=='' || 
+	               	allfiles[12].value=='' || allfiles[13].value=='')
 					{
 					Swal.fire('ensure all fields are filled.');
 					e.preventDefault();;
 					}
 		      else{
-		      const x = confirm('Kindly note that, you will be contacted within the next 24 hours. You will also be required to pay the sum of ₦1000 naira before you are given a room mate.')
+		      const x = confirm('Kindly note that, you will be contacted within the next 24 hours. Your intending room mate will be meeting with you soon. Upon your approval, we will send the complete amount paid by your room mate to your account. Please note that a service fee of 3.5% applies if we carryout the full transaction on your behalf.By clicking okay, you agree to the terms of service.')
                       if(x == false){
          				e.preventDefault();;
          			    }
@@ -168,7 +216,7 @@
 			  validator(event)
 			  
 			  
-			  ">Add me
+			  ">Submit form
          	
              </button>
              

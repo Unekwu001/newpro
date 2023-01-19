@@ -25,6 +25,7 @@ urlpatterns = [
     path('passwordreset/<str:email>/',pwd_reset,name='pwd_reset'),
     path('reset mail sent/',resetmail_sent,name='resetmail_sent'),
     path('pay/<int:id>/',pay,name='pay'),
+    path('roommatesingle/<int:id>/',roomate_single,name='roomate_single')
 ]
 
 if settings.DEBUG:
