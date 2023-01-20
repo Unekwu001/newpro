@@ -79,6 +79,7 @@ class CustomerInfo(models.Model):
     email= models.EmailField(null=True,blank=True)
     phonenumber = models.CharField(max_length=150,null=True,blank=True)
     amount = models.IntegerField(default=1000,null=True,blank=True)
+    payfor = models.CharField(max_length=150, null=True,blank=True)
     class Meta:
         db_table='customer_infos'
    

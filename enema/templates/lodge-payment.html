@@ -1,0 +1,40 @@
+{% extends 'index.html'%}
+
+{% block content %}
+<body onload="payWithPaystack()">
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+window.onload=function(){
+payWithPaystack();
+};
+function payWithPaystack(){
+var handler = PaystackPop.setup({
+key: 'pk_live_3802edf04f5de28993b4c617725555d50fa993a8',
+email:'{{email}}',
+amount:'{{amount}}00',
+currency: "NGN",
+metadata: {
+custom_fields: [
+{
+display_name: "Mobile Number",
+variable_name: "mobile_number",
+value: "{{phone}}"
+}
+]
+},
+callback: function(response){
+alert('success. transaction ref is ' + response.reference);
+window.location.replace("https://api.whatsapp.com/send/?phone=2348165408132&text=Hello%2C+I%E2%80%99m+interested+in+{{lodge.name}}+(ID:+{{lodge.id}}).+My+payment+has+been+made.+Here+are+my+details+:+Name:{{fullname}}+Phone:{{phone}}+Email:{{email}}+Amount+paid:{{amount}}+https%3A%2F%2Fwww.enema.ng%2Fpropertydetails%2F{{lodge.id}}%2F&type=phone_number&app_absent=0");
+},
+onClose: function(){
+alert('window closed');
+}
+});
+handler.openIframe();
+}
+</script>
+</body>
+{% endblock content %}
+
+
+

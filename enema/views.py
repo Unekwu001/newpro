@@ -403,7 +403,8 @@ def pay(request,id):
             fullname=fullname,
             email=email,
             phonenumber=phone,
-            amount=amount
+            amount=amount,
+            payfor="roomate_meeting"
         )
         customer.save()
         roomate = Roomates.objects.get(id=id)
@@ -421,4 +422,25 @@ def roomate_single(request,id):
 
 
 
+def lodge_pay(request,id):
+    if request.method == "POST":
+        fullname=request.POST.get('fullname')
+        email=request.POST.get('email')
+        amount=request.POST.get('amount')
+        phone=request.POST.get('phone')
 
+        customer = CustomerInfo(
+            fullname=fullname,
+            email=email,
+            phonenumber=phone,
+            amount=amount,
+            payfor="lodge_inspection"
+        )
+        customer.save()
+        lodge = Lodges.objects.get(id=id)   
+        return render(request, 'lodge-payment.html',{'email':email,'phone':phone,'amount':amount,'lodge':lodge,'fullname':fullname})
+    else:
+        lodge = Lodges.objects.get(id=id)
+        lodgepics = Lodgepics.objects.filter(lodgeid=lodge.id,sn=1)
+        lodgepic = lodgepics[0].picname
+        return render(request,'lodge-pay.html',{'lodge':lodge,'lodgepic':lodgepic})
