@@ -21,7 +21,7 @@
       <div class="container">
         <div class="row justify-content-center">
         
-          <div class="col-lg-8">
+          <div class="col-lg-5">
             <div id="property-single-carousel" class="swiper">
               <div class="swiper-wrapper"style="margin-bottom:-10vh">
               {% if allpics %}
@@ -37,17 +37,16 @@
             </div>
             <div class="property-single-carousel-pagination carousel-pagination"></div>
           </div>
-        </div>
         
- 
+        <div class="col-lg-7">
         <div class="row">
           <div class="col-sm-12"style="color:white;">
 
             <div class="row justify-content-between">
             
-              <div class="col-md-5 col-lg-4">
+              <div class="col-md-6 col-lg-7">
                 
-                <div class="property-summary">
+                <div class="property-summary"style="margin-top:-12vh">
                   <div class="row">
                  
                     <div class="col-sm-12">
@@ -85,29 +84,34 @@
                        
                     </ul>
                   </div>  
-                  {% endif %}
+                  
                 </div>
               </div>
             </div>
           </div>
      
           <div class="col-md-6"style="margin-bottom:20vh;color:white;">
-          	<div class="col-6" style="max-height:30;">
+          	<!--<div class="col-6" style="max-height:30;">
           		<span>Agent name: {{agent.name}}</span>
           		<img src="https://enema.s3.amazonaws.com/{{agent.pic}}" class="img-fluid" style="border-radius:5px">
-          	</div>
+          	</div>-->
           
-          	<a href="https://api.whatsapp.com/send/?phone={{agent.phone}}&text=Hello%2C+I%E2%80%99m+interested+in+{{record.name}}+lodge+with+ID+{{record.id}}+https%3A%2F%2Fwww.enema.ng%2Fpropertydetails%2F{{record.id}}%2F&type=phone_number&app_absent=0" " target="_blank">
-          	<button class="btn btn-success"style="color:white;border-color:orange;">Chat me up on Whatsapp</button>
+          	<a href="https://api.whatsapp.com/send/?phone=2348165408132&text=Hello%2C+I%E2%80%99m+interested+in+{{record.name}}+with+ID+{{record.id}}+https%3A%2F%2Fwww.enema.ng%2Fpropertydetails%2F{{record.id}}%2F&type=phone_number&app_absent=0">
+          	<button class="btn btn-success"style="color:white;border-color:orange;">Request inspection</button>
           	</a>
-                <p style="color:white;"> or call me on <button class="btn btn-success">{{agent.phone}}</button></p>
-                   
+               {% endif %}    
              
             </div>
           </div>
         </div>
       </div>
     
+    
+    </div>
+          
+          
+  </div>
+  
     </section><!-- End Property Single-->
 {% endblock %}
   
