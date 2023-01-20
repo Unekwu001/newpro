@@ -444,3 +444,8 @@ def lodge_pay(request,id):
         lodgepics = Lodgepics.objects.filter(lodgeid=lodge.id,sn=1)
         lodgepic = lodgepics[0].picname
         return render(request,'lodge-pay.html',{'lodge':lodge,'lodgepic':lodgepic})
+
+
+def congrats(request):
+    return render(request,'congrats.html')
+

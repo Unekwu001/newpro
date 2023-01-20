@@ -26,7 +26,8 @@ urlpatterns = [
     path('reset mail sent/',resetmail_sent,name='resetmail_sent'),
     path('pay/<int:id>/',pay,name='pay'),
     path('roommatesingle/<int:id>/',roomate_single,name='roomate_single'),
-    path('lodgepay/<int:id>/',lodge_pay,name='lodge_pay')
+    path('lodgepay/<int:id>/',lodge_pay,name='lodge_pay'),
+    path('congratulations/',congrats,name='congrats')
 ]
 
 if settings.DEBUG:
