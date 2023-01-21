@@ -1,11 +1,12 @@
 {% extends 'roomates_grid.html' %}
+{% load static %}
 
 {% block forheading %}<title>Enema - {{school.name}} form</title>{% endblock forheading %}
 
 
 
 {% block roomyformheader %}
-<div class="col-9">
+<div class="col-12">
 	<h5 style="color:white;">(Fill this form only when <span style="color:orange;"> you have a lodge </span> but need a room mate.)
 		If you dont have a lodge and you need a roomy , <a  href="{% url 'roomates_grid' school.name %}"><button 
 		class="btn btn-secondary">click here</button></a> to find your match. 
@@ -26,48 +27,47 @@
 	<form action="{% url 'roomy_form' school.name %}" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
 
-		<div class="col-lg-6">
+		<div class="col-lg-12">
 			<div class="info-agents color-a"style="color:white;">
 			
-			<p>
-                        	<strong>Phone Number : </strong>
-                        		<small>(your phone number will not be visible to the public, it will be used to get in touch 
-                        			with you as soon as you are matched)
-                        		</small>
+			<div class="row">
+			
+			<div class="col-4">
+			
+                        	<strong>Phone: </strong>	 
                         	<input class="color-text-a form-control afile" name="phone" required=""type="number">
-                        		  
-                      	</p>
+                      	</div>
 		 
-		      	 <p>
+		      	 <div class="col-4">
                         	<strong>School: </strong>
                         	<select class="color-text-a form-control afile" name="school" required="">
                         		<option value="{{school.name}}">{{school.name}}</option>
                         	</select>
-                      	</p>
+                      	</div>
                       	
-                      	<p>
+                      	<div class="col-4">
                         	<strong>Comment: </strong>
                         	<select class="color-text-a form-control" name="comment">
                         		<option value="">I have a lodge, but i need a room mate</option>
                         	</select>
                         
-                      	</p>
+                      	</div>
                       	
-                      	<p>
-                        	<strong>Lodge rent (₦):  </strong>
+                      	<div class="col-4">
+                        	<strong>Lodge rent(₦):  </strong>
                         	<input class="color-text-a form-control afile" type="number" name="lodgerent"required="">
-                      	</p>
+                      	</div>
                       	
-                      	<p>
+                      	<div class="col-4">
                         	<strong> Your intended roomy will pay</strong>
                         	<select class="color-text-a form-control afile" name="sharingformula"required="">
                         		<option value="50">50%</option>
                         		<option value="40">40%</option>
                         	</select>
                         
-                      	</p>
+                      	</div>
                       	 
-                      	<p>
+                      	<div class="col-4">
                         	<strong>Lodge location</strong>
                         	 <select class="color-text-a form-control afile" name="location"required="">
                         	 	<option value="">Select your location</option>
@@ -75,9 +75,9 @@
                         		<option value="{{i.location}}">{{i.location}}</option>
                         	 {% endfor %}
                         	</select>
-                      	</p>
+                      	</div>
                       	
-                      	<p>
+                      	<div class="col-4">
                       		<strong>Is your lodge Tiled ?: </strong>
                         	<select class="color-text-a form-control afile" name="tiled"required="">
                         		<option value="">Select an option</option>
@@ -85,24 +85,24 @@
                         		<option value="no">no</option>
                         	</select>
                           
-                      	</p>
-                      	<p>	
+                      	</div>
+                      	<div class="col-4">	
                       		<strong>Is there an in-house water supply ?: </strong>
                         	<select class="color-text-a form-control afile" name="water"required="">
                         		<option value="">Select an option</option>
                         		<option value="yes">yes</option>
                         		<option value="no">no</option>
                         	</select>
-                      	</p>
-                      	<p>
+                      	</div>
+                      	<div class="col-4">
                       		<strong>Is electricity available ?: </strong>
                         	<select class="color-text-a form-control afile" name="light"required="">
                         		<option value="">Select an option</option>
                         		<option value="yes">yes</option>
                         		<option value="no">no</option>
                         	</select>
-                      	</p>
-                      	<p>	
+                      	</div>
+                      	<div class="col-4">	
                       		<strong>Whats the lodge type ?: </strong>
                         	<select class="color-text-a form-control afile" name="lodgetype"required="">
                         		<option value="">Select an option</option>
@@ -111,8 +111,8 @@
                         		<option value="2-bedroom-flat">2-bedroom-flat</option>
                         		<option value="3-bedroom-flat">3-bedroom-flat</option>
                         	</select>
-                      	</p>
-                      	<p>	
+                      	</div>
+                      	<div class="col-4">	
                       		<strong>What religion should he/she be ?: </strong>
                         	<select class="color-text-a form-control afile" name="religion"required="">
                         		<option value="">Select an option</option>
@@ -120,17 +120,17 @@
                         		<option value="muslim">Muslim</option>
                         		<option value="prefer not to say">Any religion</option>
                         	</select>
-                      	</p>
-                      	<p>
+                      	</div>
+                      	
+                      	<div class="col-4">
                         	<strong>Add profile picture: </strong>
                         	<input class="color-text-a form-control afile" type="file" name="pix" accept=".jpeg,.png,.jpg"required=""
                         	onchange="document.getElementById('profile-img').src = window.URL.createObjectURL(this.files[0])">
                         
-                      	</p>
+                      	</div>
                      
-			<p class="alert alert-danger dismissible-alert">
-				Please note: Image should be in jpeg/png/jpg format.
-			</p>
+			 
+		    </div>
               
               	</div>
               	
@@ -139,7 +139,7 @@
            </div><!--ending col-5-->
            
            <div class="col-lg-5 mb-4"style="text-align:center;">
-           	{% load static %}
+           	
            	<img src="{% static 'assets2/img/pic.png' %}" alt="Your image wil appear here after upload" 
            	class="agent-avatar img-fluid"style="border-radius:20px;color:white;max-height:30vh;"id="profile-img">
            	
@@ -147,7 +147,7 @@
               		<div class="col" style="margin-bottom:5vw">
         				<label style="cursor:pointer;" class="btn btn-secondary"for="first-image">
         				
-        				<img id="img1" alt="Click here to upload your room's image" width="150" height="150">
+        				<img id="img1" alt="Click here to upload your main room's image" width="150" height="150">
 					
 					<input type="file" 
 					onchange="document.getElementById('img1').src = window.URL.createObjectURL(this.files[0])"
@@ -158,7 +158,7 @@
               		<div class="col" style="margin-bottom:5vw">
         				<label style="cursor:pointer;" class="btn btn-secondary"for="second-image">
         				
-        				<img id="img2" alt="Click here to upload your room's toilet" width="150" height="150">
+        				<img id="img2" alt="Click here to upload your room's kitchen/frontage" width="150" height="150">
 					
 					<input type="file" 
 					onchange="document.getElementById('img2').src = window.URL.createObjectURL(this.files[0])"
@@ -169,7 +169,7 @@
               		<div class="col" style="margin-bottom:5vw">
         				<label style="cursor:pointer;" class="btn btn-secondary"for="third-image">
         				
-        				<img id="img3" alt="Click here to upload your room's bathroom" width="150" height="150">
+        				<img id="img3" alt="Click here to upload your room's bathroom/toilet" width="150" height="150">
 					
 					<input type="file" 
 					onchange="document.getElementById('img3').src = window.URL.createObjectURL(this.files[0])"
