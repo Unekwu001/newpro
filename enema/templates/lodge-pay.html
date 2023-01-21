@@ -25,8 +25,25 @@
 		  <img src="{% static 'assets/img/enems.png' %}" class="img-fluid" alt="enema"height="100vh"width="80vw">
 		</div>
 		<h5 data-aos="fade-up">On payment, you will be scheduled within minutes to inspect this lodge.</h5>
+		
+<div class="row">
+	<div class="col-6">
+		<button class="btn btn-success mt-3" type="submit" onclick="validate(event)" style="border-color:white;"id="payonline">
+			Pay online
+		</button>
+	</div>
+	<div class="col-6">
+		<a href="https://paystack.com/pay/enema">
+			<span class="btn btn-success mt-3" style="border-color:white;"id="easypay">
+			Easy pay 
+			</span>
+		</a>
+	</div>
+</div>		
+			
+		
 	
-<div class="row justify-content-between">
+<div class="row justify-content-between"id="payonlineform">
 	<div class="col-5 ">
 		
 		{% csrf_token %}
@@ -52,31 +69,23 @@
 			</label><br>
 			
 		    </div>
+		    <div class="col">
+			<button class="btn btn-success mt-3" type="submit" onclick="validate(event)" 
+				style="border-color:white;"id="payonline">
+				Go
+			</button>
+		    </div>
+		    
 		   
 		
-		<div class="col-12">
-		 	<div class="col-12">
-		    	<small style="color:orange;">(please ensure your phone number is correct)</small>
-		    	</div>
-		
-		
-		<button class="btn btn-success mt-3" type="submit" onclick="validate(event)" style="border-color:white;">
-			Pay online
-		</button>
-		
-		<a href="#" onclick="alert('Pay directly to our bank account. Bank name: Paga. Account name: enema corporations.Account number:1617195431. After payment, send us a screenshot of your debit alert or payment receipt via email to info@enema.ng. For quick inspection, we advise you use the online payment.') ">
-			<span class="btn btn-success mt-3" style="border-color:white;">
-			Alternative payment. 
-			</span>
-		</a>
-		</div>
+ 
 	</div>
 	
-	<div class="col-5 ">
+	
+</div><!---id payonlineform ends-->
+	<div class="col-6 offset-3">
 		<img src="https://enema.s3.amazonaws.com/{{lodgepic}}" class="img-fluid" alt="enema"style="border-radius:20px">
-	</div>
-</div>
-			
+	</div>		
 	</form>
 		
 	</div>
@@ -108,7 +117,7 @@ let validate = (e) => {
 				}	
 		 if(!email.match(mailformat))
 				{
-				Swal.fire("You have entered an invalid email address!");
+				Swal.fire("Please enter a valid email address.");
 				e.preventDefault();;
 				}					
 		 
@@ -119,6 +128,21 @@ let validate = (e) => {
 				}
 			}
 
+$(document).ready(function(){
+			 $('#payonlineform').hide()
+
+			$('#payonline').click(function(){ 
+			
+                                                $('#payonlineform').show()
+						                 
+						})
+
+			$('#easypay').click(function(){
+						 
+                                                $('#payonlineform').hide()
+                                
+						})                   
+			})
 </script> 
 {% endblock js %} 
 
