@@ -472,7 +472,7 @@ def admindash(request):
         lodges=Lodges.objects.all().order_by('-date_uploaded')
         roomates = Roomates.objects.all().order_by('-date_uploaded')         
         agents= Agents.objects.all().order_by('-date_joined')
-        return render(request,'admin/admin-dashboard.html',{'roomates':roomates,'admin':admin,'agents':agents,'lodges':lodges,'allpics':allpics})
+        return render(request,'admin/admin-dashboard.html',{'roomates':roomates,'admin':admin,'agents':agents,'lodges':lodges})
     else:
         messages.info(request,'Kindly login to continue.') 
         return redirect(admin_login)
