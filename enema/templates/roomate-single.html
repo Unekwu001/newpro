@@ -105,14 +105,22 @@
           </div>
      
           <div class="col-md-6"style="margin-bottom:20vh;color:white;">
-          	<div class="col-6" style="max-height:30;">
+          	<div class="col-6" style="max-height:20vh;">
           		<img src="https://enema.s3.amazonaws.com/{{roomate.pic}}" class="img-fluid" style="border-radius:5px">
           	</div>
-          
+          	
+             <div class="row">
+          	 <div class="col-6">
+          	   <a href="https://api.whatsapp.com/send/?phone=2348165408132&text=Hello%2C+I%E2%80%99m+interested+in+{{record.name}}+with+ID+{{record.id}}+https%3A%2F%2Fwww.enema.ng%2Fpropertydetails%2F{{record.id}}%2F&type=phone_number&app_absent=0">
+          	      <button class="btn btn-success"style="color:white;border-color:orange;">Chat with roomy's agent</button>
+          	   </a>
+               </div>
+               <div class="col-6">
           	<a href="{% url 'pay' roomate.id %}">
-          	<button class="btn btn-success"style="color:white;border-color:orange;">Click here to chat with me.</button>
+          	<button class="btn btn-success"style="color:white;border-color:orange;">Pay matching fee</button>
           	</a>
-               
+          	</div>
+            </div>
                    
              
             </div>
