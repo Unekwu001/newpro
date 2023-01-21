@@ -1,30 +1,32 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
-    <meta name="description" content="Psameeetech is the best Business Center in Federal Polytechnic Nasarawa, Nasarawa State. Situated behind the school library, Psameetech helps students (both new and old) with admission form buying and registration amongst other discerning requests from student clients">
+  
+    <meta name="description" content=" ">
     <!-- Twitter meta-->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:site" content="@Psameeetech">
-    <meta property="twitter:creator" content="@Psameeetech">
+    <meta property="twitter:site" content=" ">
+    <meta property="twitter:creator" content=" ">
     <!-- Open Graph Meta-->
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Psameeetech - Admin">
-    <meta property="og:title" content="Psameeetech - Federal Polytechnic Nasarawa">
-    <meta property="og:url" content="http://psameeetech.in/blog/psameeetech">
-    <meta property="og:image" content="http://psameeetech.in/blog/psameeetech/hero-social.png">
-    <meta property="og:description" content="Psameeetech is the best Business Center in Federal Polytechnic Nasarawa, Nasarawa State. Situated behind the school library, Psameetech helps students (both new and old) with admission form buying and registration amongst other discerning requests from student clients">
+    <meta property="og:site_name" content="Enema - Admin">
+    <meta property="og:title" content=" ">
+    <meta property="og:url" content=" ">
+    <meta property="og:image" content=" ">
+    <meta property="og:description" content=" ">
     <title>Admin-dashboard</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <link rel="stylesheet" href="{% static 'admin-by-me/css/main.css' %}">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body class="app sidebar-mini">
     <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="{{url_for('admindash')}}">Psameeetech</a>
+    <header class="app-header"><a class="app-header__logo" href="{% url 'admindash' %}">Enema.ng</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
@@ -36,8 +38,7 @@
         <!-- User Menu-->
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
-            <li><a class="dropdown-item" href="#"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
-            <li><a class="dropdown-item" href="{{url_for('admin_log_out')}}"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+            <li><a class="dropdown-item" href=""><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -45,79 +46,174 @@
     <!-- Sidebar menu-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
-      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar img-fluid" src="/static/img/psamee.jpeg" alt="Image">
+      <div class="app-sidebar__user">
         <div>
-          <p class="app-sidebar__user-name">Paul Shaibu</p>
-          <p class="app-sidebar__user-designation">CEO</p>
+          <p class="app-sidebar__user-name">{{admin.username}}</p>
         </div>
       </div>
+      
+      <!--Side dashboard-->
       <ul class="app-menu">
-        <li><a class="app-menu__item active" href="{{url_for('admindash')}}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Show Dashboard</span></a></li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Registered students</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="{{url_for('all')}}"><i class="icon fa fa-circle-o"></i>See all students</a></li>
-          </ul>
+      
+        <li><a class="app-menu__item active" href="{% url 'admindash' %}"><i class="app-menu__icon fa fa-dashboard"></i><span 
+        class="app-menu__label">Show Dashboard</span></a>
+        </li>
+        
+        
+        <li class="treeview"><a class="app-menu__item"  href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span
+         	class="app-menu__label">Agents</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          	<ul class="treeview-menu">
+            		<li><a class="treeview-item" href="{% url 'admin_agentpanel' %}"><i class="icon fa fa-circle-o"></i>Agents panel</a></li>
+          	</ul>
         </li>
   
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Received forms</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="{{url_for('forms_received')}}"><i class="icon fa fa-circle-o"></i>form data</a></li>
-          </ul>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span
+        	 class="app-menu__label">Lodges</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          	<ul class="treeview-menu">
+            		<li><a class="treeview-item" href=""><i class="icon fa fa-circle-o"></i>Lodges panel</a></li>
+          	</ul>
         </li>
+        
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span
+        	 class="app-menu__label">Roomies</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          	<ul class="treeview-menu">
+            		<li><a class="treeview-item" href=""><i class="icon fa fa-circle-o"></i>Roomies panel</a></li>
+          	</ul>
+        </li>
+        
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span
+        	 class="app-menu__label">Schools</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          	<ul class="treeview-menu">
+            		<li><a class="treeview-item" href=""><i class="icon fa fa-circle-o"></i>schools panel</a></li>
+          	</ul>
+        </li>
+        
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span
+        	 class="app-menu__label">Locations</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          	<ul class="treeview-menu">
+            		<li><a class="treeview-item" href=""><i class="icon fa fa-circle-o"></i>locations panel</a></li>
+          	</ul>
+        </li>
+          
           
         
       </ul>
     </aside>
-    {% block content %}
+    
+    
     <main class="app-content">
+    
+    <!--header--> 
       <div class="app-title">
         <div>
           <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
-          <p> Paul Shaibu - The CEO, Psameeetech Academy</p>
+          <p> The Co-founders dash</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
           <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
         </ul>
       </div>
+     <!--end of header--> 
+      
+      {% block content %}
+      <!--agents-->
       <div class="row">
-        <div class="col-md-6 col-lg-3">
-          <div class="widget-small warning coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+        <div class="col-md-6 col-lg-4">
+          <div class="widget-small info coloured-icon"><i class="icon fa fa-users fa-3x"></i>
             <div class="info">
-              <h4>Registered Users</h4>
-              <p><b>{{ students | count }}</b></p>
+              <h4>All Agents</h4>
+              <p><b>{{agents.count}}</b></p>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-        <div class="widget-small info coloured-icon"><i class="icon fa fa-thumbs-o-up fa-3x"></i>
+        <div class="col-md-6 col-lg-4">
+          <div class="widget-small primary coloured-icon"><i class="icon fa fa-thumbs-o-up fa-3x"></i>
             <div class="info">
-              <h4>Received forms</h4>
-              <p><b>{{submitted_forms|count}}</b></p>
+              <h4>Verified agents</h4>
+              <p><b>3</b></p>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="widget-small danger coloured-icon"><i class="icon fa fa-files-o fa-3x"></i>
+        <div class="col-md-6 col-lg-4">
+          <div class="widget-small danger coloured-icon"><i class="icon fa fa-star fa-3x"></i>
             <div class="info">
-              <h4> Unprocessed forms</h4>
-              <p><b>{{pending_forms | count}}</b></p>
+              <h4>Unverified agents</h4>
+              <p><b>3</b></p>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="widget-small primary coloured-icon"><i class="icon fa fa-star fa-3x"></i>
+        <!--agents ends here-->
+        
+        <!--Lodges start here-->
+        <div class="col-md-6 col-lg-4">
+        <div class="widget-small info coloured-icon"><i class="icon fa fa-users fa-3x"></i>
             <div class="info">
-              <h4>Processed Forms</h4>
-              <p><b>{{processed_forms| count}}</b></p>
+              <h4>All Lodges</h4>
+              <p><b>{{lodges.count}}</b></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+        <div class="widget-small primary coloured-icon"><i class="icon fa fa-thumbs-o-up fa-3x"></i>
+            <div class="info">
+              <h4>Verified Lodges</h4>
+              <p><b>3</b></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+        <div class="widget-small danger coloured-icon"><i class="icon fa fa-star fa-3x"></i>
+            <div class="info">
+              <h4>Unverified Lodges</h4>
+              <p><b>4</b></p>
+            </div>
+          </div>
+        </div>
+        <!--lodges ends here-->
+        
+        <!--room mates begin-->
+        <div class="col-md-6 col-lg-4">
+          <div class="widget-small info coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+            <div class="info">
+              <h4>All Room mates</h4>
+              <p><b>{{roomates.count}}</b></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="widget-small primary coloured-icon"><i class="icon fa fa-thumbs-up-o fa-3x"></i>
+            <div class="info">
+              <h4>Matched roomies</h4>
+              <p><b>8</b></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="widget-small danger coloured-icon"><i class="icon fa fa-star fa-3x"></i>
+            <div class="info">
+              <h4>Unmatched roomies</h4>
+              <p><b>7</b></p>
             </div>
           </div>
         </div>
       </div>
+      <!--end of roomies-->
+      
+      
+      <!--<div class="col-md-6 col-lg-3">
+          <div class="widget-small danger coloured-icon"><i class="icon fa fa-files-o fa-3x"></i>
+            <div class="info">
+              <h4>Total room mates</h4>
+              <p><b>{{roomates.count}}</b></p>
+            </div>
+          </div>
+        </div>-->
+        
       <div class="row">
         <div class="col-md-6">
           <div class="tile">
-            <h3 class="tile-title">Monthly Form Sales</h3>
+            <h3 class="tile-title">Performance</h3>
             <div class="embed-responsive embed-responsive-16by9">
               <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
             </div>
@@ -132,17 +228,21 @@
           </div>
         </div>
       </div>
+      {% endblock content %}
+      
     </main>
-    {% endblock content %}
+    
+    <link rel="stylesheet" href="{% static 'admin-by-me/css/admin-style.css' %}">
     <!-- Essential javascripts for application to work-->
-    <script src="/static/js/jquery-3.3.1.min.js"></script>
-    <script src="/static/js/popper.min.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/js/main.js"></script>
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'admin-by-me/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'admin-by-me/js/popper.min.js' %}"></script>
+    <script src="{% static 'admin-by-me/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'admin-by-me/js/main.js' %}"></script>
     <!-- The javascript plugin to display page loading on top-->
-    <script src="/static/js/plugins/pace.min.js"></script>
+    <script src="{% static 'admin-by-me/js/plugins/pace.min.js' %}"></script>
     <!-- Page specific javascripts-->
-    <script type="text/javascript" src="/static/js/plugins/chart.js"></script>
+    <script type="text/javascript" src="{% static 'admin-by-me/js/plugins/chart.js' %}"></script>
     <script type="text/javascript">
       var data = {
       	labels: ["January", "February", "March", "April", "May"],
@@ -190,21 +290,15 @@
       var ctxp = $("#pieChartDemo").get(0).getContext("2d");
       var pieChart = new Chart(ctxp).Pie(pdata);
     </script>
-    <!-- Google analytics script-->
-    <script type="text/javascript">
-      if(document.location.hostname == 'pratikborsadiya.in') {
-      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      	ga('create', 'UA-72504830-1', 'auto');
-      	ga('send', 'pageview');
-      }
-    </script>
+    
+  
+    
+    
     <!-- Data table plugin-->
-    <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static 'admin-by-me/js/plugins/jquery.dataTables.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin-by-me/js/plugins/dataTables.bootstrap.min.js' %}"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
+    
     <!-- Google analytics script-->
     <script type="text/javascript">
       if(document.location.hostname == 'pratikborsadiya.in') {

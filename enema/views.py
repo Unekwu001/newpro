@@ -453,15 +453,30 @@ def congrats(request):
 
 def admin_login(request):
     if request.method == "GET":
-        return render(request,'admin-login.html')
+        return render(request,'admin/admin-login.html')
     else:
         username = request.POST.get('username')
         pwd = request.POST.get('pwd')
         record = Myadmin.objects.get(username=username,pwd=pwd)
         if record:
-            request.session['loggedin'] = record.id
-            return redirect(agent_dash) 
+            request.session['adminloggedin'] = record.id
+            return redirect(admindash) 
         else:
             messages.info(request,'Invalid credentials. ')
             return redirect(admin_login)
 
+def admindash(request):
+    session_collected=request.session.get('adminloggedin')
+    if session_collected:
+        admin = Myadmin.objects.get(id=session_collected)
+        lodges=Lodges.objects.all().order_by('-date_uploaded')
+        roomates = Roomates.objects.all().order_by('-date_uploaded')         
+        agents= Agents.objects.all().order_by('-date_joined')
+        return render(request,'admin/admin-dashboard.html',{'roomates':roomates,'admin':admin,'agents':agents,'lodges':lodges,'allpics':allpics})
+    else:
+        messages.info(request,'Kindly login to continue.') 
+        return redirect(admin_login)
+
+def admin_agentpanel(request):
+    agents = Agents.objects.all().order_by('-date_joined')
+    return render(request,'admin/agents-panel.html',{'agents':agents})

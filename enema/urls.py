@@ -27,7 +27,10 @@ urlpatterns = [
     path('pay/<int:id>/',pay,name='pay'),
     path('roommatesingle/<int:id>/',roomate_single,name='roomate_single'),
     path('lodgepay/<int:id>/',lodge_pay,name='lodge_pay'),
-    path('congratulations/',congrats,name='congrats')
+    path('congratulations/',congrats,name='congrats'),
+    path('admin_login/',admin_login,name='admin_login'),
+    path('admindash/',admindash,name='admindash'),
+    path('adminagentpanel/',admin_agentpanel,name='admin_agentpanel')
 ]
 
 if settings.DEBUG:

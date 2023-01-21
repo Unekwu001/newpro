@@ -17,6 +17,8 @@ class Agents(models.Model):
     id_numb = models.CharField(max_length=30,unique=False,default="Null")
     pic = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
     points= models.CharField(max_length=15,unique=False,default="Null")
+    status = models.CharField(max_length=15,null=True,blank=True,default='unverified')
+    date_joined = models.DateTimeField(auto_now_add=True,null=True,blank=True)
     class Meta:
         db_table='agents'
 

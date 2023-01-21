@@ -1,0 +1,110 @@
+{% extends 'admin-dashboard.html' %}
+
+
+ 
+{% block content %}
+
+<!--title -->
+      <div class="app-title">
+        <div>
+        
+          <h1><i class="fa fa-th-list"></i>Agents panel</h1>
+          
+           {% if messages %}
+        	{% for message in messages %}
+        	
+        	<p {% if message.tags %} class="alert alert-danger{{message.tags}}"{% endif %}
+        		style="background-color:pink;text-align:center;color:black;" >
+        		 {{message}} 
+        	</p>
+        	
+        	{% endfor %}
+           {% endif %}
+        
+       </div>
+    </div>
+<!--title ends-->
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>S/N</th>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>email</th>         
+                      <th>password</th>
+                      <th>phone</th>
+                      <th>Address</th>
+                      <th>Id-type</th>
+                      <th>Id-number</th>
+                      <th>Date Joined</th>
+                    </tr>
+                  </thead>
+                  
+                  <tbody>
+                  {% for agent in agents  %}
+                 
+                    <tr>
+                      <td>{{loop.index}}</td>
+                      <td>{{agent.name}}</td>
+                      <td>{{agent.email}}</td>
+                      <td>{{agent.pwd}}</td>
+                      <td>{{agent.phone}}</td>
+                      <td>{{agent.address}}</td>
+                      <td>{{agent.id_type}}</td>
+                      <td>{{agent.id_numb}}</td>
+                      <td>{{agent.date_joined}}</td>
+                      
+                      <td style="color:orange">
+                      			<a href="" target="_blank">More</a><br>
+                      			
+                      			<a href=""target="_blank">Send email </a>
+                      			
+                      		{% if agent.status=="pending" %}
+                      			<a href=""onclick="
+                      	let k=(e)=>{	
+                      			let c= confirm('Are you sure ?')
+                      				
+                      			if( c == false)
+                      			{
+                      				Swal.fire('Still pending')
+                      				e.preventDefault();
+                      			}
+                      			else
+                      			{
+                      			Swal.fire('Marked as done')
+                      			}
+                      		}
+                      			k(event)
+                      			">Pending</a><br>
+                      		{% else %}	
+                      			<h6>Done</h6>
+                      		{% endif %}	
+                      </td>
+                   </tr>
+                     {% endfor %}
+                     
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
