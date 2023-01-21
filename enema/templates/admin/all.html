@@ -1,0 +1,144 @@
+{% extends 'admin-dashboard.html'%}
+
+{% block content %} 
+
+    <main class="app-content">
+      <div class="app-title">
+      <form method="post" action="{{url_for('all')}}">
+        
+          	<select name="email"class="form-control-sm col-7"style="background-color:rgb(0,150,136);color:white;font-size:120%">	
+          		<option value="">Select a Student </option>
+          			{%for i in allstudents %}
+          		<option value="{{i.email}}">{{i.fname}} {{i.lname}} &nbsp; &nbsp;{{i.email}} {{i.program}} {{i.studymode}}</option>
+          		
+          		
+          			{% endfor %}
+          	</select> 
+         
+        <button type="submit"class="form-control-sm col-4 btn btn-success "> Click to show details</button>
+        
+        {% set m = get_flashed_messages()%} 
+        	{% for i in m %}
+        		<h2 style="color:rgb(0,150,136)">{{i}}</h2>
+        	{% endfor %}
+     </form>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <section class="invoice">
+              <div class="row mb-4">
+                <div class="col-6">
+                  <h2 class="page-header"><i class="fa fa-globe"></i><img src="/static/uploads/{{selectedstudent.pic}}" 
+                  class="img-fluid"style="height:30vh;width:20vw;" ></h2>
+                </div>
+                <div class="col-6">
+                  <h5 class="text-right">Date of birth: {{selectedstudent.dob}}</h5>
+                </div>
+              </div>
+              <div class="row invoice-info">
+                <div class="col-4"><b>First name:</b> {{selectedstudent.fname}}<br>
+                <b>Surname:</b> {{selectedstudent.lname}}<br> 
+               	<b>Last name:</b> {{selectedstudent.midname}}<br>
+               	<b>Email:</b> {{selectedstudent.email}}<br>
+               	<b>Password:</b> {{selectedstudent.pwd}}<br>
+               	<b>Phone :</b> {{selectedstudent.phone}}<br>
+               	<b>Gender:</b> {{selectedstudent.gender}}<br>
+               	<b>Marital:</b> {{selectedstudent.marital}}<br>
+               	<b>Program:</b> {{selectedstudent.program}}<br>
+               	<b>Manual program entered:</b> {{selectedstudent.manualpro}}<br>
+              </div>
+                <div class="col-4"><b>Nationality:</b> {{selectedstudent.nationality}}<br>
+                  <b>State of Origin:</b> {{selectedstudent.stateoforigin}}<br>
+                  <b>Origin lga:</b> {{selectedstudent.originlga}}<br>
+                  <b>Home town:</b> {{selectedstudent.hometown}}<br>
+                  <b>Study mode:</b> {{selectedstudent.studymode}}<br>
+                  <b>State of residence:</b> {{selectedstudent.stateofres}}<br>
+                  <b>lga of residence:</b> {{selectedstudent.lgaofres}}<br>
+                  <b>City of residence:</b> {{selectedstudent.cityofres}}<br>
+                  <b>Residential address:</b> {{selectedstudent.resaddress}}<br>
+                </div>
+                <div class="col-4"><b>Next of kin:</b> {{selectedstudent.nxtofkin}}<br>
+                <b>Relationship with next of kin:</b> {{selectedstudent.relwithkin}}<br>
+                <b>Place of birth:</b> {{selectedstudent.placeofbirth}}<br>
+                <b>Phone number of Next of kin:</b> {{selectedstudent.nxtofkinphone}}<br>
+                <b>Scratch card exam type:</b> {{selectedstudent.scardexamtype}}<br>
+                <b>Scratch card year:</b> {{selectedstudent.cardyear}}<br>
+                <b>Scratch card serial number:</b> {{selectedstudent.cadserialnumber}}<br>
+                <b>Scratch card pin:</b> {{selectedstudent.cardpin}}<br>
+                <b>Result combinations:</b> {{selectedstudent.resultcombo}}<br>
+                <b>Date of registration:</b> {{date}}<br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>S/N</th>
+                        <th>Olevel Subject</th>
+                        <th>Olevel Score</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    	{%for i in oleveldetails%}
+                    	
+                    
+                      		<tr>
+                        		<td>{{loop.index}}</td>
+                        		<td>{{i.subject}}</td>
+                        		<td>{{i.score}}</td>
+                      		</tr>
+                      	{% endfor %}
+                      
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>S/N</th>
+                        <th>Jamb Subject</th>
+                        <th>Jamb Score</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    	{%for y in jambdetails%}
+                    	
+                    
+                      		<tr>
+                        		<td>{{loop.index}}</td>
+                        		<td>{{y.subject}}</td>
+                        		<td>{{y.score}}</td>
+                        		
+                      		</tr>
+                      		
+                      	{% endfor %}
+                      			
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row d-print-none mt-2">
+                <div class="col-12 text-right"></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+ {% endblock %}   
+    
+    
+    
+    
+    
+    
+    
+    

@@ -1,0 +1,45 @@
+ {% extends 'forms-received.html'%}
+ 
+ {% block title %}
+    <title>Admin-Email Sending</title>
+    {% endblock %}
+ 
+    {% block content %}
+    <main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-th-list"></i> Email Sending page</h1>
+          <p>You are welcome boss.</p>
+          <h4>You are sending this email to {{student.fname}} {{student.lname}}.</h4>
+          {% set m = get_flashed_messages() %}
+          {% for i in m %}
+          <h3 style="color:rgb(0,150,136)">{{i}}<h3>
+          {% endfor %}
+        </div>
+      </div>
+        
+         <form method="post" action="/sendmail/{{student.email}}">
+         <textarea name="msg" placeholder="Write something here..."style="width=30vw;height:20vh" id="msg"></textarea>
+         <button onclick="
+         let k=(e)=>{		
+         				var msg=document.getElementById('msg').value;
+         				c = confirm('Are you ok with this message ?');
+                      			if(msg == '')
+                      			{
+                      				Swal.fire('Oops! you cannot send a blank message sir.')
+                      				e.preventDefault();
+                      			}
+                      			if(c == false)
+                      			{
+                      				Swal.fire('Not submitted !')
+                      				e.preventDefault();
+                      			}
+                      		
+                      		}
+                      		
+              k(event)
+         " type="submit" class="btn btn-success">Send mail</button>
+         </form>
+    </main>
+    {% endblock %}
+    

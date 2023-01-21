@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 # from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 from django.contrib import messages
-from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo
+from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo,Myadmin
 
 # Create your views here.
 def index(request):
@@ -448,4 +448,20 @@ def lodge_pay(request,id):
 
 def congrats(request):
     return render(request,'congrats.html')
+
+
+
+def admin_login(request):
+    if request.method == "GET":
+        return render(request,'admin-login.html')
+    else:
+        username = request.POST.get('username')
+        pwd = request.POST.get('pwd')
+        record = Myadmin.objects.get(username=username,pwd=pwd)
+        if record:
+            request.session['loggedin'] = record.id
+            return redirect(agent_dash) 
+        else:
+            messages.info(request,'Invalid credentials. ')
+            return redirect(admin_login)
 

@@ -1,0 +1,145 @@
+{% extends 'admin-dashboard.html'%}
+
+{% block content %} 
+
+    <main class="app-content">
+      <div class="app-title">
+          			
+           {% set m = get_flashed_messages()%} 
+        	{% for i in m %}
+        		<h2 style="color:rgb(0,150,136)">{{i}}</h2>
+        	{% endfor %}
+        
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <section class="invoice">
+              <div class="row mb-4">
+                <div class="col-6">
+                  <h2 class="page-header"><i class="fa fa-globe"></i><img src="/static/uploads/{{student.pic}}" 
+                  class="img-fluid"style="height:30vh;width:20vw;" ></h2>
+                </div>
+                
+                <div class="col-3">
+                {% if student.status=="pending"%}
+                	<a href="/change status/{{student.email}}"><button onclick="confirm('Are you sure ?')">Mark as Processed</button></a>		{% else %}	
+                      	<h6 style="background-color:green;color:white;text-align:center;border-radius:20px"> Already processed </h6>
+                {% endif %}	
+                
+                </div>
+                
+                <div class="col-3">
+                  <h5 class="text-right">Date of birth: {{student.dob}}</h5>
+                </div>
+              </div>
+              <div class="row invoice-info">
+                <div class="col-4"><b>First name:</b> {{student.fname}}<br>
+                <b>Surname:</b> {{student.lname}}<br> 
+               	<b>Last name:</b> {{student.midname}}<br>
+               	<b>Email:</b> {{student.email}}<br>
+               	<b>Password:</b> {{student.pwd}}<br>
+               	<b>Phone :</b> {{student.phone}}<br>
+               	<b>Gender:</b> {{student.gender}}<br>
+               	<b>Marital:</b> {{student.marital}}<br>
+               	<b>Program:</b> {{student.program}}<br>
+               	<b>Manual program entered:</b> {{student.manualpro}}<br>
+              </div>
+                <div class="col-4"><b>Nationality:</b> {{student.nationality}}<br>
+                  <b>State of Origin:</b> {{student.stateoforigin}}<br>
+                  <b>Origin lga:</b> {{student.originlga}}<br>
+                  <b>Home town:</b> {{student.hometown}}<br>
+                  <b>Study mode:</b> {{student.studymode}}<br>
+                  <b>State of residence:</b> {{student.stateofres}}<br>
+                  <b>lga of residence:</b> {{student.lgaofres}}<br>
+                  <b>City of residence:</b> {{student.cityofres}}<br>
+                  <b>Residential address:</b> {{student.resaddress}}<br>
+                </div>
+                <div class="col-4"><b>Next of kin:</b> {{student.nxtofkin}}<br>
+                <b>Relationship with next of kin:</b> {{student.relwithkin}}<br>
+                <b>Place of birth:</b> {{student.placeofbirth}}<br>
+                <b>Phone number of Next of kin:</b> {{student.nxtofkinphone}}<br>
+                <b>Scratch card exam type:</b> {{student.scardexamtype}}<br>
+                <b>Scratch card year:</b> {{student.cardyear}}<br>
+                <b>Scratch card serial number:</b> {{student.cadserialnumber}}<br>
+                <b>Scratch card pin:</b> {{student.cardpin}}<br>
+                <b>Result combinations:</b> {{student.resultcombo}}<br>
+                <b>Date of registration:</b> {{student.regdate}}<br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>S/N</th>
+                        <th>Olevel Subject</th>
+                        <th>Olevel Score</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    	{%for i in oleveldetails%}
+                    	
+                    
+                      		<tr>
+                        		<td>{{loop.index}}</td>
+                        		<td>{{i.subject}}</td>
+                        		<td>{{i.score}}</td>
+                      		</tr>
+                      	{% endfor %}
+                      
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>S/N</th>
+                        <th>Jamb Subject</th>
+                        <th>Jamb Score</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    	{%for y in jambdetails%}
+                    	
+                    
+                      		<tr>
+                        		<td>{{loop.index}}</td>
+                        		<td>{{y.subject}}</td>
+                        		<td>{{y.score}}</td>
+                        		
+                      		</tr>
+                      		
+                      	{% endfor %}
+                      			
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row d-print-none mt-2">
+                <div class="col-12 text-right">
+                {% if student.status=="pending"%}
+                	<a href="/change status/{{student.email}}"><button onclick="confirm('Are you sure ?')">Mark as Processed</button></a>		{% else %}	
+                      	<h6> Already processed </h6>
+                {% endif %}	
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+ {% endblock %}   
+    
+    
+    
+    
+    
+    
+    
+    

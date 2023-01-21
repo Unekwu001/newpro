@@ -1,0 +1,433 @@
+{% extends 'user-dashboard.html'%}
+
+{% block header %}
+Template for Federal Polytechnic Nasarawa Admission form 
+{% endblock header %}
+
+{% block style %}
+	<style>
+		select,input{
+		width:30vw;border-color:grey
+		}
+		
+		#checkbox{
+		width:1vw
+		}
+		.shortinput{width:5vw
+		}
+	</style>
+{% endblock style %}
+
+
+
+{% block content %}
+ 
+
+{% if record.status == None %}
+    <main class="app-content col-12" style="margin-left:-1vw;margin-top:-1vh">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="row">
+              <div class="col-lg-12">
+              
+               <form method="post" action="{{url_for('admission_form')}}" enctype="multipart/form-data" >
+                  <div class="form-group">
+                    <label for="exampleInputfirst">First name</label>
+                    <input required="required" name="fname"class="form-control" id="exampleInputfirst" type="text" aria-describedby="textHelp" placeholder="Enter firstname">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputsurname">Lastname (surname)</label>
+                    <input required="required" name="lname"class="form-control" id="exampleInputsurname" type="text" aria-describedby="textHelp" placeholder="Enter Lastname">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputmiddle">Middle name</label>
+                    <input required="required" name="midname"class="form-control" id="exampleInputmiddle" type="text" aria-describedby="textHelp" placeholder="Enter Middle name">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Mobile number</label>
+                    <input required="required" class="form-control" id="exampleInputPassword1" type="number" placeholder="your phone number.." name="phone">
+                  </div>
+                  <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select required="required" class="form-control" id="gender"name="gender">
+                    	<option value="">Select Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="maritalstatus">Marital status</label>
+                    <select required="required" class="form-control" id="maritalstatus" name="marital">
+                    	<option value="">Marital status</option>
+                      <option value="Single">Single</option>
+                      <option value="Married">Married</option>
+                      <option value="Divorced">Divorced</option>
+                      <option value="Widowed">Widowed</option>
+                      <option value="Seperated">Seperated</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="selectprogram">Select Your Programme of choice</label>
+                    <select required="required" class="form-control" id="selectprogram" name="program">
+                    <option value="">Select Programme</option>
+                      {% for i in courses %}
+                    <option value="{{i.course_name}}"> {{i.course_name}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="manualpro"style="color:orange">If you couldnt find your program, please enter it here manually</label>
+                    <input class="form-control" id="manualpro" type="text" placeholder="Cant find your program ? Enter it here........" name="manualpro">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="studymode">Mode of Study</label>
+                    <select required="required" class="form-control" id="studymode" name="studymode">
+                    <option value="">Select Study mode</option>
+                      <option value="HND-fulltime">HND (fulltime)</option>
+                      <option value="ND-fulltime">ND (fulltime)</option>
+                      <option value="HND-parttime">HND (part-time)</option>
+                      <option value="POLY-Diploma">POLY-Diploma (Part-time)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="stateofres">State of residence</label>
+                      <select required="required" class="form-control" id="stateofres" type="text"name="stateofres">
+                      	<option value="">Select your state of residence </option>
+                      	{% for y in states %}
+                        <option value="{{y.state_name}}">{{y.state_name}}</option>
+                        {% endfor %}
+                      </select>
+                    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="lgaofres">LGA of residence</label>
+                      	<input required="required" class="form-control" id="lgaofres" type="text" name="lgaofres">
+                    </fieldset>
+                  </div>
+                   <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="cityofres">Town/City of residence</label>
+                      <input required="required" class="form-control" id="cityofres" type="text" placeholder="Enter your town/city of residence"name="cityofres">
+                    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <label for="address">Your address</label>
+                    <textarea required="required" class="form-control" id="address" rows="3" name="resaddress"></textarea>
+                  </div>
+                  <div class="form-group">
+                  
+                    <label for="exampleInputFile">Your desired picture</label>
+                    <input required="required" class="form-control-file" id="exampleInputFile" type="file" aria-describedby="fileHelp" name="pix"><small class="form-text text-muted" id="fileHelp">Please ensure the photograpy is of good quality (jpeg/png/jpg formats only).</small>
+                  </div>
+                  
+              <div class="col-lg">
+                  <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="demoDate">Date of birth</label>
+                      <input required="required" class="form-control" id="demoDate" type="text" placeholder="Select Date"name="dob">
+                    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="placeofbirth">Place of birth</label>
+                      <input required="required" class="form-control" id="placeofbirth" type="text" placeholder="Place of birth"name="placeofbirth">
+                    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="nationality">Nationality</label>
+                      <select required="required" class="form-control" id="nationality"  name="nationality">
+                      		<option value="nigerian"> Nigerian </option>
+                      		<option value="other"> Others </option>
+                      </select>
+                    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="stateoforigin">State of origin</label>
+                      <select required="required" class="form-control" id="stateoforigin"  name="stateoforigin">
+                      		<option value=""> State of origin </option>
+                          {% for i in states %}
+                      		<option value="{{i.state_name}}">{{i.state_name}} </option>
+                          {% endfor %}
+                      </select>
+                    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="lga">Local Government Area</label>
+                      <input required="required" class="form-control" id="lga"  name="originlga" Placeholder="Enter your LGA of origin">
+                    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="hometown">Home town</label>
+                      <input required="required" class="form-control" id="hometown"  name="hometown" placeholder="Enter your home town">
+                    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="nxtofkin">Name of Next of kin</label>
+                      <input required="required" class="form-control" id="nxtofkin" type="text" name="nxtofkin" placeholder="Enter the name of your next of kin">
+                    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="nxtofkinphone">Next of kin phone number</label>
+                      <input required="required" class="form-control" id="nxtofkinphone" type="number"  name="nxtofkinphone" placeholder="Enter next of kin phone number">
+                    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="relwithkin">What relationship do you have with your next of kin</label>
+                      <select required="required"class="form-control" id="relwithkin"  name="relwithkin">
+                      	<option value="mother">Mother</option>
+                      	<option value="father">Father</option>
+                      	<option value="sibling">Sibling</option>
+                      	<option value="relative">Relative</option>
+                      	<option value="guardian">Guardian</option>
+                      	<option value="others">others</option>
+                      </select>
+                    </fieldset>
+                  </div>
+                   
+                  <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="cardtype">Scratch card examination type</label>
+                      <select required="required" class="form-control" id="cardtype"  name="scardexamtype">
+                      <option value="">Select examination type</option>
+                      	<option value="neco">Neco</option>
+                      	<option value="waec">Waec</option>
+                      	<option value="nabteb">Nabteb</option>
+                      	<option value="others">others</option>
+                      </select>
+                    </fieldset>
+                  </div>
+                     <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="cardyear">Scratch card year</label>
+                      <select required="required" class="form-control" id="cardyear"  name="cardyear">
+                      <option value="">Select examination year</option>
+                      	<option value="2022">2022</option>
+                      	<option value="2021">2021</option>
+                      	<option value="2020">2020</option>
+                      	<option value="2019">2019</option>
+                      	<option value="2018">2018</option>
+                      	<option value="2017">2017</option>
+                      	<option value="2016">2016</option>
+                      	<option value="2015">2015</option>
+                      	<option value="2014">2014</option>
+                      	<option value="2013">2013</option>
+                      	<option value="2012">2012</option>
+                      	<option value="2011">2011</option>
+                      	<option value="2010">2010</option>
+                      </select>
+                    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="serialnum">Scratch card serial number</label>
+                      <input required="required" class="form-control" id="serialnum" type="number"  name="cadserialnum" placeholder="Enter scratch card serial number">
+                    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="cardpin">Scratch card pin</label>
+                      <input required="required" class="form-control" id="cardpin" type="number"  name="cardpin" placeholder="Enter scratch card pin">
+                    </fieldset>
+                  </div>
+                  <div class="form-group">
+                    <fieldset>
+                      <label class="control-label" for="resultcombo">How many results are you combining ?</label>
+                      <select required="required" class="form-control" id="resultcombo"  name="resultcombo">
+                      <option value="">number of result combinations</option>
+                      	<option value="1">1</option>
+                      	<option value="2">2</option>
+                      	<option value="3">3</option>
+                      </select>
+                    </fieldset>
+                  </div>
+                  <div class="form-group"><h5>SSCE/O LEVEL DATA</h5>
+                  	<br>
+                  	<select name="maths"><option value="maths">Maths</option></select><select required="required" name="score1" class="form-control-sm">
+                  			<option value="">grade</option>
+                  			<option value="A">A</option>
+                  			<option value="B2">B2</option>
+                  			<option value="B3">B3</option>
+                  			<option value="C4">C4</option>
+                  			<option value="C5">C5</option>
+                  			<option value="C6">C6</option>
+                  			<option value="D7">D7</option>
+                  			<option value="E8">E8</option>
+                  			<option value="F9">F9</option>
+                  		</select><br>
+                 
+                  	
+                  <select name="eng"><option value="english">English</option></select><select required="required" name="score2"class="form-control-sm">
+                  			<option value="">grade</option>
+                  			<option value="A">A</option>
+                  			<option value="B2">B2</option>
+                  			<option value="B3">B3</option>
+                  			<option value="C4">C4</option>
+                  			<option value="C5">C5</option>
+                  			<option value="C6">C6</option>
+                  			<option value="D7">D7</option>
+                  			<option value="E8">E8</option>
+                  			<option value="F9">F9</option>
+                  		</select><br>
+                  <input required="required" type="text"value=""class="form-control-sm"placeholder="subject 3"name="subject3"><select name="score3"class="form-control-sm"required="required">
+                  			<option value="">grade</option>
+                  			<option value="A">A</option>
+                  			<option value="B2">B2</option>
+                  			<option value="B3">B3</option>
+                  			<option value="C4">C4</option>
+                  			<option value="C5">C5</option>
+                  			<option value="C6">C6</option>
+                  			<option value="D7">D7</option>
+                  			<option value="E8">E8</option>
+                  			<option value="F9">F9</option>
+                  		</select><br>
+                  <input name="subject4" required="required" type="text"value=""placeholder="subject 4"class="form-control-sm"><select name="score4"class="form-control-sm"required="required" name="subjectgrade4">
+                  			<option value="">grade</option>
+                  			<option value="A">A</option>
+                  			<option value="B2">B2</option>
+                  			<option value="B3">B3</option>
+                  			<option value="C4">C4</option>
+                  			<option value="C5">C5</option>
+                  			<option value="C6">C6</option>
+                  			<option value="D7">D7</option>
+                  			<option value="E8">E8</option>
+                  			<option value="F9">F9</option>
+                  		</select><br>
+                  <input name="subject5"required="required" type="text"value=""placeholder="subject 5"class="form-control-sm"><select name="score5"class="form-control-sm"required="required" name="subjectgrade5">
+                  			<option value="">grade</option>
+                  			<option value="A">A</option>
+                  			<option value="B2">B2</option>
+                  			<option value="B3">B3</option>
+                  			<option value="C4">C4</option>
+                  			<option value="C5">C5</option>
+                  			<option value="C6">C6</option>
+                  			<option value="D7">D7</option>
+                  			<option value="E8">E8</option>
+                  			<option value="F9">F9</option>
+                  		</select><br>
+                  <input name="subject6" required="required" type="text"value=""placeholder="subject 6"class="form-control-sm"><select name="score6"class="form-control-sm"required="required"name="subjectgrade6">
+                  			<option value="">grade</option>
+                  			<option value="A">A</option>
+                  			<option value="B2">B2</option>
+                  			<option value="B3">B3</option>
+                  			<option value="C4">C4</option>
+                  			<option value="C5">C5</option>
+                  			<option value="C6">C6</option>
+                  			<option value="D7">D7</option>
+                  			<option value="E8">E8</option>
+                  			<option value="F9">F9</option>
+                  		</select><br>
+                  <input name="subject7"required="required" type="text"value=""placeholder="subject 7"class="form-control-sm"><select name="score7"class="form-control-sm"required="required"name="subjectgrade7">
+                  			<option value="">grade</option>
+                  			<option value="A">A</option>
+                  			<option value="B2">B2</option>
+                  			<option value="B3">B3</option>
+                  			<option value="C4">C4</option>
+                  			<option value="C5">C5</option>
+                  			<option value="C6">C6</option>
+                  			<option value="D7">D7</option>
+                  			<option value="E8">E8</option>
+                  			<option value="F9">F9</option>
+                  		</select><br>
+                  <input name="subject8" required="required" type="text"value=""placeholder="subject 8"class="form-control-sm"><select name="score8"class="form-control-sm"name="subjectgrade8">
+                  			<option value="">grade</option>
+                  			<option value="A">A</option>
+                  			<option value="B2">B2</option>
+                  			<option value="B3">B3</option>
+                  			<option value="C4">C4</option>
+                  			<option value="C5">C5</option>
+                  			<option value="C6">C6</option>
+                  			<option value="D7">D7</option>
+                  			<option value="E8">E8</option>
+                  			<option value="F9">F9</option>
+                  		</select><br>
+                  <input name="subject9"required="required"type="text"value=""placeholder="subject 9"class="form-control-sm"><select name="score9"class="form-control-sm" name="subjectgrade9">
+                  			<option value="">grade</option>
+                  			<option value="A">A</option>
+                  			<option value="B2">B2</option>
+                  			<option value="B3">B3</option>
+                  			<option value="C4">C4</option>
+                  			<option value="C5">C5</option>
+                  			<option value="C6">C6</option>
+                  			<option value="D7">D7</option>
+                  			<option value="E8">E8</option>
+                  			<option value="F9">F9</option>
+                  		</select><br>
+ 
+                  </div>
+                  <div class="form-group"><h5>UTME JAMB DATA</h5>
+                  	<br>
+                  	
+                  	<select name="english"><option value="english">English</option></select><input type="number" placeholder="score"class="form-control-sm form-group"required="required"name="jamscore1"id="eng" onkeyup="jamb_total() "><br>
+                  	<input type="text" name="jamsub2"class=" form-group" placeholder="subject"required="required"><input type="number"placeholder="score"class="form-group form-control-sm"required="required" id="jsub2"name="jamscore2"onkeyup="jamb_total()"><br>
+                  	<input name="jamsub3"class="form-group"placeholder="subject"required="required" type="text"><input type="number"placeholder="score"class="form-group form-control-sm"required="required"id="jsub3"name="jamscore3"onkeyup="jamb_total()"><br>
+                  	<input name="jamsub4"class="form-group"placeholder="subject" required="required" type="text"><input type="number"placeholder="score"class="form-group form-control-sm"required="required" id="jsub4"name="jamscore4"onkeyup="jamb_total()"><br>
+                  
+                  <label style="margin-top:-1vh">Total UTME/JAMB Score</label><br>
+                  <button type="button"placeholder="Total score"class="form-control-sm form-group" id="total" name="jamtotal" onclick="return false"></button><br>
+                </div> 
+               
+                   
+                  <!-- <div class="form-group has-success">
+                    <label class="form-control-label" for="inputSuccess1">Valid input</label>
+                    <input class="form-control is-valid" id="inputValid" type="text">
+                    <div class="form-control-feedback">Success! You've done it.</div>
+                  </div> -->
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" id="chek" style="margin-left:-16vw"> 
+                      I agree to it that, all details herein are correct to the best of my knowledge.
+                    </label>
+                  </div>
+                  <div class="tile-footer">
+              		<button class="btn btn-primary" type="submit" id="submeat" disabled="">Submit</button>
+            	</div>
+                </form>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    {% elif record.status == 'processed' %}
+    
+    <main>
+    	<h5 style="color:rgb(0,150,136)"> Congratulations ! , Your form has been processed . Thank you for trusting us to deliver. We wish you success ahead ! <h5>
+    </main>
+    
+    {% else %}
+    
+    <main>
+    	<h5 > Thanks for trusting us to deliver ! Your form will be processed within 2 hours.You will receive an email once this is done. Thank you ! <h5>
+    </main>
+    
+    {% endif %}
+    {%endblock content %}
+    
+ 
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     

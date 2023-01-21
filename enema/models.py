@@ -82,4 +82,10 @@ class CustomerInfo(models.Model):
     payfor = models.CharField(max_length=150, null=True,blank=True)
     class Meta:
         db_table='customer_infos'
-   
+
+
+class  Myadmin(models.Model):
+    username= models.CharField(max_length=150, null=True,blank=True)
+    pwd= models.CharField(max_length=150, null=True,blank=True)
+    class Meta:
+        db_table='myadmin'
