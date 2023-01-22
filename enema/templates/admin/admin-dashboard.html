@@ -72,6 +72,9 @@
           	<ul class="treeview-menu">
             		<li><a class="treeview-item" href="{% url 'admin_lodgepanel' %}"><i class="icon fa fa-circle-o"></i>Lodges panel</a></li>
           	</ul>
+          	<ul class="treeview-menu">
+            		<li><a class="treeview-item" href=""><i class="icon fa fa-circle-o"></i>Inspection history (All lodges)</a></li>
+          	</ul>
         </li>
         
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span
@@ -239,6 +242,7 @@
     <script src="{% static 'admin-by-me/js/popper.min.js' %}"></script>
     <script src="{% static 'admin-by-me/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'admin-by-me/js/main.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin-by-me/js/plugins/bootstrap-datepicker.min.js' %}"></script>
     <!-- The javascript plugin to display page loading on top-->
     <script src="{% static 'admin-by-me/js/plugins/pace.min.js' %}"></script>
     <!-- Page specific javascripts-->
@@ -310,6 +314,17 @@
       	ga('send', 'pageview');
       }
     </script>
+    
+     <script type="text/javascript">
+     
+     $('#demoDate').datepicker({
+      	format: "dd/mm/yyyy",
+      	autoclose: true,
+      	todayHighlight: true
+      });
+      
+    </script>
+    
     
   </body>
 </html>

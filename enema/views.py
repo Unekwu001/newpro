@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 # from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 from django.contrib import messages
-from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo,Myadmin
+from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo,Myadmin,Schedule_Inspection
 
 # Create your views here.
 def index(request):
@@ -513,3 +513,30 @@ def admin_showlodge(request,id):
     agent= Agents.objects.get(id=record.agentid)
     allpics=Lodgepics.objects.all()
     return render(request,'admin/admin-showlodge.html',{'record':record,'allpics':allpics,'agent':agent})
+
+
+def schedulodge_inspection(request,id):
+    if request.method == 'GET':
+        lodge = Lodges.objects.get(id=id)
+        return render(request,'schedulingform.html',{'lodge':lodge})
+    else:
+        doi = request.POST.get('doi')
+        studentname = request.POST.get('name')
+        studentphone = request.POST.get('phone')
+        studentemail = request.POST.get('email')
+
+        """creating record"""
+        record = Schedule_Inspection(
+            date_of_inspection=doi,
+            studentname=studentname,
+            studentphone=studentphone,
+            studentemail=studentemail,
+            lodgename =lodge.name,
+            lodgeid =lodge.id
+        )
+        """saving record"""
+        record.save()
+        """redirecting to lodge panel"""
+        return redirect(admin_lodgepanel)
+    
+    

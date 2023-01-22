@@ -91,3 +91,15 @@ class  Myadmin(models.Model):
     pwd= models.CharField(max_length=150, null=True,blank=True)
     class Meta:
         db_table='myadmin'
+
+
+class Schedule_Inspection(models.Model):
+    date_of_inspection = models.CharField(max_length=150, null=True,blank=True)
+    studentname = models.CharField(max_length=150, null=True,blank=True)
+    studentphone = models.CharField(max_length=150, null=True,blank=True)
+    studentemail = models.CharField(max_length=150, null=True,blank=True)
+    lodgename = models.CharField(max_length=150, null=True,blank=True)
+    lodgeid = models.CharField(max_length=150, null=True,blank=True)
+    inspection_status = models.CharField(max_length=150, null=True,blank=True,default='inprogress')
+    class Meta:
+        db_table='schedule_inspection'
