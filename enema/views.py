@@ -520,6 +520,7 @@ def schedulodge_inspection(request,id):
         lodge = Lodges.objects.get(id=id)
         return render(request,'schedulingform.html',{'lodge':lodge})
     else:
+        lodge = Lodges.objects.get(id=id)
         doi = request.POST.get('doi')
         studentname = request.POST.get('name')
         studentphone = request.POST.get('phone')

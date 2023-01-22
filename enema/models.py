@@ -94,7 +94,7 @@ class  Myadmin(models.Model):
 
 
 class Schedule_Inspection(models.Model):
-    date_of_inspection = models.CharField(max_length=150, null=True,blank=True)
+    date_of_inspection = models.DateField(max_length=150, null=True,blank=True)
     studentname = models.CharField(max_length=150, null=True,blank=True)
     studentphone = models.CharField(max_length=150, null=True,blank=True)
     studentemail = models.CharField(max_length=150, null=True,blank=True)
