@@ -1,0 +1,129 @@
+{% extends 'property-grid.html'%}
+
+ {% block content %}
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8"style="margin-top:-9vh;">
+            <div class="title-single-box">{% if record %}
+              <h1 class="title-single"style="color:white;">{{record.name}}</h1>         
+              <span class="color-text-a"style="color:white;">Location: {{record.location}}</span><br>
+              <button class="color-text-a"style="color:white;border-color:orange;background-color:black;border-radius:20px;"onclick="return false;">{{record.price}} naira/yr</button>
+            </div>
+          </div>          
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+    <!-- ======= Property Single ======= -->
+    <section class="property-single nav-arrow-b">
+      <div class="container">
+        <div class="row justify-content-center">
+        
+          <div class="col-lg-5">
+            <div id="property-single-carousel" class="swiper">
+              <div class="swiper-wrapper"style="margin-bottom:-10vh">
+              {% if allpics %}
+              		{% for pic in allpics %}
+              		{% if pic.lodgeid_id == record.id %}
+                <div class="carousel-item-b swiper-slide" style="text-align:center;max-height:70vh">{% load static %}
+                  <img src="https://enema.s3.amazonaws.com/{{pic.picname}}" alt=""class="img-fluid"id="img-caro">
+                </div>
+                	{% endif %}
+                	{% endfor %}
+                {% endif %}
+              </div>
+            </div>
+            <div class="property-single-carousel-pagination carousel-pagination"></div>
+          </div>
+        
+        <div class="col-lg-7">
+        <div class="row">
+          <div class="col-sm-12"style="color:white;">
+
+            <div class="row justify-content-between">
+            
+              <div class="col-md-6 col-lg-7">
+                
+                <div class="property-summary"style="margin-top:-12vh">
+                  <div class="row">
+                 
+                    <div class="col-sm-12">
+                      <div class="title-box-d section-t4">
+                        <h3 class="title-d"style="color:white;">Quick Summary</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="summary-list">
+                    <ul class="list"style="color:white;">
+                      <li class="d-flex justify-content-between">
+                        <strong>Room-type:</strong>
+                        <span style="color:white;">{{record.lodgetype}}</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Status:</strong>
+                        <span style="color:white;">{{record.status}}</span>
+                      </li>
+                       
+                       
+                      <li class="d-flex justify-content-between">
+                        <strong>Tiled:</strong>
+                        <span style="color:white;">{{record.Tiled}}
+                          <!--<sup>2</sup>-->
+                        </span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>In-house Water:</strong>
+                        <span style="color:white;">{{record.water}}</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Light:</strong>
+                        <span style="color:white;">{{record.light}}</span>
+                      </li>
+                       
+                    </ul>
+                  </div>  
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+     
+          <div class="col-md-6"style="margin-bottom:20vh;color:white;">
+          	<div class="col-6" style="max-height:30;">
+          		<span>Agent name: {{agent.name}}(ID:{{agent.id}})</span>
+          		<img src="https://enema.s3.amazonaws.com/{{agent.pic}}" class="img-fluid" style="border-radius:5px">
+          	</div>
+          	
+             <div class="row"><!--button starts-->
+               <div class="col-5">
+          	   <a href="https://api.whatsapp.com/send/?phone={{record.phone}}&text=Hello%2C+I%E2%80%99m+interested+in+{{record.name}}+with+ID+{{record.id}}+https%3A%2F%2Fwww.enema.ng%2Fpropertydetails%2F{{record.id}}%2F&type=phone_number&app_absent=0">
+          	      <button class="btn btn-success"style="color:white;border-color:orange;">Chat with agent({{record.phone}})</button>
+          	   </a>
+               </div>
+                
+               <div class="col-5">
+                  <a href="{% url 'lodge_pay' record.id %}">
+          	     <button class="btn btn-success"style="color:white;border-color:orange;">Pay for inspection</button>
+               	  </a>
+               </div>
+               		 
+             <div><!--button row ends-->
+             
+               {% endif %}    
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    </div>
+          
+          
+  </div>
+  
+    </section><!-- End Property Single-->
+{% endblock %}
+  

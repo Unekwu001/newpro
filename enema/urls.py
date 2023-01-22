@@ -30,7 +30,13 @@ urlpatterns = [
     path('congratulations/',congrats,name='congrats'),
     path('admin_login/',admin_login,name='admin_login'),
     path('admindash/',admindash,name='admindash'),
-    path('adminagentpanel/',admin_agentpanel,name='admin_agentpanel')
+    path('adminagentpanel/',admin_agentpanel,name='admin_agentpanel'),
+    path('verify_agent/<int:id>/',verify_agent,name='verify_agent'),
+    path('adminlodgepanel/',admin_lodgepanel,name='admin_lodgepanel'),
+    path('adminlodgeavailable/<int:id>/',adminlodge_available,name='adminlodge_available'),
+    path('adminlodgeoccupied/<int:id>/',adminlodge_occupied,name='adminlodge_occupied'),
+    path('delete lodge/<int:id>/',admindelete_lodge,name='admindelete_lodge'),
+    path('admin_showlodge/<int:id>/',admin_showlodge,name='admin_showlodge'),
 ]
 
 if settings.DEBUG:

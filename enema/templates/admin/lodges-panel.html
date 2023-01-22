@@ -1,0 +1,147 @@
+{% extends 'admin/admin-dashboard.html' %}
+
+
+ 
+{% block content %}
+
+<!--title -->
+      <div class="app-title">
+        <div>
+        
+          <h1><i class="fa fa-th-list"></i>Lodges panel</h1>
+          
+           {% if messages %}
+        	{% for message in messages %}
+        	
+        	<p {% if message.tags %} class="alert alert-danger{{message.tags}}"{% endif %}
+        		style="background-color:pink;text-align:center;color:black;" >
+        		 {{message}} 
+        	</p>
+        	
+        	{% endfor %}
+           {% endif %}
+        
+       </div>
+    </div>
+<!--title ends-->
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>S/N</th>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Location</th>         
+                      <th>Price</th>
+                      <th>Tiled</th>
+                      <th>Light</th>
+                      <th>Water</th>
+                      <th>Status</th>
+                      <th>School</th>
+                      <th>Agent-Id</th>
+                      <th>Date uploaded</th>
+                      <th>Operations</th>
+                    </tr>
+                  </thead>
+                  
+                  <tbody>
+                  {% for lodge in lodges  %}
+                 
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{lodge.id}}</td>
+                      <td>{{lodge.name}}</td>
+                      <td>{{lodge.location}}</td>
+                      <td>{{lodge.price}}</td>
+                      <td>{{lodge.Tiled}}</td>
+                      <td>{{lodge.light}}</td>
+                      <td>{{lodge.water}}</td>
+                      <td>{{lodge.status}}</td>
+                      <td>{{lodge.region}}</td>
+                      <td>{{lodge.agentid}}</td>
+                      <td>{{lodge.date_uploaded}}</td>
+                      
+                      <td style="color:orange">
+                      			<a href="{% url 'admin_showlodge' lodge.id %}" target="_blank">Show lodge</a><br>
+                      			<a href="{% url 'admindelete_lodge' lodge.id %}"
+                      			onclick="
+                      		let k=(e)=>{	
+                      			let c= confirm('Are you sure you want to delete this lodge ?')
+                      				
+                      			if( c == false)
+                      			{
+                      			
+                      				e.preventDefault();
+                      			}
+                      			else
+                      			{
+                      			Swal.fire('deleted !')
+                      			}
+                      		      }
+                      		      k(event)
+                      			" style="color:red">Delete lodge</a><br>
+                      			
+                      		{% if lodge.status == "occupied" %}
+                      			<a href="{% url 'adminlodge_occupied' lodge.id %}"onclick="
+                      	let k=(e)=>{	
+                      			let c= confirm('Are you sure you want to switch to available ?')
+                      				
+                      			if( c == false)
+                      			{
+                      			
+                      				e.preventDefault();
+                      			}
+                      			else
+                      			{
+                      			Swal.fire('Marked as available')
+                      			}
+                      		}
+                      			k(event)
+                      			" style="color:red">Occupied</a><br>
+                      		{% else %}
+                      		
+                      			<a href="{% url 'adminlodge_available' lodge.id %}"onclick="
+                      	let k=(e)=>{	
+                      			let c= confirm('Are you sure you want to switch to occupied ?')
+                      				
+                      			if( c == false)
+                      			{
+                      			
+                      				e.preventDefault();
+                      			}
+                      			else
+                      			{
+                      			Swal.fire('Marked as occupied')
+                      			}
+                      		}
+                      			k(event)
+                      			" style="color:blue">Available</a><br>
+                      		{% endif %}	
+                      </td>
+                   </tr>
+                     {% endfor %}
+                     
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

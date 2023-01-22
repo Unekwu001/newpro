@@ -480,3 +480,36 @@ def admindash(request):
 def admin_agentpanel(request):
     agents = Agents.objects.all().order_by('-date_joined')
     return render(request,'admin/agents-panel.html',{'agents':agents})
+
+def verify_agent(request,id):
+    agent = Agents.objects.get(id=id)
+    agent.status = "verified"
+    agent.save()
+    return redirect(admin_agentpanel)
+
+def admin_lodgepanel(request):
+    lodges = Lodges.objects.all().order_by('-date_uploaded')
+    return render(request,'admin/lodges-panel.html',{'lodges':lodges})
+
+def adminlodge_occupied(request,id):
+    lodge = Lodges.objects.get(id=id)
+    lodge.status = "occupied"
+    lodge.save()
+    return redirect(admin_lodgepanel)
+
+def adminlodge_available(request,id):
+    lodge = Lodges.objects.get(id=id)
+    lodge.status = "available"
+    lodge.save()
+    return redirect(admin_lodgepanel)
+
+def admindelete_lodge(request,id):
+    lodge = Lodges.objects.get(id=id)
+    lodge.delete()
+    return redirect(admin_lodgepanel)
+
+def admin_showlodge(request,id):
+    record = Lodges.objects.get(id=id)
+    agent= Agents.objects.get(id=record.agentid)
+    allpics=Lodgepics.objects.all()
+    return render(request,'admin/admin-showlodge.html',{'record':record,'allpics':allpics,'agent':agent})

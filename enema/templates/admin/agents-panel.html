@@ -1,4 +1,4 @@
-{% extends 'admin-dashboard.html' %}
+{% extends 'admin/admin-dashboard.html' %}
 
 
  
@@ -43,6 +43,7 @@
                       <th>Id-type</th>
                       <th>Id-number</th>
                       <th>Date Joined</th>
+                      <th>Operations</th>-->
                     </tr>
                   </thead>
                   
@@ -50,7 +51,8 @@
                   {% for agent in agents  %}
                  
                     <tr>
-                      <td>{{loop.index}}</td>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{agent.id}}</td>
                       <td>{{agent.name}}</td>
                       <td>{{agent.email}}</td>
                       <td>{{agent.pwd}}</td>
@@ -63,10 +65,10 @@
                       <td style="color:orange">
                       			<a href="" target="_blank">More</a><br>
                       			
-                      			<a href=""target="_blank">Send email </a>
+                      			<a href=""target="_blank">email</a><br>
                       			
-                      		{% if agent.status=="pending" %}
-                      			<a href=""onclick="
+                      		{% if agent.status == "unverified" %}
+                      			<a href="{% url 'verify_agent' agent.id %}"onclick="
                       	let k=(e)=>{	
                       			let c= confirm('Are you sure ?')
                       				
@@ -81,9 +83,9 @@
                       			}
                       		}
                       			k(event)
-                      			">Pending</a><br>
+                      			" style="color:red">Unverified</a><br>
                       		{% else %}	
-                      			<h6>Done</h6>
+                      			<h6 style="color:blue">Verified</h6>
                       		{% endif %}	
                       </td>
                    </tr>
