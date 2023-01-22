@@ -40,25 +40,35 @@
                       <br><input required="required" class="form-control-sm" id="demoDate" type="text" placeholder="Select Date"name="doi">
                      </label>
                 </div>
+                <div class="col-12-lg col">                 
+                      <label data-aos="fade-up" for="demoDate">Time of inspection
+                      <br><select required="required" class="form-control-sm"  type="text" name="toi">
+                      		<option value="10am">10am</option>
+                      		<option value="12pm">12pm</option>
+                      		<option value="2pm">2pm</option>
+                      		<option value="4pm">4pm</option>
+                      </select>
+                     </label>
+                </div>
 		
 		<div class="col-12-lg col">
 			<label data-aos="fade-up">Enter name <br><input class="form-control-sm" data-aos="fade-up" type="text"
-			placeholder="full name" name="name"id="fullname"></label>
+			placeholder="full name" name="name"id="fullname"required="required"></label>
 		</div>
 		<div class="col-12-lg col">
 			<label data-aos="fade-up">Enter email<br><input class="form-control-sm" data-aos="fade-up" type="email"
-			 placeholder="Email" name="email"id="email"></label>
+			 placeholder="Email" name="email"id="email"required="required"></label>
 		</div>
  
 		 <div class="col-12-lg col">
 			<label data-aos="fade-up">Enter phone 
-			<br><input class="form-control-sm" data-aos="fade-up" type="number"placeholder="Phone number" name="phone"id="phone">
+			<br><input class="form-control-sm" data-aos="fade-up" type="number"placeholder="Phone number"
+			 name="phone"id="phone"required="required">
 			</label><br>	
 		  </div>
 		  
 		<div class="col">
-			<button class="btn btn-success mt-3" type="submit" onclick="alert('review your submission')" 
-				style="border-color:white;">
+			<button class="btn btn-success mt-3" type="submit"  style="border-color:white;">
 				Go
 			</button>
 		</div>

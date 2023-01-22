@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from datetime import datetime,timedelta
 # from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 from django.contrib import messages
@@ -522,13 +523,16 @@ def schedulodge_inspection(request,id):
     else:
         lodge = Lodges.objects.get(id=id)
         doi = request.POST.get('doi')
+        toi = request.POST.get('toi')
         studentname = request.POST.get('name')
         studentphone = request.POST.get('phone')
         studentemail = request.POST.get('email')
+        # doi_clean = datetime.strftime('%M %B %Y')
 
         """creating record"""
         record = Schedule_Inspection(
             date_of_inspection=doi,
+            timeof_inspection=toi,
             studentname=studentname,
             studentphone=studentphone,
             studentemail=studentemail,
@@ -537,6 +541,17 @@ def schedulodge_inspection(request,id):
         )
         """saving record"""
         record.save()
+        """sending scheduling email"""
+        mail = EmailMessage(
+                    subject = 'Inspection Day.',
+                    body = f'Congratulations! , You have been scheduled as follows: \n Date of Inspection: {doi} \n Time of inspection: {toi} \n\n Your friend, Jemimah. \n Enema corporations.',
+                    from_email = 'info@enema.ng',
+                    to = [studentemail],
+                    reply_to = [studentemail],
+                    headers={'Content-Type': 'text/plain'},)
+        mail.send()
+        """flash message"""
+        messages.info(request,'weldone. A student has been scheduled.')
         """redirecting to lodge panel"""
         return redirect(admin_lodgepanel)
     
