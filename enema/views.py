@@ -1,6 +1,5 @@
 from django.shortcuts import render,redirect
-from datetime import datetime,timedelta
-# from django.core.mail import send_mail
+from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 from django.contrib import messages
 from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo,Myadmin,Schedule_Inspection
@@ -539,20 +538,13 @@ def schedulodge_inspection(request,id):
             lodgename =lodge.name,
             lodgeid =lodge.id
         )
-        """saving record"""
         record.save()
-        """sending scheduling email"""
-        mail = EmailMessage(
-                    subject = 'Inspection Day.',
-                    body = f'Congratulations! , You have been scheduled as follows: \n Date of Inspection: {doi} \n Time of inspection: {toi} \n\n Your friend, Jemimah. \n Enema corporations.',
-                    from_email = 'info@enema.ng',
-                    to = [studentemail],
-                    reply_to = [studentemail],
-                    headers={'Content-Type': 'text/plain'},)
-        mail.send()
-        """flash message"""
-        messages.info(request,'weldone. A student has been scheduled.')
-        """redirecting to lodge panel"""
+        send_mail('Inspection Day!',
+        f'Congratulations!, your Inspection day has been scheduled as follows: \n Date of inspection: {doi} \n Time of inspection: {toi} \n\n Hoping to meet with you soon. Your friend, Jemimah',
+        'info@enema.ng',
+        [f'{studentemail}'],
+        fail_silently=False)
+        messages.info(request,'Well done. A student has been scheduled.')
         return redirect(admin_lodgepanel)
     
     
