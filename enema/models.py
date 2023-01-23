@@ -111,9 +111,9 @@ class Schedule_Inspection(models.Model):
 
     def save(self,*args,**kwargs):
         message = client.messages.create(
-                              body=f'Congratulations {self.studentname} ! You have been scheduled to inspect {self.lodge.name} as follows: \n Date of inspection: {doi} \n Time of inspection: {toi} \n Meeting venue: Kitchen 54 Tammah. \n\n Have a wonderful day ahead. \n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
-                              from_='+12182281796',
-                              to={self.studentphone}
-                          )
+            body=f'Congratulations {self.studentname} ! You have been scheduled to inspect {self.lodge.name} as follows: \n Date of inspection: {doi} \n Time of inspection: {toi} \n Meeting venue: Kitchen 54 Tammah. \n\n Have a wonderful day ahead. \n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
+            from_='+12182281796',
+            to={self.studentphone}
+        )
         print(message.sid)
         return super().save(*args,**kwargs)
