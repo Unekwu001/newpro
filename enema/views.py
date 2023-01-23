@@ -540,7 +540,7 @@ def schedulodge_inspection(request,id):
         )
         record.save()
         send_mail('Lodge Inspection Day!',
-        f'Congratulations! . An inspection has been scheduled for {lodge.name} as follows: \n Date of inspection: {doi} \n Time of inspection: {toi} \n\n Have a wonderful day ahead. \n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
+        f'Congratulations {{studentname}} ! An inspection has been scheduled for {lodge.name} as follows: \n Date of inspection: {doi} \n Time of inspection: {toi} \n\n Have a wonderful day ahead. \n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
         'enema.corporations.admin@enema.ng',
         [f'{studentemail}'],
         fail_silently=False)
