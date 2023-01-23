@@ -107,17 +107,17 @@ class Schedule_Inspection(models.Model):
     class Meta:
         db_table='schedule_inspection'
 
-    def __str__(self):
-        return str(self.studentname)
+    # def __str__(self):
+    #     return str(self.studentname)
 
-    def save(self,*args,**kwargs):
-        account_sid = Collect.mytwilioSid
-        auth_token = Collect.mytwilioAuth
-        client = Client(account_sid, auth_token)
-        message = client.messages.create(
-            body=f'Congratulations {self.studentname} ! You have been scheduled to inspect {self.lodgename} as follows: \n Date of inspection: {self.date_of_inspection} \n Time of inspection: {self.timeof_inspection} \n Meeting venue: Kitchen 54 Tammah. \n\n Have a wonderful day ahead. \n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
-            from_='+12182281796',
-            to={self.studentphone}
-        )
-        print(message.sid)
-        return super().save(*args,**kwargs)
+    # def save(self,*args,**kwargs):
+    #     account_sid = Collect.mytwilioSid
+    #     auth_token = Collect.mytwilioAuth
+    #     client = Client(account_sid, auth_token)
+    #     message = client.messages.create(
+    #         body=f'Congratulations {self.studentname} ! You have been scheduled to inspect {self.lodgename} as follows: \n Date of inspection: {self.date_of_inspection} \n Time of inspection: {self.timeof_inspection} \n Meeting venue: Kitchen 54 Tammah. \n\n Have a wonderful day ahead. \n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
+    #         from_='+12182281796',
+    #         to={self.studentphone}
+    #     )
+    #     print(message.sid)
+    #     return super().save(*args,**kwargs)

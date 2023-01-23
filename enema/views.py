@@ -550,7 +550,7 @@ def schedulodge_inspection(request,id):
             studentphone,
             f'Congratulations {studentname} ! You have been scheduled to inspect {lodge.name} as follows: \n Date of inspection: {doi} \n Time of inspection: {toi} \n Meeting venue: Kitchen 54 Tammah. \n\n Have a wonderful day ahead. \n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
             23,
-            10) 
+            12) 
         
         
 
