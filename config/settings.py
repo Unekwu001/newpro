@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+from twilio.rest import Client
 from enema.deets import Collect
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -169,3 +170,9 @@ AWS_ACCESS_KEY_ID = Collect.id4aws
 AWS_SECRET_ACCESS_KEY = Collect.secretkey4aws
 AWS_STORAGE_BUCKET_NAME = 'enema'
 AWS_QUERYSTRING_AUTH = False
+
+
+#using twilio to send sms
+account_sid = os.environ[Collect.mytwilioSid]
+auth_token = os.environ[Collect.mytwilioAuth]
+client = Client(account_sid, auth_token)

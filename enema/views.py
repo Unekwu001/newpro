@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
-from sms import send_sms
 from django.contrib import messages
+from config.settings import client
 from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo,Myadmin,Schedule_Inspection
 
 # Create your views here.
@@ -546,12 +546,14 @@ def schedulodge_inspection(request,id):
         [f'{studentemail}'],
         fail_silently=False)
         
-        send_sms(
-        'Here is the message',
-        '+2348165408132',
-        [studentphone],
-        fail_silently=False
-        )
+        message = client.messages.create(
+                              body=f'Congratulations {studentname} ! You have been scheduled to inspect {lodge.name} as follows: \n Date of inspection: {doi} \n Time of inspection: {toi} \n Meeting venue: Kitchen 54 Tammah. \n\n Have a wonderful day ahead. \n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
+                              from_='+12182281796',
+                              to=studentphone
+                          )
+        print(message.sid)
+        
+
         messages.info(request,'Well done. A student has been scheduled.')
 
         return redirect(admin_lodgepanel)
