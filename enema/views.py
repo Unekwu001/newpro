@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
+from sms import send_sms
 from django.contrib import messages
 from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo,Myadmin,Schedule_Inspection
 
@@ -544,7 +545,15 @@ def schedulodge_inspection(request,id):
         'enema.corporations.admin@enema.ng',
         [f'{studentemail}'],
         fail_silently=False)
+        
+        send_sms(
+        'Here is the message',
+        '+2348165408132',
+        [studentphone],
+        fail_silently=False
+        )
         messages.info(request,'Well done. A student has been scheduled.')
+
         return redirect(admin_lodgepanel)
     
     
