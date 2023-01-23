@@ -1,4 +1,5 @@
 from django.db import models
+from config.settings import client
 
 # Create your models here.
 class Schools(models.Model):
@@ -104,3 +105,15 @@ class Schedule_Inspection(models.Model):
     inspection_status = models.CharField(max_length=150, null=True,blank=True,default='inprogress')
     class Meta:
         db_table='schedule_inspection'
+
+    def __str__(self):
+        return str(self.studentname)
+
+    def save(self,*args,**kwargs):
+        message = client.messages.create(
+                              body=f'Congratulations {self.studentname} ! You have been scheduled to inspect {self.lodge.name} as follows: \n Date of inspection: {doi} \n Time of inspection: {toi} \n Meeting venue: Kitchen 54 Tammah. \n\n Have a wonderful day ahead. \n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
+                              from_='+12182281796',
+                              to={self.studentphone}
+                          )
+        print(message.sid)
+        return super().save(*args,**kwargs)
