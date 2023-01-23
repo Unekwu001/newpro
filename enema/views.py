@@ -551,7 +551,7 @@ def schedulodge_inspection(request,id):
                               from_='+12182281796',
                               to=studentphone
                           )
-        
+        print(message.sid)
         
 
         messages.info(request,'Well done. A student has been scheduled.')

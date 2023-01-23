@@ -173,6 +173,6 @@ AWS_QUERYSTRING_AUTH = False
 
 
 #using twilio to send sms
-account_sid = os.environ[Collect.mytwilioSid]
-auth_token = os.environ[Collect.mytwilioAuth]
+account_sid = Collect.mytwilioSid
+auth_token = Collect.mytwilioAuth
 client = Client(account_sid, auth_token)
