@@ -171,8 +171,8 @@ AWS_SECRET_ACCESS_KEY = Collect.secretkey4aws
 AWS_STORAGE_BUCKET_NAME = 'enema'
 AWS_QUERYSTRING_AUTH = False
 
-
-#using twilio to send sms
+ 
+#twilio message settings
 account_sid = Collect.mytwilioSid
 auth_token = Collect.mytwilioAuth
 client = Client(account_sid, auth_token)
