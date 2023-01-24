@@ -38,6 +38,7 @@ urlpatterns = [
     path('delete lodge/<int:id>/',admindelete_lodge,name='admindelete_lodge'),
     path('admin_showlodge/<int:id>/',admin_showlodge,name='admin_showlodge'),
     path('schedulodge_inspection/<int:id>/',schedulodge_inspection,name='schedulodge_inspection'),
+    path('schedulehistory/<int:id>/',schedulehistory,name='schedulehistory'),
 ]
 
 if settings.DEBUG:
