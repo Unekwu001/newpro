@@ -2,7 +2,6 @@ from django.shortcuts import render,redirect
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 from django.contrib import messages
-import pywhatkit
 from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo,Myadmin,Schedule_Inspection
 
 # Create your views here.
@@ -545,14 +544,6 @@ def schedulodge_inspection(request,id):
         'enema.corporations.admin@enema.ng',
         [f'{studentemail}'],
         fail_silently=False)
-
-        pywhatkit.sendwhatmsg(
-            studentphone,
-            f'Congratulations {studentname} ! You have been scheduled to inspect {lodge.name} as follows: \n Date of inspection: {doi} \n Time of inspection: {toi} \n Meeting venue: Kitchen 54 Tammah. \n\n Have a wonderful day ahead. \n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
-            23,
-            30) 
-        
-        
 
         messages.info(request,'Well done. A student has been scheduled.')
 
