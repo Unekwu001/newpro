@@ -553,6 +553,7 @@ def schedulodge_inspection(request,id):
         
         date = record.date_of_inspection
         date = datetime.datetime.strptime(date,'%Y-%m-%d')
+        date = date.strftime('%B, %d %m, %Y')
 
         message = client.messages.create(
             body=f'Congratulations {studentname} ! You have been scheduled to inspect {lodge.name} as follows: \n Date of inspection: {date} \n Time of inspection: {toi} \n Meeting venue: Kitchen 54 Tammah. \n\n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
