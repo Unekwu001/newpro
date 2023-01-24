@@ -37,6 +37,7 @@
                     <tr>
                       <th>S/N</th>
                       <th>Lodge name</th>
+                      <th>RECORD ID</th>
                       <th>Lodge ID</th>         
                       <th>Student name</th>
                       <th>Student phone</th>
@@ -53,6 +54,7 @@
                  
                     <tr>
                       <td>{{forloop.counter}}</td>
+                      <td>{{history.id}}</td>
                       <td>{{history.lodgename}}</td>
                       <td>{{history.lodgeid}}</td>
                       <td>{{history.studentname}}</td>
@@ -60,7 +62,12 @@
                       <td>{{history.studentemail}}</td>
                       <td>{{history.date_of_inspection}}</td>
                       <td>{{history.timeof_inspection}}</td>
-                      <td>{{history.inspection_status}}<br>
+                      
+                      {% if history.inspection_status == "inprogress" %}
+                      <td style="color:red">{{history.inspection_status}}<br>
+                      {% else %}
+                      <td style="color:green">{{history.inspection_status}}<br>
+                      {% endif %}
                       		<a href="{% url 'toggle_schedulehistory' history.id %}"
                       			onclick="
                       		let k=(e)=>{	
@@ -74,7 +81,7 @@
                       			 
                       		      }
                       		      k(event)
-                      			" style="color:red">{{history.inspection_status}}</a><br>
+                      			" style="color:red" class="btn btn-success">Toggle</a><br>
                       </td>
                       <td>
                       <a href="{% url 'reschedule_student' history.id %}"onclick="
