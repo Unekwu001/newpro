@@ -545,6 +545,8 @@ def schedulodge_inspection(request,id):
         [f'{studentemail}'],
         fail_silently=False)
 
+        
+
         messages.info(request,'Well done. A student has been scheduled.')
 
         return redirect(admin_lodgepanel)
