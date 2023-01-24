@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 from config.settings import client
 from django.contrib import messages
+from datetime import datetime
 from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo,Myadmin,Schedule_Inspection
 
 # Create your views here.
@@ -549,8 +550,9 @@ def schedulodge_inspection(request,id):
         fail_silently=False)
 
         """sending text message to the student's phone number using twilio"""
+        date=doi.datetime.strftime('%Y, %B %d')
         message = client.messages.create(
-            body=f'Congratulations {studentname} ! You have been scheduled to inspect {lodge.name} as follows: \n Date of inspection: {doi} \n Time of inspection: {toi} \n Meeting venue: Kitchen 54 Tammah. \n\n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
+            body=f'Congratulations {studentname} ! You have been scheduled to inspect {lodge.name} as follows: \n Date of inspection: {date} \n Time of inspection: {toi} \n Meeting venue: Kitchen 54 Tammah. \n\n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
             from_='+12182281796',
             to=f'+234{studentphone}'
         )
@@ -563,6 +565,7 @@ def schedulodge_inspection(request,id):
 def schedulehistory(request,id):
     histories = Schedule_Inspection.objects.filter(lodgeid=id)
     return render(request,'admin/schedulehistory.html',{'histories':histories})
+
 
 def reschedule_student(request,id):
     if request.method == "GET":
