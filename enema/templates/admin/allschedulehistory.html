@@ -1,0 +1,114 @@
+{% extends 'admin/admin-dashboard.html' %}
+
+
+ 
+{% block content %}
+
+{% if histories %}
+<!--title -->
+      <div class="app-title">
+        <div>
+        
+          <h1><i class="fa fa-th-list"></i>Schedule history for all lodges</h1>
+        
+       </div>
+    </div>
+    
+    	{% if messages %}
+        	{% for message in messages %}
+        	
+        	<p {% if message.tags %} class="alert alert-success{{message.tags}} btn btn-success"{% endif %}
+        		style="text-align:center;" >
+        		 {{message}} 
+        	</p>
+        	
+        	{% endfor %}
+         {% endif %}
+    
+<!--title ends-->
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>S/N</th>
+                      <th>Lodge name</th>
+                      <th>Lodge ID</th>         
+                      <th>Student name</th>
+                      <th>Student phone</th>
+                      <th>Student email</th>
+                      <th>Date of inspection</th>
+                      <th>Time of inspection</th>
+                      <th>Inspection status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  
+                  <tbody>
+                  {% for history in histories  %}
+                 
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{history.lodgename}}</td>
+                      <td>{{history.lodgeid}}</td>
+                      <td>{{history.studentname}}</td>
+                      <td>{{history.studentphone}}</td>
+                      <td>{{history.studentemail}}</td>
+                      <td>{{history.date_of_inspection}}</td>
+                      <td>{{history.timeof_inspection}}</td>
+                      <td>{{history.inspection_status}}</td>
+                      <td>
+                      <a href="{% url 'reschedule_student' history.id %}"onclick="
+                      	let k=(e)=>{	
+                      			let c= confirm('Are you sure you want to reschedule this student ?')
+                      				
+                      			if( c == false)
+                      			{
+                      			
+                      				e.preventDefault();
+                      			}
+                      			 
+                      		}
+                      			k(event)
+                      			" style="color:purple">Reschedule student</a><br>
+                      </td>	
+                   </tr>
+                   
+                   {% endfor %}
+                     
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+{% else %}
+ <!--title -->
+      <div class="app-title">
+        <div>
+        
+          <h1><i class="fa fa-th-list"></i>No schedule history found</h1>
+        
+       </div>
+    </div>
+<!--title ends-->   
+{% endif %}
+
+
+{% endblock %}
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

@@ -467,6 +467,7 @@ def admin_login(request):
             messages.info(request,'Invalid credentials. ')
             return redirect(admin_login)
 
+
 def admindash(request):
     session_collected=request.session.get('adminloggedin')
     if session_collected:
@@ -479,9 +480,14 @@ def admindash(request):
         messages.info(request,'Kindly login to continue.') 
         return redirect(admin_login)
 
+
+
+
 def admin_agentpanel(request):
     agents = Agents.objects.all().order_by('-date_joined')
     return render(request,'admin/agents-panel.html',{'agents':agents})
+
+
 
 def verify_agent(request,id):
     agent = Agents.objects.get(id=id)
@@ -489,9 +495,12 @@ def verify_agent(request,id):
     agent.save()
     return redirect(admin_agentpanel)
 
+
+
 def admin_lodgepanel(request):
     lodges = Lodges.objects.all().order_by('-date_uploaded')
     return render(request,'admin/lodges-panel.html',{'lodges':lodges})
+
 
 def adminlodge_occupied(request,id):
     lodge = Lodges.objects.get(id=id)
@@ -499,22 +508,26 @@ def adminlodge_occupied(request,id):
     lodge.save()
     return redirect(admin_lodgepanel)
 
+
 def adminlodge_available(request,id):
     lodge = Lodges.objects.get(id=id)
     lodge.status = "available"
     lodge.save()
     return redirect(admin_lodgepanel)
 
+
 def admindelete_lodge(request,id):
     lodge = Lodges.objects.get(id=id)
     lodge.delete()
     return redirect(admin_lodgepanel)
+
 
 def admin_showlodge(request,id):
     record = Lodges.objects.get(id=id)
     agent= Agents.objects.get(id=record.agentid)
     allpics=Lodgepics.objects.all()
     return render(request,'admin/admin-showlodge.html',{'record':record,'allpics':allpics,'agent':agent})
+
 
 
 def schedulodge_inspection(request,id):
@@ -566,6 +579,8 @@ def schedulodge_inspection(request,id):
         messages.info(request,'Well done. A student has been scheduled.')
         return redirect(admin_lodgepanel)
 
+
+
 def schedulehistory(request,id):
     histories = Schedule_Inspection.objects.filter(lodgeid=id)
     return render(request,'admin/schedulehistory.html',{'histories':histories})
@@ -594,7 +609,9 @@ def reschedule_student(request,id):
         return redirect(schedulehistory,record.lodgeid)
 
 
-
+def allschedulehistory(request):
+    histories = Schedule_Inspection.objects.filter.all()
+    return render(request,'admin/allschedulehistory.html',{'histories':histories})
 
 
 
