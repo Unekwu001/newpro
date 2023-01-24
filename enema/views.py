@@ -1,9 +1,9 @@
+import time
 from django.shortcuts import render,redirect
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 from config.settings import client
 from django.contrib import messages
-from time import strftime
 from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo,Myadmin,Schedule_Inspection
 
 # Create your views here.
@@ -550,7 +550,10 @@ def schedulodge_inspection(request,id):
         fail_silently=False)
 
         """sending text message to the student's phone number using twilio"""
-        date=doi.strftime('%Y, %B %d')
+        doi = time.mktime(doi)
+
+        date = time.strftime('%d %B,(%A) %Y',time.gmtime(doi))
+
         message = client.messages.create(
             body=f'Congratulations {studentname} ! You have been scheduled to inspect {lodge.name} as follows: \n Date of inspection: {date} \n Time of inspection: {toi} \n Meeting venue: Kitchen 54 Tammah. \n\n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
             from_='+12182281796',
