@@ -40,7 +40,8 @@ urlpatterns = [
     path('schedulodge_inspection/<int:id>/',schedulodge_inspection,name='schedulodge_inspection'),
     path('schedulehistory/<int:id>/',schedulehistory,name='schedulehistory'),
     path('reschedule_student/<int:id>/',reschedule_student,name='reschedule_student'),
-    path('allschedulehistory/',allschedulehistory,name='allschedulehistory')
+    path('allschedulehistory/',allschedulehistory,name='allschedulehistory'),
+    path('toggle_schedulehistory/<int:id>/',toggle_schedulehistory,name='toggle_schedulehistory'),
 ]
 
 if settings.DEBUG:

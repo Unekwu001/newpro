@@ -614,6 +614,20 @@ def allschedulehistory(request):
     return render(request,'admin/allschedulehistory.html',{'histories':histories})
 
 
-
-
+def toggle_schedulehistory(request,id):
+    record = Schedule_Inspection.objects.get(id=id)
+    if record.inspection_status == 'fulfilled':
+        record.inspection_status='inprogress'
+        record.save()
+        messages.info(request,f'Inspection status has changed to "inprogress" for record with ID {record.id}.')
+        return redirect(allschedulehistory)
+    elif record.inspection_status == 'inprogress':
+        record.inspection_status='fulfilled'
+        record.save()
+        messages.info(request,f'Inspection status has changed to "fulfilled" for record with ID {record.id}.')
+        return redirect(allschedulehistory)
+    else:
+        return redirect(allschedulehistory)
     
+
+

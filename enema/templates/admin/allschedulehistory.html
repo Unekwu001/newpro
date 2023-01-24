@@ -60,7 +60,22 @@
                       <td>{{history.studentemail}}</td>
                       <td>{{history.date_of_inspection}}</td>
                       <td>{{history.timeof_inspection}}</td>
-                      <td>{{history.inspection_status}}</td>
+                      <td>{{history.inspection_status}}<br>
+                      		<a href="{% url 'toggle_schedulehistory' history.id %}"
+                      			onclick="
+                      		let k=(e)=>{	
+                      			let c= confirm('You are about to toggle the status of record with ID {{history.id}}')
+                      				
+                      			if( c == false)
+                      			{
+                      			
+                      				e.preventDefault();
+                      			}
+                      			 
+                      		      }
+                      		      k(event)
+                      			" style="color:red">{{history.inspection_status}}</a><br>
+                      </td>
                       <td>
                       <a href="{% url 'reschedule_student' history.id %}"onclick="
                       	let k=(e)=>{	
