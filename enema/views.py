@@ -550,7 +550,7 @@ def schedulodge_inspection(request,id):
         fail_silently=False)
 
         """sending text message to the student's phone number using twilio"""
-        doi = time.mktime(doi)
+        doi = time.mktime(doi,)
 
         date = time.strftime('%d %B,(%A) %Y',time.gmtime(doi))
 
