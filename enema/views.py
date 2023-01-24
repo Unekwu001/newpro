@@ -556,9 +556,12 @@ def schedulodge_inspection(request,id):
         )
         print(message.sid)
         
-
+        """flash message"""
         messages.info(request,'Well done. A student has been scheduled.')
-
         return redirect(admin_lodgepanel)
-    
+
+def schedulehistory(request,id):
+    histories = Schedule_Inspection.objects.filter(lodgeid=id)
+    return render(request,'admin/schedulehistory.html',{'histories':histories})
+
     
