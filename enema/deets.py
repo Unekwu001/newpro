@@ -5,6 +5,6 @@ class Collect:
     emailhost = 'smtppro.zoho.com'
     hostuser = 'info@enema.ng'
     emailhostpwd = '-8qijjUd'
-    mytwilioAuth ='d528c04e438eabf242ec38da37fd6dc8'
+    mytwilioAuth ='39d0a6610b7a0f92c0946943e66b0af7'
     mytwilioSid = 'ACba63b5c99050fa08e8179373cd7f7557'
     
