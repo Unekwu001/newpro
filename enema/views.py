@@ -552,7 +552,7 @@ def schedulodge_inspection(request,id):
         """sending text message to the student's phone number using twilio"""
         
         date = record.date_of_inspection
-        date = datetime.datetime.strptime(date,'%d %B, %Y')
+        date = datetime.datetime.strptime(date,'%Y %B, %d')
 
         message = client.messages.create(
             body=f'Congratulations {studentname} ! You have been scheduled to inspect {lodge.name} as follows: \n Date of inspection: {date} \n Time of inspection: {toi} \n Meeting venue: Kitchen 54 Tammah. \n\n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
