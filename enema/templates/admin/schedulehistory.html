@@ -13,6 +13,18 @@
         
        </div>
     </div>
+    
+    	{% if messages %}
+        	{% for message in messages %}
+        	
+        	<p {% if message.tags %} class="alert alert-success{{message.tags}} btn btn-success"{% endif %}
+        		style="text-align:center;" >
+        		 {{message}} 
+        	</p>
+        	
+        	{% endfor %}
+         {% endif %}
+    
 <!--title ends-->
       
       <div class="row">
@@ -32,6 +44,7 @@
                       <th>Date of inspection</th>
                       <th>Time of inspection</th>
                       <th>Inspection status</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   
@@ -47,7 +60,22 @@
                       <td>{{history.studentemail}}</td>
                       <td>{{history.date_of_inspection}}</td>
                       <td>{{history.timeof_inspection}}</td>
-                      <td>{{history.inspection_status}}</td>	
+                      <td>{{history.inspection_status}}</td>
+                      <td>
+                      <a href="{% url 'reschedule_student' history.id %}"onclick="
+                      	let k=(e)=>{	
+                      			let c= confirm('Are you sure you want to reschedule this student ?')
+                      				
+                      			if( c == false)
+                      			{
+                      			
+                      				e.preventDefault();
+                      			}
+                      			 
+                      		}
+                      			k(event)
+                      			" style="color:purple">Reschedule student</a><br>
+                      </td>	
                    </tr>
                    
                    {% endfor %}

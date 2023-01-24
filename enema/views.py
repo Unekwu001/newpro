@@ -564,4 +564,32 @@ def schedulehistory(request,id):
     histories = Schedule_Inspection.objects.filter(lodgeid=id)
     return render(request,'admin/schedulehistory.html',{'histories':histories})
 
+def reschedule_student(request,id):
+    if request.method == "GET":
+        record = Schedule_Inspection.objects.get(id=id)
+        return render(request,'reschedulingform.html',{'record':record})
+    else:
+        record = Schedule_Inspection.objects.get(id=id)
+        doi=request.POST.get('doi')
+        toi=request.POST.get('toi')
+        studentname=request.POST.get('name')
+        studentphone=request.POST.get('phone')
+        studentemail=request.POST.get('email')
+
+        record.date_of_inspection=doi
+        record.timeof_inspection=toi
+        record.studentname=studentname
+        record.studentphone=studentphone
+        record.studentemail=studentemail
+
+        record.save()
+        messages.info(request,f' {record.studentname} has been successfully rescheduled for {record.lodgename}.')
+        return redirect(schedulehistory,record.lodgeid)
+
+
+
+
+
+
+
     

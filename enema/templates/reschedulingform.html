@@ -1,0 +1,93 @@
+{% extends 'admin/admin-dashboard.html' %}
+
+{% load static %}
+{% block content %}
+<section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row gy-4 d-flex justify-content-between">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+        
+      	 
+      
+	<form method="post" action="{% url 'schedulodge_inspection' lodge.id %}" style="color:white;padding:5%;background-color:rgb(25,135,84);text-align:center">
+		<div class="col-12">
+		  <img src="{% static 'assets/img/enems.png' %}" class="img-fluid" alt="enema"height="100vh"width="80vw">
+		</div>
+		<h5 data-aos="fade-up">Rescheduling of {{record.studentname}} for {{record.lodgename}}</h5>
+
+	
+ 
+	
+<div class="row justify-content-between" >
+
+	<div class="col-12 ">
+	
+		
+		{% csrf_token %}
+		
+		<div class="col-12-lg col">                 
+                      <label data-aos="fade-up" for="demoDate">Date of inspection
+                      <br><input required="required" class="form-control-sm" id="demoDate" type="text" placeholder="Select Date"name="doi"
+                      value="{{record.date_of_inspection}}">
+                     </label>
+                </div>
+                <div class="col-12-lg col">                 
+                      <label data-aos="fade-up" for="demoDate">Time of inspection
+                      <br><select required="required" class="form-control-sm"  type="text" name="toi">
+                      		<option value="{{record.timeof_inspection}}">{{record.timeof_inspection}}</option>
+                      		<option value="10am">10am</option>
+                      		<option value="12pm">12pm</option>
+                      		<option value="2pm">2pm</option>
+                      		<option value="4pm">4pm</option>
+                      </select>
+                     </label>
+                </div>
+		
+		<div class="col-12-lg col">
+			<label data-aos="fade-up">Enter name <br><input class="form-control-sm" data-aos="fade-up" type="text"
+			placeholder="full name" name="name"id="fullname"required="required" value="{{record.studentname}}"></label>
+		</div>
+		<div class="col-12-lg col">
+			<label data-aos="fade-up">Enter email<br><input class="form-control-sm" data-aos="fade-up" type="email"
+			 placeholder="Email" name="email"id="email"required="required" value="{{record.studentemail}}"></label>
+		</div>
+ 
+		 <div class="col-12-lg col">
+			<label data-aos="fade-up">Enter phone 
+			<br><input class="form-control-sm" data-aos="fade-up" type="number"placeholder="Phone number"
+			 name="phone"id="phone"required="required" value="{{record.studentphone}}">
+			</label><br>	
+		  </div>
+		  
+		<div class="col">
+			<button class="btn btn-success mt-3" type="submit"  style="border-color:white;">
+				Go
+			</button>
+		</div>
+	</div>
+	
+	
+</div><!---id payonlineform ends-->
+	 
+			
+	</form>
+		
+	</div>
+	
+	
+	
+      </div>
+    </div>
+</section> 
+ 
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

@@ -13,7 +13,7 @@
            {% if messages %}
         	{% for message in messages %}
         	
-        	<p {% if message.tags %} class="alert alert-danger{{message.tags}} btn btn-success"{% endif %}
+        	<p {% if message.tags %} class="alert alert-success{{message.tags}} btn btn-success"{% endif %}
         		style="text-align:center;" >
         		 {{message}} 
         	</p>
