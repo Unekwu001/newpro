@@ -1,4 +1,4 @@
-from datetime import datetime,timedelta
+import datetime
 from django.shortcuts import render,redirect
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
@@ -550,9 +550,9 @@ def schedulodge_inspection(request,id):
         fail_silently=False)
 
         """sending text message to the student's phone number using twilio"""
-
+        
         date = record.date_of_inspection
-        date = date.strftime('%d %B,(%A) %Y')
+        date = datetime.datetime.strftime(date,'%d %B,(%A) %Y')
 
         message = client.messages.create(
             body=f'Congratulations {studentname} ! You have been scheduled to inspect {lodge.name} as follows: \n Date of inspection: {date} \n Time of inspection: {toi} \n Meeting venue: Kitchen 54 Tammah. \n\n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
