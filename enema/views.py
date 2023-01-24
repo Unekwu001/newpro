@@ -610,7 +610,7 @@ def reschedule_student(request,id):
 
 
 def allschedulehistory(request):
-    histories = Schedule_Inspection.objects.filter.all()
+    histories = Schedule_Inspection.objects.all()
     return render(request,'admin/allschedulehistory.html',{'histories':histories})
 
 
