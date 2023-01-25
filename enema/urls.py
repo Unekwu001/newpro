@@ -41,6 +41,7 @@ urlpatterns = [
     path('reschedule_student/<int:id>/',reschedule_student,name='reschedule_student'),
     path('allschedulehistory/',allschedulehistory,name='allschedulehistory'),
     path('toggle_schedulehistory/<int:id>/',toggle_schedulehistory,name='toggle_schedulehistory'),
+    path('admin_roomiespanel/',admin_roomiespanel,name='admin_roomiespanel'),
 ]
 
 if settings.DEBUG:

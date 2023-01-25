@@ -632,3 +632,6 @@ def toggle_schedulehistory(request,id):
     
 
 
+def admin_roomiespanel(request):
+    roomies = Roomates.objects.all()
+    return render(request,'admin/roomies-panel.html')
