@@ -86,45 +86,25 @@
                       		      k(event)
                       			" style="color:red">Delete lodge</a><br>
                       			
-                      		{% if lodge.status == "occupied" %}
-                      			<a href="{% url 'adminlodge_occupied' lodge.id %}"onclick="
+                      	
+                      			<a href="{% url 'toggle_lodgestatus' lodge.id %}"onclick="
                       	let k=(e)=>{	
-                      			let c= confirm('Are you sure you want to switch to available ?')
+                      			let c= confirm('Are you sure you want to switch the status  of {{lodge.name}} ?')
                       				
                       			if( c == false)
                       			{
                       			
                       				e.preventDefault();
                       			}
-                      			else
-                      			{
-                      			Swal.fire('Marked as available')
-                      			}
+                      			 
                       		}
                       			k(event)
-                      			" style="color:red">Occupied</a><br>
-                      		{% else %}
-                      		
-                      			<a href="{% url 'adminlodge_available' lodge.id %}"onclick="
-                      	let k=(e)=>{	
-                      			let c= confirm('Are you sure you want to switch to occupied ?')
-                      				
-                      			if( c == false)
-                      			{
-                      			
-                      				e.preventDefault();
-                      			}
-                      			else
-                      			{
-                      			Swal.fire('Marked as occupied')
-                      			}
-                      		}
-                      			k(event)
-                      			" style="color:blue">Available</a><br>
+                      			" style="color:red">{{lodge.status}}</a><br>
+                       
                       	<a href="{% url 'schedulodge_inspection' lodge.id  %}" style="color:maroon">Shdul-Insp</a><br>
                       	
-                      			<a href="{% url 'schedulehistory' lodge.id %}" style="color:orange">Insp-Hstry</a><br>
-                      		{% endif %}	
+                      	<a href="{% url 'schedulehistory' lodge.id %}" style="color:orange">Insp-Hstry</a><br>
+                      			
                       </td>
                    </tr>
                      {% endfor %}

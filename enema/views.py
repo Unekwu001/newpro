@@ -502,15 +502,17 @@ def admin_lodgepanel(request):
     return render(request,'admin/lodges-panel.html',{'lodges':lodges})
 
 
-def adminlodge_occupied(request,id):
+def toggle_lodgestatus(request,id):
     lodge = Lodges.objects.get(id=id)
-    lodge.status = "occupied"
-    lodge.save()
-    return redirect(admin_lodgepanel)
+    if lodge.status=="available":
+        lodge.status = "occupied"
+        lodge.save()
+        return redirect(admin_lodgepanel)
+    if lodge.status=="occupied":
+        lodge.status="available"
+        lodge.save()
+        return redirect(admin_lodgepanel)
 
-
-def adminlodge_available(request,id):
-    lodge = Lodges.objects.get(id=id)
     lodge.status = "available"
     lodge.save()
     return redirect(admin_lodgepanel)
