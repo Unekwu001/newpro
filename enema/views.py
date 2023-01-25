@@ -513,9 +513,6 @@ def toggle_lodgestatus(request,id):
         lodge.save()
         return redirect(admin_lodgepanel)
 
-    lodge.status = "available"
-    lodge.save()
-    return redirect(admin_lodgepanel)
 
 
 def admindelete_lodge(request,id):
