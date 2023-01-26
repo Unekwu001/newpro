@@ -389,7 +389,7 @@ def roomy_form(request,name):
         lodgetype = lodgetype,
         religion = religion,
         phone = phone,
-        name = fullname
+        fullname = fullname
         )
         record.save()
         messages.info(request,f'You have been added as a roomy. Congratulations!. You will be matched within the next 48 hours.')
