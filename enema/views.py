@@ -697,3 +697,6 @@ def matchhistory(request,id):
 
 def terms_of_service(request):
     return render(request,'termsOfService.html')
+
+def privacypolicy(request):
+    return render(request,'privacypolicy.html')

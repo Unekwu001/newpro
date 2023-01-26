@@ -8,17 +8,19 @@
     <div class="container">
       <div class="row gy-4 d-flex justify-content-between">
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-        
+        {% block head %}
           <h3 data-aos="fade-up">TERMS OF SERVICE </h3> 
           
  	<h4 data-aos="fade-up">	Please, kindly ensure you have read the document below before proceeding to using our platform.</h4>  
- 	 	
-
+ 	 {% endblock %}	
+		
+	{% block bodie %}	
           <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
            	<h5 class="row gy-4" data-aos="fade-up" data-aos-delay="400">
            		1. Direct lodging <br>
            		2. Room mates
            	</h5>
+           	
            	<p class="row gy-4" data-aos="fade-up" data-aos-delay="400">
            		
            		<ul>
@@ -89,6 +91,7 @@
            	
   
          </div> 
+         {% endblock bodie %}
         </div>
 
         <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
