@@ -71,7 +71,7 @@
                       <td>{{roomy.date_uploaded}}</td>
                       
                       <td style="color:orange">
-                      			<a href="{% url 'roomate_single' roomy.id %}" target="_blank">Show roomy</a><br>
+                      			<a href="{% url 'roomate_single' roomy.id %}" target="_blank">Show</a><br>
                       			<a href="{% url 'admin_deleteroomy' roomy.id %}"
                       			onclick="
                       		let k=(e)=>{	
@@ -85,14 +85,14 @@
                       			 
                       		      }
                       		      k(event)
-                      			" style="color:red">Delete roomy</a><br>
+                      			" style="color:red">Delete</a><br>
                       			
                       	
                       			 
                        
-                      	<a href="{% url 'admin_matchroomy' roomy.id  %}" style="color:maroon">Match-roomy</a><br>
+                      	<a href="{% url 'admin_matchroomy' roomy.id  %}" style="color:maroon">Match</a><br>
                       	
-                      	<a href="{% url 'matchhistory' roomy.id %}" style="color:orange">Match-Hstry</a><br>
+                      	<a href="{% url 'matchhistory' roomy.id %}" style="color:orange">Hstry</a><br>
                       			
                       </td>
                    </tr>
