@@ -71,8 +71,8 @@
                       <td>{{roomy.date_uploaded}}</td>
                       
                       <td style="color:orange">
-                      			<a href="{% url 'admin_showroomy' roomy.id %}" target="_blank">Show roomy</a><br>
-                      			<a href="{% url 'admindelete_roomy' roomy.id %}"
+                      			<a href="{% url 'roomate_single' roomy.id %}" target="_blank">Show roomy</a><br>
+                      			<a href="{% url 'admin_deleteroomy' roomy.id %}"
                       			onclick="
                       		let k=(e)=>{	
                       			let c= confirm('Are you sure you want to delete this roomy({{roomy.name}}) ?')
@@ -90,7 +90,7 @@
                       	
                       			 
                        
-                      	<a href="{% url 'matchroomy' roomy.id  %}" style="color:maroon">Match-roomy</a><br>
+                      	<a href="{% url 'admin_matchroomy' roomy.id  %}" style="color:maroon">Match-roomy</a><br>
                       	
                       	<a href="{% url 'matchhistory' roomy.id %}" style="color:orange">Match-Hstry</a><br>
                       			

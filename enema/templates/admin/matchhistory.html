@@ -1,0 +1,96 @@
+{% extends 'admin/admin-dashboard.html' %}
+
+
+ 
+{% block content %}
+
+{% if histories %}
+<!--title -->
+      <div class="app-title">
+        <div>
+        
+          <h1><i class="fa fa-th-list"></i>Matching history for {{history.0.owner_name}}</h1>
+        
+       </div>
+    </div>
+    
+    	{% if messages %}
+        	{% for message in messages %}
+        	
+        	<p {% if message.tags %} class="alert alert-success{{message.tags}} btn btn-success"{% endif %}
+        		style="text-align:center;" >
+        		 {{message}} 
+        	</p>
+        	
+        	{% endfor %}
+         {% endif %}
+    
+<!--title ends-->
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>S/N</th>
+                      <th>Owner-name</th>
+                      <th>Owner-phone</th>         
+                      <th>Seeker-name</th>
+                      <th>Seeker-phone</th>
+                      <th>Match date</th>
+                      <th>Match time</th>
+                      <th>Match status</th>
+                    </tr>
+                  </thead>
+                  
+                  <tbody>
+                  {% for history in histories %}
+                 
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{history.owner_name}}</td>
+                      <td>{{roomie.owner_phone}}</td>
+                      <td>{{history.seeker_name}}</td>
+                      <td>{{history.seeker_phone}}</td>
+                      <td>{{history.date_ofmeeting}}</td>
+                      <td>{{history.time_ofmeeting}}</td>
+                      <td>{{history.match_status}}</td>    
+                   </tr>
+                   
+                   {% endfor %}
+                     
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+{% else %}
+ <!--title -->
+      <div class="app-title">
+        <div>
+        
+          <h1><i class="fa fa-th-list"></i>No schedule history found</h1>
+        
+       </div>
+    </div>
+<!--title ends-->   
+{% endif %}
+
+
+{% endblock %}
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

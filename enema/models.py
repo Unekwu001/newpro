@@ -122,3 +122,13 @@ class Schedule_Inspection(models.Model):
     #     )
     #     print(message.sid)
     #     return super().save(*args,**kwargs)
+
+
+class Roomymatching_table(models.Model):
+    owner_name = models.CharField(max_length=150, null=True,blank=True)
+    owner_phone = models.CharField(max_length=150, null=True,blank=True)
+    seeker_name = models.CharField(max_length=150, null=True,blank=True)
+    seeker_phone = models.CharField(max_length=150, null=True,blank=True)
+    date_ofmeeting = models.DateField(max_length=150, null=True,blank=True)
+    time_ofmeeting = models.CharField(max_length=150, null=True,blank=True)
+    match_status =  models.CharField(max_length=150, null=True,blank=True,default="inprogress")

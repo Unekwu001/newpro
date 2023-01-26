@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 from config.settings import client
 from django.contrib import messages
-from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo,Myadmin,Schedule_Inspection
+from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo,Myadmin,Schedule_Inspection,Roomymatching_table
 
 # Create your views here.
 def index(request):
@@ -635,3 +635,55 @@ def toggle_schedulehistory(request,id):
 def admin_roomiespanel(request):
     roomies = Roomates.objects.all()
     return render(request,'admin/roomies-panel.html',{'roomies':roomies})
+
+
+def admin_deleteroomy(request,id):
+    roomy = Roomates.objects.get(id=id)
+    roomy.delete()
+    messages.info(request,f'{roomy.name} has been successfully deleted from the list of roomies.')
+    return redirect(admin_roomiespanel)
+
+
+def admin_matchroomy(request,id):
+    if request.method=="GET":
+        roomy = Roomates.objects.get(id=id)
+        return render(request,'matchroomy.html',{'roomy':roomy})
+    else:
+        roomy = Roomates.objects.get(id=id)
+
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        date = request.POST.get('date')
+        time = request.POST.get('time')
+
+        """inserting into roomymatching_table"""
+        record = Roomymatching_table(
+            owner_name = roomy.name,
+            owner_phone = roomy.phone,
+            seeker_name = name,
+            seeker_phone = phone,
+            date_ofmeeting = date,
+            time_ofmeeting =time
+        )
+        record.save()
+        message1 = client.messages.create(
+            body=f'Congratulations {roomy.name} ! You have been scheduled to meet {name} as follows: \n Date: {date} \n Time: {time} \n Meeting venue: Kitchen 54 Tammah. \n\n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
+            from_='+12182281796',
+            to=f'+234{roomy.phone}'
+        )
+        print(message1.sid)
+
+        message2 = client.messages.create(
+            body=f'Congratulations {name} ! You have been scheduled to meet {roomy.name} as follows: \n Date: {date} \n Time: {time} \n Meeting venue: Kitchen 54 Tammah. \n\n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
+            from_='+12182281796',
+            to=f'+234{phone}'
+        )
+        print(message2.sid)
+
+        messages.info(request,f'{name} has been matched to {roomy.name}')
+        return redirect(admin_roomiespanel)
+
+
+def matchhistory(request,id):
+    histories = Roomymatching_table.objects.filter(id=id)
+    return render(request,'matchhistory.html',{'histories':histories})

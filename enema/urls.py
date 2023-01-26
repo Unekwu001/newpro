@@ -42,6 +42,9 @@ urlpatterns = [
     path('allschedulehistory/',allschedulehistory,name='allschedulehistory'),
     path('toggle_schedulehistory/<int:id>/',toggle_schedulehistory,name='toggle_schedulehistory'),
     path('admin_roomiespanel/',admin_roomiespanel,name='admin_roomiespanel'),
+    path('admin_deleteroomy/<int:id>/',admin_deleteroomy,name='admin_deleteroomy'),
+    path('admin_matchroomy/<int:id>/',admin_matchroomy,name='admin_matchroomy'),
+    path('matchhistory/<int:id>/',matchhistory,name='matchhistory'),
 ]
 
 if settings.DEBUG:
