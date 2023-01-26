@@ -667,7 +667,7 @@ def admin_matchroomy(request,id):
         )
         record.save()
 
-        date = record.date_of_inspection
+        date = record.date_ofmeeting
         date = datetime.datetime.strptime(date,'%Y-%m-%d')
         date = date.strftime('%A %B %d , %Y')
 
