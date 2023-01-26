@@ -693,3 +693,7 @@ def admin_matchroomy(request,id):
 def matchhistory(request,id):
     histories = Roomymatching_table.objects.filter(id=id)
     return render(request,'admin/matchhistory.html',{'histories':histories})
+
+
+def terms_of_service(request):
+    return render(request,'termsOfService.html')
