@@ -59,7 +59,7 @@ class Locations(models.Model):
 
 class Roomates(models.Model):
     schoolname = models.CharField(max_length=30,unique=False,default="Null")
-    name = models.CharField(max_length=30,unique=False,default="Null",null=True,blank=True)
+    fullname = models.CharField(max_length=30,unique=False,default="Null",null=True,blank=True)
     phone = models.CharField(max_length=30,unique=False,default="Null",null=True,blank=True)
     religion = models.CharField(max_length=30,unique=False,default="Null")
     lodgerent = models.CharField(max_length=30,unique=False,default="Null")

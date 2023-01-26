@@ -357,7 +357,7 @@ def roomy_form(request,name):
         locations = Locations.objects.filter(school=name)
         return render(request,'roomy-form.html',{'roomates':roomates,'school':school,'locations':locations})
     if request.method == "POST":
-        name = request.POST.get('name')
+        fullname = request.POST.get('fullname')
         phone = request.POST.get('phone')
         schul = request.POST.get('school') 
         lodgerent = request.POST.get('lodgerent')
@@ -389,7 +389,7 @@ def roomy_form(request,name):
         lodgetype = lodgetype,
         religion = religion,
         phone = phone,
-        name = name
+        name = fullname
         )
         record.save()
         messages.info(request,f'You have been added as a roomy. Congratulations!. You will be matched within the next 48 hours.')
