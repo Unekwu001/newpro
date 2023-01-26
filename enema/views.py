@@ -666,6 +666,11 @@ def admin_matchroomy(request,id):
             time_ofmeeting =time
         )
         record.save()
+
+        date = record.date_of_inspection
+        date = datetime.datetime.strptime(date,'%Y-%m-%d')
+        date = date.strftime('%A %B %d , %Y')
+
         message1 = client.messages.create(
             body=f'Congratulations {roomy.fullname} ! You have been scheduled to meet {name} as follows: \n Date: {date} \n Time: {time} \n Meeting venue: Kitchen 54 Tammah. \n\n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
             from_='+12182281796',
