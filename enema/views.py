@@ -11,6 +11,7 @@ def index(request):
     schools=Schools.objects.all()
     return render(request,'index.html',{'schools':schools})
     
+    
 
 def property_grid(request,id):
     allpics=Lodgepics.objects.all()
