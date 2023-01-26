@@ -658,7 +658,7 @@ def admin_matchroomy(request,id):
 
         """inserting into roomymatching_table"""
         record = Roomymatching_table(
-            owner_name = roomy.name,
+            owner_name = roomy.fullname,
             owner_phone = roomy.phone,
             seeker_name = name,
             seeker_phone = phone,
@@ -667,20 +667,20 @@ def admin_matchroomy(request,id):
         )
         record.save()
         message1 = client.messages.create(
-            body=f'Congratulations {roomy.name} ! You have been scheduled to meet {name} as follows: \n Date: {date} \n Time: {time} \n Meeting venue: Kitchen 54 Tammah. \n\n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
+            body=f'Congratulations {roomy.fullname} ! You have been scheduled to meet {name} as follows: \n Date: {date} \n Time: {time} \n Meeting venue: Kitchen 54 Tammah. \n\n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
             from_='+12182281796',
             to=f'+234{roomy.phone}'
         )
         print(message1.sid)
 
         message2 = client.messages.create(
-            body=f'Congratulations {name} ! You have been scheduled to meet {roomy.name} as follows: \n Date: {date} \n Time: {time} \n Meeting venue: Kitchen 54 Tammah. \n\n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
+            body=f'Congratulations {name} ! You have been scheduled to meet {roomy.fullname} as follows: \n Date: {date} \n Time: {time} \n Meeting venue: Kitchen 54 Tammah. \n\n Jemimah Adiburmi\n Head of people.\n Enema Corporations.',
             from_='+12182281796',
             to=f'+234{phone}'
         )
         print(message2.sid)
 
-        messages.info(request,f'{name} has been matched to {roomy.name}')
+        messages.info(request,f'{name} has been matched to {roomy.fullname}')
         return redirect(admin_roomiespanel)
 
 
