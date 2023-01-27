@@ -700,3 +700,6 @@ def terms_of_service(request):
 
 def privacypolicy(request):
     return render(request,'privacypolicy.html')
+
+def careers(request):
+    return render(request,'careers.html')
