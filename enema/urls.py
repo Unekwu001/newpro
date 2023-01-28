@@ -47,7 +47,8 @@ urlpatterns = [
     path('matchhistory/<int:id>/',matchhistory,name='matchhistory'),
     path('terms_of_service/',terms_of_service,name='terms_of_service'),
     path('privacypolicy/',privacypolicy,name='privacypolicy'),
-    path('careers/',careers,name='careers')
+    path('careers/',careers,name='careers'),
+    path('selectschool2Clodges/',selectschool2Clodges,name='selectschool2Clodges'),
 ]
 
 if settings.DEBUG:

@@ -703,3 +703,8 @@ def privacypolicy(request):
 
 def careers(request):
     return render(request,'careers.html')
+
+
+def selectschool2Clodges(request):
+    schools=Schools.objects.all()
+    return render(request,'selectschool4lodges.html',{'schools':schools})

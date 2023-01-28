@@ -117,9 +117,13 @@
         
         
         {% endblock navitem %}
-	  <li class="nav-item">
-	  <a  href="{% url 'selectschool' %}" class="active btn" >Need a room mate ?</a>
+	   <li class="nav-item">
+	     <a href="{% url 'selectschool2Clodges' %}" class="nav-link" style="color:white;font-size:90%">Lodges</a>
 	  </li>
+	  
+          <li class="nav-item">
+             <a href="{% url 'selectschool' %}" class="nav-link" style="color:white;font-size:90%">Room mates</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link " href="{% url 'index' %}"style="color:white;font-size:90%">Home</a>
           </li>
