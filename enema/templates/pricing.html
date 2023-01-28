@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+
+{% load static %}
+{% block content %}
+
+ <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row gy-4 d-flex justify-content-between">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+        
+	{% block bodie %}	
+          <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
+           	<h5 class="row gy-4" data-aos="fade-up" data-aos-delay="400">
+           		 Pricing Plans
+           	</h5>
+           	
+           	 
+           	      <ul>
+           		 <li>Lodge inspection fee: ₦3000</li>
+           		 <li>Room mate matching fee: ₦2000</li>
+           	 
+           		 <li>The above pricing/rates are non-negotiable and must be paid in full before request is activated.</li>
+           	      </ul>
+           		 
+           		<h6 style="color:orange">Kindly note that: We currently donot accept cash deposits</h6> 
+           	 
+           	
+           	
+           	
+           	
+  
+         </div> 
+         {% endblock bodie %}
+        </div>
+
+        <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+          <img src="{% static 'assets/img/banner.svg' %}" class="img-fluid mb-3 mb-lg-0" alt="">
+        </div>
+
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+
+
+
+
+
+{% endblock %}

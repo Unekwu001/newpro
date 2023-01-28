@@ -708,3 +708,6 @@ def careers(request):
 def selectschool2Clodges(request):
     schools=Schools.objects.all()
     return render(request,'selectschool4lodges.html',{'schools':schools})
+
+def pricing(request):
+    return render(request,'pricing.html')
