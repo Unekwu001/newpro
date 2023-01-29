@@ -244,9 +244,10 @@ def forgot_pwd(request):
         email = request.POST.get('email')
         records = Agents.objects.filter(email=email)
         if records:
-            # html_message = f'Click the link below to reset your password. \n \n <a href="https://web-production-ee0e.up.railway.app/passwordreset/{email}/">Password reset Link</a>'
-            # send_mail('enema Inc - Reset Password','','unekwutheophilus@gmail.com',[f'{email}'],fail_silently=False,html_message=html_message)
-            return redirect(resetmail_sent)
+            html_message = f'Click the link below to reset your password. \n \n <a href="https://www.enema.ng/passwordreset/{email}/">Password reset Link</a>'
+            send_mail('enema.ng - Reset Password','','support@enema.ng',[f'{email}'],fail_silently=False,html_message=html_message)
+            messages.info(request,'A reset link has been sent to your email')
+            return redirect(forgot_pwd)
         else:
             messages.info(request,f'{email} is not a registered user.')
             return redirect(forgot_pwd)
@@ -262,7 +263,7 @@ def pwd_reset(request,email):
         if record:
             record.pwd = pwd
             record.save()
-            # send_mail('enema Inc - New credentials',f'Congratulations!. Below are your new login details. \n Email: {email} \n Password: {pwd}','unekwutheophilus@gmail.com',[f'{email}'],fail_silently=False)
+            send_mail('enema.ng - New credentials',f'Congratulations!. Below are your new login details. \n Email: {email} \n Password: {pwd}','info@enema.ng',[f'{email}'],fail_silently=False)
             messages.success(request,f'Congratulations!. You can login here with your new details.')
             return redirect(agent_login)
         else:
