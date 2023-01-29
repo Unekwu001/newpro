@@ -1,6 +1,6 @@
 class Collect:
-    id4aws = "AKIAVDZVUS5WHDKL7RTB"
-    secretkey4aws = "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"
+    accesskey = "AKIAVDZVUS5WN5DSIBUD"
+    secretkey4aws = "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"
     djangsecretkey = "django-insecure-ipogu4bbwhl9fi-yr9*przc_ft33n-@44vjgl1&3l#1c783^r3"
     emailhost = 'smtppro.zoho.com'
     hostuser = 'info@enema.ng'
