@@ -247,7 +247,7 @@ def forgot_pwd(request):
             html_message = f'Click the link below to reset your password. \n \n <a href="https://www.enema.ng/passwordreset/{email}/">Password reset Link</a>'
             send_mail('enema.ng - Reset Password','','support@enema.ng',[f'{email}'],fail_silently=False,html_message=html_message)
             messages.info(request,'A reset link has been sent to your email')
-            return redirect(forgot_pwd)
+            return redirect(resetmail_sent)
         else:
             messages.info(request,f'{email} is not a registered user.')
             return redirect(forgot_pwd)
