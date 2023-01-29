@@ -640,11 +640,14 @@ def admin_roomiespanel(request):
 
 
 def admin_deleteroomy(request,id):
-    roomy = Roomates.objects.get(id=id)
-    roomy.delete()
-    messages.info(request,f'{roomy.name} has been successfully deleted from the list of roomies.')
-    return redirect(admin_roomiespanel)
-
+    roomies = Roomates.objects.filter(id=id)
+    for roomy in roomies:
+        if roomy:
+            roomy.delete()
+            messages.info(request,f'{roomy.fullname} has been successfully deleted from the list of roomies.')
+            return redirect(admin_roomiespanel)
+        else:
+            return redirect(admin_roomiespanel)
 
 def admin_matchroomy(request,id):
     if request.method=="GET":
