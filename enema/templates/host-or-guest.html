@@ -10,7 +10,7 @@
     	
     		<div class="col-12"><!--Header-->
     			{% block fortypeofroomy %}
-    			    <h4 data-aos="fade-up">Amazing! Just one more click. What type of room mate are you ?</h4> 
+    			    <h4 data-aos="fade-up">What best describes your situation ?</h4> 
     			{% endblock fortypeofroomy %}
     		
     			
@@ -28,17 +28,14 @@
     		
     		
     		<div class="col-12">
-    			<a href="{% url 'roomates_grid' school.name %}">
-    			<button class="btn btn-success">I <span style="color:orange;">DONT</span> have a lodge. I need a room mate i can
-    			 stay with.
-    			</button>
+    			<a href="{% url 'host_partimer' school.name %}">
+    			<button class="btn btn-success">I want to host a student</button>
     			</a>
     			
     			&nbsp;
     			
-    			<a href="{% url 'roomy_form' school.name %}">
-    			<button class="btn btn-success">I <span style="color:orange;">HAVE</span> a lodge. I need a room mate to stay with me.
-    			</button>
+    			<a href="{% url 'hosts_grid' school.id %}">
+    			<button class="btn btn-success">I need a student to host me</button>
     			</a>
     		
     		</div>

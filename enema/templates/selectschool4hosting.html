@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+    	<div class="row" ><!--row starts-->
+    	
+    		<div class="col-12"><!--Header-->
+    		{% block fortypeofroomy %}
+    			<h4 data-aos="fade-up">Selecting a school will help us stream line your Hosting experience.</h4> 
+    		{% endblock fortypeofroomy %}
+    		
+    					<!--FLash message code-->
+    					{% if messages %}
+        				{% for message in messages %}
+        				<p class="col-6" {% if message.tags %} class="alert alert-success{{message.tags}}"{% endif %}
+        					style="background-color:pink;color:black;border-radius:5px;padding:2vh;text-align:center" >
+        		 			{{message}} 
+        		 		</p>
+        				{% endfor %}
+        				{% endif %}
+        				<!--end of flash message code-->
+    		</div><!--Header ends-->
+    		
+    	{% for i in schools %}
+    		<div class="col-12 col-lg-12">
+    		
+            	
+                			<a href="{% url 'host_or_guest' i.name %}">
+                			<button  class="btn btn-success"style="border-color:white;height:10vh;width:50vw;">{{i.name}}
+                			</button>
+                			</a>
+               
+    		</div><!--col ends-->
+    	{% endfor %}  
+    	
+    
+    	</div><!--row ends-->
+    
+    </div><!--container ends-->
+    
+  </section>
+  {% endblock %}  

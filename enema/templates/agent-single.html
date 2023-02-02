@@ -6,8 +6,8 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Enema - Agent</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta content="Welcome to Enema, Nigeria's first student-based tech company. We verify, you rent."" name="description">
+  <meta content="nigerian students, real estate,nasarawa housing, abuja student housing, kogi state student housing" name="keywords">
 {% load static %}
   <!-- Favicons -->
   <link href="{% static 'assets2/img/enemalogo.png' %}" rel="icon">
@@ -33,69 +33,7 @@
 
 <body>
 
-  <!-- ======= Property Search Section ======= -->
-  <div class="click-closed"></div>
-  <!--/ Form Search Star /-->
-  <div class="box-collapse">
-    <div class="title-box-d">
-      <h3 class="title-d">Search Property</h3>
-    </div>
-    <span class="close-box-collapse right-boxed bi bi-x"></span>
-    <div class="box-collapse-wrap form">
-      <form class="form-a">
-        <div class="row">
-          
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="Type">Type</label>
-              <select class="form-control form-select form-control-a" id="Type">
-                
-                <option>For Rent</option>
-                 
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="city">City</label>
-              <select class="form-control form-select form-control-a" id="city">
-                <option>Nasarawa</option>
-                
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="bedrooms">Bedroom type</label>
-              <select class="form-control form-select form-control-a" id="bedrooms">
-                <option>Any</option>
-                <option>self-con</option>
-                <option>2 bedroom apartment</option>
-                <option>3 bedroom apartment</option>
-              </select>
-            </div>
-          </div>
-           
-           
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="price">Maximum Price</label>
-              <select class="form-control form-select form-control-a" id="price">
-                <option>All</option>
-                <option>50,000 naira</option>
-                <option>100,000 naira</option>
-                <option>150,000 naira</option>
-                <option>200,000 naira and above</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <button type="submit" class="btn btn-b">Search Property</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div><!-- End Property Search Section -->>
+ 
 
   <!-- ======= Header/Navbar ======= -->
   <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top"style="background-color:rgb(14,29,52);color:white;">
@@ -111,24 +49,40 @@
         <ul class="navbar-nav">
 
 	  <li class="nav-item">
-	     <a href="{% url 'selectschool2Clodges' %}" class="nav-link" style="color:white;">Lodges</a>
+	     <a href="{% url 'selectschool2Clodges' %}" class="nav-link" style="color:white;font-size:95%">Lodges</a>
 	  </li>
 	  
           <li class="nav-item">
-             <a href="{% url 'selectschool' %}" class="nav-link" style="color:white;">Room mates</a>
+             <a href="{% url 'selectschool' %}" class="nav-link" style="color:white;font-size:95%">Room mates</a>
           </li>
           
+          
+          <li class="nav-item"><a href="{% url 'selectschool4hosting' %}" style="color:white;font-size:95%" class="nav-link"onclick="
+                      		let k=(e)=>{	
+                      			let c= confirm('Please note that, you can not charge more than ₦2000 per day for hosting a part-time student. Clicking ok indicates your agreement to the terms of service.')
+                      				
+                      			if( c == false)
+                      			{
+                      			
+                      				e.preventDefault();
+                      			}
+                      			 
+                      		      }
+                      		      k(event)
+                      			">Host a part time student</a>
+           </li>
+          
           <li class="nav-item">
-            <a class="nav-link " href="{% url 'index' %}"style="color:white;">Home</a>
+            <a class="nav-link " href="{% url 'index' %}"style="color:white;font-size:95%;">Home</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="#about"style="color:white;">About</a>
+            <a class="nav-link " href="#about"style="color:white;font-size:95%;">About</a>
           </li>
 
            
            <li class="nav-item">
-            <a class="nav-link " href="https://wa.me/2348165408132"style="color:white;">Chat us </a>
+            <a class="nav-link " href="https://wa.me/2348165408132"style="color:white;font-size:95%;">Chat us </a>
           </li>
 
 
@@ -137,9 +91,9 @@
         </ul>
       </div>
 
-      <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+      <!--<button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
         <i class="bi bi-search"></i>
-      </button>
+      </button>-->
 
     </div>
   </nav><!-- End Header/Navbar -->

@@ -49,7 +49,14 @@ urlpatterns = [
     path('privacypolicy/',privacypolicy,name='privacypolicy'),
     path('careers/',careers,name='careers'),
     path('selectschool2Clodges/',selectschool2Clodges,name='selectschool2Clodges'),
-    path('pricing/',pricing,name='pricing')
+    path('pricing/',pricing,name='pricing'),
+    path('selectschool2Clodges/',selectschool2Clodges,name='selectschool2Clodges'),
+    path('selectschool4hosting/',selectschool4hosting,name='selectschool4hosting'),
+    path('host_partimer/<str:name>/',host_partimer,name='host_partimer'),
+    path('hosts_grid/<int:id>/',hosts_grid,name='hosts_grid'),
+    path('host_or_guest/<str:name>/',host_or_guest,name='host_or_guest'),
+    path('single_host/<int:id>/',single_host,name='single_host'),
+    path('meet_d_team/',meet_d_team,name='meet_d_team')
 ]
 
 if settings.DEBUG:

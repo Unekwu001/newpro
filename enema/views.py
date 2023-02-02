@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 from config.settings import client
 from django.contrib import messages
-from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo,Myadmin,Schedule_Inspection,Roomymatching_table
+from .models import Schools,Agents,Lodges,Locations,Lodgepics,Roomates,CustomerInfo,Myadmin,Schedule_Inspection,Roomymatching_table,Hosts
 
 # Create your views here.
 def index(request):
@@ -179,6 +179,7 @@ def add_property(request):
             location=request.POST.get('location')
             lodgetype=request.POST.get('lodgetype')
             tiled=request.POST.get('tiled')
+            fenced=request.POST.get('fenced')
             light=request.POST.get('light')
             water=request.POST.get('water')
             status=request.POST.get('status')
@@ -189,8 +190,9 @@ def add_property(request):
             location=location, 
             lodgetype=lodgetype,  
             price=price,  
-            Tiled =tiled,  
-            light =light, 
+            Tiled=tiled,  
+            fenced=fenced,
+            light=light, 
             water = water, 
             status =status,  
             region=region,  
@@ -282,6 +284,7 @@ def editlodge(request,id):
             location=request.POST.get('location')
             lodgetype=request.POST.get('lodgetype')
             tiled=request.POST.get('tiled')
+            fenced=request.POST.get('fenced')
             light=request.POST.get('light')
             water=request.POST.get('water')
             status=request.POST.get('status')
@@ -298,6 +301,7 @@ def editlodge(request,id):
             record.lodgetype=lodgetype
             record.Tiled=tiled
             record.light=light
+            record.fenced=fenced
             record.water=water
             record.status=status
             record.agentid=agentid
@@ -715,3 +719,83 @@ def selectschool2Clodges(request):
 
 def pricing(request):
     return render(request,'pricing.html')
+
+
+
+def selectschool2Chosts(request):
+    schools=Schools.objects.all()
+    return render(request,'selectschool4host.html',{'schools':schools})
+
+
+
+def selectschool4hosting(request):
+    schools=Schools.objects.all()
+    return render(request,'selectschool4hosting.html',{'schools':schools})
+
+
+
+def host_or_guest(request,name):
+    school = Schools.objects.get(name=name)
+    return render(request,'host-or-guest.html',{'school':school})
+
+
+def host_partimer(request,name):
+    if request.method=="GET":
+        school = Schools.objects.get(name=name)
+        locations = Locations.objects.filter(school=name)
+        return render(request,'partime-form.html',{'school':school,'locations':locations})
+    else:
+        fullname = request.POST.get('fullname')
+        phone = request.POST.get('phone')
+        schul = request.POST.get('school') 
+        hostprice = request.POST.get('hostprice')
+        location =request.POST.get('location')
+        tiled = request.POST.get('tiled')
+        water = request.POST.get('water') 
+        light = request.POST.get('light')
+        lodgetype = request.POST.get('lodgetype')
+        bankname = request.POST.get('bankname')
+        accountnumber = request.POST.get('accountnumber')
+        accountname = request.POST.get('accountname')
+        pic1 = request.FILES.get('pic1')
+        pic2 = request.FILES.get('pic2')
+        pic3 = request.FILES.get('pic3')
+
+         
+        """inserting a new record"""
+        record = Hosts(
+        pic1 = pic1,
+        pic2 = pic2,
+        pic3 = pic3,
+        schoolname = schul,
+        hostprice = hostprice,
+        location = location,
+        tiled = tiled,
+        water = water,
+        light = light,
+        lodgetype = lodgetype,
+        bankname=bankname,
+        accountnumber=accountnumber,
+        accountname=accountname,
+        phone = phone,
+        fullname = fullname
+        )
+        record.save()
+        messages.info(request,'Host added.')
+        return redirect(hosts_grid)
+
+
+def hosts_grid(request,id):
+    uniq_schul=Schools.objects.get(id=id)
+    hosts=Hosts.objects.filter(schoolname=uniq_schul.name).order_by('-date_uploaded')
+    return render(request,'hosts-grid.html',{'uniq_schul':uniq_schul,'hosts':hosts})
+
+
+def single_host(request,id):
+    record = Hosts.objects.get(id=id)
+    return render(request,'host-single.html',{'record':record})
+
+def meet_d_team(request):
+    return render(request,'meet-d-team.html')
+
+

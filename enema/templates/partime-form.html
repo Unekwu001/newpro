@@ -1,0 +1,216 @@
+{% extends 'roomates_grid.html' %}
+{% load static %}
+
+{% block forheading %}<title>Enema - Part-time form</title>{% endblock forheading %}
+
+
+
+{% block roomyformheader %}
+<div class="col-12">
+	<h5 style="color:white;"> 
+		Host a student around {{school.name}} 
+	</h5>
+</div>
+{% endblock roomyformheader %}
+
+
+
+
+
+
+{% block roomy %}
+<div class="container">
+<div class="row" style="margin-top:-6vh;">
+     <div class="col-12">
+
+	<form action="{% url 'host_partimer' school.name %}" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+
+		<div class="col-lg-12">
+			<div class="info-agents color-a"style="color:white;">
+			
+			<div class="row">
+			
+			<div class="col-lg-4 col-sm-12">
+			
+                        	<strong>Name</strong>	 
+                        	<input class="color-text-a form-control afile" name="fullname" required=""type="text">
+                      	</div>
+			
+			<div class="col-lg-4 col-sm-12">
+			
+                        	<strong>Phone </strong>	 
+                        	<input class="color-text-a form-control afile" name="phone" required=""type="number">
+                      	</div>
+		 
+		      	 <div class="col-lg-4 col-sm-12">
+                        	<strong>School</strong>
+                        	<select class="color-text-a form-control afile" name="school" required="">
+                        		<option value="{{school.name}}">{{school.name}}</option>
+                        	</select>
+                      	</div>
+                      	
+                      	 
+                      	
+                      	<div class="col-lg-4 col-sm-12">
+                        	<strong>Your desired rate per day(₦)</strong>
+                        	<input class="color-text-a form-control afile" type="number" name="hostprice"required="" id="hostprice"
+                        	 value="3000"
+                        	onkeyup="
+                        	var hostprice = document.getElementById('hostprice').value;
+                        	hostprice=parseInt(hostprice);
+                        	if(hostprice > 3000 )
+                        	{
+                        		alert('Hello friend, you cannot charge a student above ₦3000. Please re-enter a value');
+                        		document.getElementById('hostprice').value='3000';
+                        		
+                        	}">
+                      	</div>
+                      	
+                      	 
+                      	 
+                      	<div class="col-lg-4 col-sm-12">
+                        	<strong>Lodge location</strong>
+                        	 <select class="color-text-a form-control afile" name="location"required="">
+                        	 	<option value="">Select your location</option>
+                        	 {% for i in locations %}
+                        		<option value="{{i.location}}">{{i.location}}</option>
+                        	 {% endfor %}
+                        	</select>
+                      	</div>
+                      	
+                      	<div class="col-lg-4 col-sm-12">
+                      		<strong>Is your lodge tiled ? </strong>
+                        	<select class="color-text-a form-control afile" name="tiled"required="">
+                        		<option value="">Select an option</option>
+                        		<option value="yes">yes</option>
+                        		<option value="no">no</option>
+                        	</select>
+                          
+                      	</div>
+                      	<div class="col-lg-4 col-sm-12">	
+                      		<strong>Is there in-house water supply ?</strong>
+                        	<select class="color-text-a form-control afile" name="water"required="">
+                        		<option value="">Select an option</option>
+                        		<option value="yes">yes</option>
+                        		<option value="no">no</option>
+                        	</select>
+                      	</div>
+                      	<div class="col-lg-4 col-sm-12">
+                      		<strong>Is electricity available ? </strong>
+                        	<select class="color-text-a form-control afile" name="light"required="">
+                        		<option value="">Select an option</option>
+                        		<option value="yes">yes</option>
+                        		<option value="no">no</option>
+                        	</select>
+                      	</div>
+                      	<div class="col-lg-4 col-sm-12">	
+                      		<strong>Whats the lodge type ? </strong>
+                        	<select class="color-text-a form-control afile" name="lodgetype"required="">
+                        		<option value="">Select an option</option>
+                        		<option value="single-room">single-room</option>
+                        		<option value="self-con">self-con</option>
+                        		<option value="2-bedroom-flat">2-bedroom-flat</option>
+                        		<option value="3-bedroom-flat">3-bedroom-flat</option>
+                        	</select>
+                      	</div>
+                      	<div class="col-lg-4 col-sm-12">	
+                      		<strong>Bank name </strong>
+                        	 <input class="color-text-a form-control afile" name="bankname" required=""type="text">
+                      	</div>
+                      	
+                      	<div class="col-lg-4 col-sm-12">	
+                      		<strong>Account number </strong>
+                        	 <input class="color-text-a form-control afile" name="accountnumber" required=""type="number">
+                      	</div>
+                      	
+                      	<div class="col-lg-4 col-sm-12">	
+                      		<strong>Account name </strong>
+                        	 <input class="color-text-a form-control afile" name="accountname" required=""type="text">
+                      	</div>
+                      	
+                      	<div class="col" style="margin-bottom:5vw">
+        				<label style="cursor:pointer;" class="btn btn-secondary"for="first-image">
+        				
+        				<img id="img1" alt="Click here to upload your main room's image" width="150" height="150">
+					
+					<input type="file" 
+					onchange="document.getElementById('img1').src = window.URL.createObjectURL(this.files[0])"
+					accept=".jpg,.png,.jpeg" style="display:none" id="first-image"class="afile"name="pic1">
+					</label>
+        		</div>
+                      	
+                      	<div class="col" style="margin-bottom:5vw">
+        				<label style="cursor:pointer;" class="btn btn-secondary"for="second-image">
+        				
+        				<img id="img2" alt="Click here to upload your room's kitchen/frontage" width="150" height="150">
+					
+					<input type="file" 
+					onchange="document.getElementById('img2').src = window.URL.createObjectURL(this.files[0])"
+					accept=".jpg,.png,.jpeg" style="display:none" id="second-image"class="afile"name="pic2">
+					</label>
+        		</div>
+                       
+                       <div class="col" style="margin-bottom:5vw">
+        				<label style="cursor:pointer;" class="btn btn-secondary"for="third-image">
+        				
+        				<img id="img3" alt="Click here to upload your room's bathroom/toilet" width="150" height="150">
+					
+					<input type="file" 
+					onchange="document.getElementById('img3').src = window.URL.createObjectURL(this.files[0])"
+					accept=".jpg,.png,.jpeg" style="display:none" id="third-image"class="afile"name="pic3">
+					</label>
+        		</div>
+			 
+		    </div>
+              
+              	</div>
+              	
+              	
+              
+           </div><!--ending col-5-->
+           
+           <div class="col-lg-5 mb-4"style="text-align:center;">
+           	
+           	 
+           
+              <button type="submit" class="btn btn-success"style='margin-bottom:2vh'
+              	onclick="
+                      
+              
+		 let validator = (e)=> {
+		      var allfiles = document.getElementsByClassName('afile');
+		
+	              if(allfiles[5].value == '' || allfiles[1].value =='' || allfiles[8].value=='' || allfiles[3].value=='' ||
+	              allfiles[2].value=='' || allfiles[4].value==''|| allfiles[6].value==''|| allfiles[7].value=='' ||
+	               allfiles[9].value=='' || allfiles[0].value=='' || allfiles[10].value=='' || allfiles[11].value==''||
+	                allfiles[12].value=='' || allfiles[13].value=='' || allfiles[14].value=='')
+					{
+					alert('ensure all fields are filled.');
+					e.preventDefault();;
+					}
+		      else{
+		      const x = confirm('Kindly note that, you will be contacted within the next 10 minutes. We will send the amount paid by the part-time student to your account. ')
+                      if(x == false){
+         				e.preventDefault();;
+         			    }
+         		  }		
+					
+			
+			  		}
+			  
+			  validator(event)
+			  
+			  
+			  ">Submit form
+         	
+             </button>
+             
+            </div>
+        
+        </form>       
+ </div><!--col ends-->
+ </div>
+ </div>
+{% endblock roomy %}
+

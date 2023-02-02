@@ -9,7 +9,7 @@
   
   <meta content="Neku Theo (Co-founder and CEO), Enema corporations." name="author">
   <meta content="Welcome to Enema, Nigeria's first student-based tech company. We verify, you rent." name="description">
-  <meta content="student real estate,nasarawa housing, abuja student housing, kogi state student housing" name="keywords">
+  <meta content="student accomodation, student housing, housing in nigerian schools" name="keywords">
 
   <!-- Favicons -->
   {% load static %}
@@ -84,6 +84,8 @@
         <ul >
           <li><a href="{% url 'selectschool2Clodges' %}" class="active" >Lodges</a></li>
           <li><a href="{% url 'selectschool' %}" class="active" >Room mates</a></li>
+          <li><a href="{% url 'selectschool4hosting' %}" class="active">Student hosting</a></li>
+         
           <li><a href="{% url 'index' %}" >Home</a></li>
           <li><a href="#about">About</a></li>       
           
@@ -152,11 +154,28 @@
           <h2 data-aos="fade-up">Get a Room Mate Asap!</h2> 
           <h4 data-aos="fade-up" data-aos-delay="100">You are one step away from meeting your Roomy </h4>
       	
- 	<a href="{% url 'selectschool' %}"><button class="btn btn-success col-12" data-aos="fade-up"><b>Click here</b></button></a> 
+ 	<a href="{% url 'selectschool' %}"><button class="btn btn-success col-6" data-aos="fade-up"><b>Click here</b></button></a> 
 	</div>
       </div>
     </div>
  </section>
+ 
+ <section id="hero" class="hero d-flex align-items-center">
+    <div class="container" style="margin-bottom:20vh" >
+      <div class="row gy-4 d-flex justify-content-between">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+        
+          <h2 data-aos="fade-up">Host a new or part-time student</h2> 
+          <h4 data-aos="fade-up" data-aos-delay="100">As a student, hosting another student could fetch you some weekly income.</h4>
+      	
+ 	  <a href="{% url 'selectschool4hosting' %}"   
+ 	><button class="btn btn-success col-6" data-aos="fade-up"><b>Hosting room</b></button></a> 
+	</div>
+      </div>
+    </div>
+ </section>
+ 
+ 
     
   </main><!-- End #main -->
 {% endblock content %}
@@ -181,20 +200,28 @@
           </div>
         </div>
 
-        <div class="col-lg-2 col-12 footer-links"style="text-align: center">
-          <h4 >Terms, policies and careers</h4>
+        <div class="col-lg-2 col-12 footer-links">
+          <h4 >Terms and policies</h4>
           <ul>
             
             <li><a href="{% url 'terms_of_service' %}">Terms of service</a></li>
             <li><a href="{% url 'privacypolicy' %}">Privacy policy</a></li>
-            <li><a href="{% url 'careers' %}">Careers</a></li>
+           
           </ul>
         </div>
-        <div class="col-lg-2 col-12 footer-links"style="text-align: center">
+        <div class="col-lg-2 col-12 footer-links">
           <h4 >Pricing Plans</h4>
           <ul>
             <li><a href="{% url 'pricing' %}"> View rates per service</a></li>
             
+          </ul>
+        </div>
+        
+        <div class="col-lg-2 col-12 footer-links">
+          <h4 >Team and Careers</h4>
+          <ul>
+              <li><a href="{% url 'careers' %}">Careers</a></li>
+               <li><a href="{% url 'meet_d_team' %}">Our Team</a></li>
           </ul>
         </div>
 

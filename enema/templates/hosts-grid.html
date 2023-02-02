@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  {% block forheading %}<title>Enema -  {{uniq_schul.name}} Lodges</title>{% endblock forheading %}
+  {% block forheading %}<title>Enema - Hosts around {{uniq_schul.name}} </title>{% endblock forheading %}
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -105,7 +105,7 @@
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box ">
             
-              <h1 class="title-single"style="color:white">{% block roomyformheader %} Lodges around {{uniq_schul.name}}
+              <h1 class="title-single"style="color:white">{% block roomyformheader %} Hosts around {{uniq_schul.name}}
               {% endblock roomyformheader %}</h1>
               
             </div>
@@ -123,65 +123,55 @@
         <div class="row" >
         
   <!-------->
-  {% for lodge in lodges %}
+  {% for host in hosts %}
   		
             
               	 		
           <div class="col-md-4">
             <div class="card-box-a card-shadow">
-            {% if allpics %}
-            			{% for pic in allpics %}
-                		{% if pic.lodgeid_id == lodge.id and pic.sn == 1 %}
+           
             			
               <div class="img-box-a"style="text-align:center;max-height:50vh">
-                <img src="https://enema.s3.amazonaws.com/{{pic.picname}}" alt="" class="img-a img-fluid" width="500vw" height="500vh">
-              </div>
-              			{% endif %}
-                		{% endfor %}
-               {% endif %}
+                <img src="https://enema.s3.amazonaws.com/{{host.pic1}}" alt="" class="img-a img-fluid" width="500vw" height="500vh">
+              </div> 
+              
+               
                
               <div class="card-overlay">
-                <div class="card-overlay-a-content"><span class="price-a">{{lodge.id}}</span>
+                <div class="card-overlay-a-content"><span class="price-a">{{host.id}}</span>
                   
                   <div class="card-header-a ">
                     <h2 class="card-title-a mt-4">
-                    {% if lodge.status == "available" %}
-                      <a href="{% url 'single_property' lodge.id %}" style="color:rgb(20,255,50)">{{lodge.status}}
-                      {% else %}
-                      <a href="{% url 'single_property' lodge.id %}"style="color:red">{{lodge.status}}
-                      {% endif %}
-                        <br /><h5 style="color:orange;">{{lodge.location}}</h5></a>
+                     
+                      <a href="{% url 'single_host' host.id %}" style="color:rgb(20,255,50)">₦{{host.hostprice}} per day
+                       
+                        <br /><h5 style="color:orange;">{{host.location}}</h5></a>
                     </h2>
                   </div>
                   
                   <div class="card-body-a">
                     <div class="price-box d-flex">
-                      <span class="price-a">{{lodge.lodgetype}} | ₦{{lodge.price}}</span>
+                      <span class="price-a">{{host.lodgetype}} | ₦{{host.hostprice}}</span>
                     </div>
-                    <a href="{% url 'single_property' lodge.id %}" class="link-a" ">Click here to view
+                    <a href="{% url 'single_host' host.id %}" class="link-a" ">Click here to view
                       <span class="bi bi-chevron-right"></span>
                     </a>
                   </div>
                   
                   <div class="card-footer-a">
                     <ul class="card-info d-flex justify-content-around">
-                      <li>
-                        <h4 class="card-info-title">Fenced compound</h4>
-                        <span>{{lodge.fenced}}
-                          
-                        </span>
-                      </li>
+                       
                       <li>
                         <h4 class="card-info-title">Tiled</h4>
-                        <span>{{lodge.Tiled}}</span>
+                        <span>{{host.tiled}}</span>
                       </li>
                       <li>
                         <h4 class="card-info-title">Light</h4>
-                        <span>{{lodge.light}}</span>
+                        <span>{{host.light}}</span>
                       </li>
                       <li>
                         <h4 class="card-info-title">Water</h4>
-                        <span>{{lodge.water}}</span>
+                        <span>{{host.water}}</span>
                       </li>
                     </ul>
                   </div>
