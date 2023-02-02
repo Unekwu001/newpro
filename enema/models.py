@@ -137,7 +137,7 @@ class Roomymatching_table(models.Model):
 
 class Hosts(models.Model):
     schoolname = models.CharField(max_length=30,unique=False,default="Null")
-    fullname = models.CharField(max_length=30,unique=False,default="Null",null=True,blank=True)
+    fullname = models.CharField(max_length=100,unique=False,default="Null",null=True,blank=True)
     phone = models.CharField(max_length=30,unique=False,default="Null",null=True,blank=True) 
     location = models.CharField(max_length=100,unique=False,default="Null")
     lodgetype = models.CharField(max_length=30,unique=False,default="Null")
@@ -145,9 +145,9 @@ class Hosts(models.Model):
     tiled = models.CharField(max_length=15,unique=False,default="Null")
     light = models.CharField(max_length=15,unique=False,default="Null")
     water = models.CharField(max_length=15,unique=False,default="Null")
-    bankname = models.CharField(max_length=15,unique=False,default="Null")
-    accountnumber = models.CharField(max_length=15,unique=False,default="Null")
-    accountname = models.CharField(max_length=15,unique=False,default="Null")
+    bankname = models.CharField(max_length=100,unique=False,default="Null")
+    accountnumber = models.CharField(max_length=100,unique=False,default="Null")
+    accountname = models.CharField(max_length=100,unique=False,default="Null")
     pic1 = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
     pic2 = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
     pic3 = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
