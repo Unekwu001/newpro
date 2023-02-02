@@ -782,7 +782,7 @@ def host_partimer(request,name):
         )
         record.save()
         messages.info(request,'Host added.')
-        return redirect(hosts_grid,id)
+        return redirect(selectschool4hosting)
 
 
 def hosts_grid(request,id):
