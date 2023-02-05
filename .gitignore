@@ -40,6 +40,7 @@ ipython_config.py
 # Environments
 env/
 *vager
+.env
 
 
 # Media and Static directories

@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 from twilio.rest import Client
 from enema.deets import Collect
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = Collect.djangsecretkey
+SECRET_KEY=config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG =config('DEBUG',cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
@@ -176,13 +177,13 @@ EMAIL_USE_SSL = False
 # boto3 library needed for connecting uploads to aws s3 bucket
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = Collect.accesskey
-AWS_SECRET_ACCESS_KEY = Collect.secretkey4aws
-AWS_STORAGE_BUCKET_NAME = 'enema'
-AWS_QUERYSTRING_AUTH = False
+AWS_ACCESS_KEY_ID=config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY=config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME=config('AWS_STORAGE_BUCKET_NAME')
+AWS_QUERYSTRING_AUTH=config('AWS_QUERYSTRING_AUTH',cast=bool)
 
  
 #twilio message settings
-account_sid = Collect.mytwilioSid
-auth_token = Collect.mytwilioAuth
+account_sid=config('account_sid')
+auth_token=config('auth_token')
 client = Client(account_sid, auth_token)

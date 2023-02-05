@@ -135,6 +135,12 @@ class Roomymatching_table(models.Model):
     time_ofmeeting = models.CharField(max_length=150, null=True,blank=True)
     match_status =  models.CharField(max_length=150, null=True,blank=True,default="inprogress")
 
+    class Meta:
+        db_table='roomymatching_table'
+
+
+
+
 class Hosts(models.Model):
     schoolname = models.CharField(max_length=30,unique=False,default="Null")
     fullname = models.CharField(max_length=100,unique=False,default="Null",null=True,blank=True)
