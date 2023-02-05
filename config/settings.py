@@ -23,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret oh!
-SECRET_KEY=config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =config('DEBUG',cast=bool)
+DEBUG = config('DEBUG',cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
@@ -177,10 +177,10 @@ EMAIL_USE_SSL = False
 # boto3 library needed for connecting uploads to aws s3 bucket
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID=config('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY=config('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME=config('AWS_STORAGE_BUCKET_NAME')
-AWS_QUERYSTRING_AUTH=config('AWS_QUERYSTRING_AUTH',cast=bool)
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+AWS_QUERYSTRING_AUTH = config('AWS_QUERYSTRING_AUTH',cast=bool)
 
  
 #twilio message settings
