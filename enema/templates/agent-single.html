@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Enema - Agent</title>
+  <title>Enema - Upload</title>
   <meta content="Welcome to Enema, Nigeria's first student-based tech company. We verify, you rent."" name="description">
   <meta content="nigerian students, real estate,nasarawa housing, abuja student housing, kogi state student housing" name="keywords">
 {% load static %}
@@ -57,20 +57,12 @@
           </li>
           
           
-          <li class="nav-item"><a href="{% url 'selectschool4hosting' %}" style="color:white;font-size:95%" class="nav-link"onclick="
-                      		let k=(e)=>{	
-                      			let c= confirm('Please note that, you can not charge more than ₦2000 per day for hosting a part-time student. Clicking ok indicates your agreement to the terms of service.')
-                      				
-                      			if( c == false)
-                      			{
-                      			
-                      				e.preventDefault();
-                      			}
-                      			 
-                      		      }
-                      		      k(event)
-                      			">Host a part time student</a>
+          <li class="nav-item"><a href="{% url 'selectschool4hosting' %}">Student hosting</a>
            </li>
+           
+            <li class="nav-item">
+            <a class="nav-link " href="" style="color:white;font-size:90%">School market</a>
+          </li>
           
           <li class="nav-item">
             <a class="nav-link " href="{% url 'index' %}"style="color:white;font-size:95%;">Home</a>
@@ -81,10 +73,7 @@
           </li>
 
            
-           <li class="nav-item">
-            <a class="nav-link " href="https://wa.me/2348165408132"style="color:white;font-size:95%;">Chat us </a>
-          </li>
-
+          
 
 
            
@@ -516,15 +505,23 @@
           
         </div>
 
-        <div class="col-lg-2 col-12 footer-links"style="text-align: center;color:white;">
-          <h4 style="color:orange;">Terms, policies and careers</h4>
+        <div class="col-lg-2 col-12 footer-links"style="color:white;">
+          <h4 style="color:orange;">Terms and policies</h4>
           <ul style="color:white;">
-            
             <li><a href="{% url 'terms_of_service' %}"style="color:white;">Terms of service</a></li>
             <li><a href="{% url 'privacypolicy' %}" style="color:white;">Privacy policy</a></li>
-            <li><a href="{% url 'careers' %}" style="color:white;">Careers</a></li>
           </ul>
         </div>
+        
+         <div class="col-lg-2 col-12 footer-links">
+          <h4 >Team and Careers</h4>
+          <ul>
+              <li><a href="{% url 'careers' %}" style="color:white;">Careers</a></li>
+               <li><a href="{% url 'meet_d_team' %}" style="color:white;">Our Team</a></li>
+          </ul>
+        </div>
+        
+        
         <div class="col-lg-2 col-12 footer-links"style="text-align: center">
           <h4 style="color:white;">Pricing Plans</h4>
           <ul>

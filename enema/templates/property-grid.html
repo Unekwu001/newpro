@@ -65,6 +65,16 @@
           
           <li class="nav-item"><a href="{% url 'selectschool4hosting' %}" style="color:white;font-size:90%" class="nav-link" >Student hosting</a>
            </li>
+           <li class="nav-item">
+            <a class="nav-link " href=""style="color:white;font-size:90%">School market</a>
+          </li>
+          
+           <li class="nav-item">
+            <a class="nav-link " href="{% url 'agent_reg' %}"style="color:white;font-size:90%">Upload a lodge</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'agent_login' %}"style="color:white;font-size:90%">Login</a>
+          </li>
           
           <li class="nav-item">
             <a class="nav-link " href="{% url 'index' %}"style="color:white;font-size:90%">Home</a>
@@ -73,17 +83,9 @@
           <li class="nav-item">
             <a class="nav-link " href="#about"style="color:white;font-size:90%">About</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link " href="{% url 'agent_reg' %}"style="color:white;font-size:90%">Agent Registration</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="{% url 'agent_login' %}"style="color:white;font-size:90%">Agent Login</a>
-          </li>
+         
           
-          <li class="nav-item">
-            <a class="nav-link " href="https://wa.me/08165408132"style="color:white;font-size:90%">Chat us </a>
-          </li>
-
+           
 
            
         </ul>
@@ -247,14 +249,25 @@
         </div>
 
         <div class="col-lg-2 col-12 footer-links"style="text-align: center">
-          <h6 style="color:white;">Terms, policies and careers</h6>
+          <h6 style="color:white;">Terms and policies</h6>
           <ul>
             
             <li><a href="{% url 'terms_of_service' %}" style="color:white;">Terms of service</a></li>
             <li><a href="{% url 'privacypolicy' %}" style="color:white;">Privacy policy</a></li>
-            <li><a href="{% url 'careers' %}" style="color:white;">Careers</a></li>
+           
           </ul>
         </div>
+        
+        <div class="col-lg-2 col-12 footer-links">
+          <h4 >Team and Careers</h4>
+          <ul>
+              <li><a href="{% url 'careers' %}" style="color:white;">Careers</a></li>
+               <li><a href="{% url 'meet_d_team' %}" style="color:white;">Our Team</a></li>
+          </ul>
+        </div>
+        
+        
+        
         <div class="col-lg-2 col-12 footer-links"style="text-align: center">
           <h6 style="color:white;">Pricing Plans</h6>
           <ul>

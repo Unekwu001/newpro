@@ -85,13 +85,12 @@
           <li><a href="{% url 'selectschool2Clodges' %}" class="active" >Lodges</a></li>
           <li><a href="{% url 'selectschool' %}" class="active" >Room mates</a></li>
           <li><a href="{% url 'selectschool4hosting' %}" class="active">Student hosting</a></li>
-          <li><a href=""class="active">Advertise your property</a></li>
-         
+          <li><a href=""class="active">School market</a></li>
+          <li><a href="{% url 'agent_reg' %}" class="active">Upload a lodge</a></li>
+          <li><a href="{% url 'agent_login' %}">Login</a></li>
           <li><a href="{% url 'index' %}" >Home</a></li>
           <li><a href="#about">About</a></li>       
           
-          <li><a href="{% url 'agent_reg' %}">Become an agent</a></li>
-          <li><a href="{% url 'agent_login' %}">Agent Login</a></li>
           
         </ul>
       </nav><!-- .navbar -->
@@ -130,7 +129,10 @@
 {% for i in schools %}
             <div class="col-lg-3 col-6">
               <div class="">
-                <a href="{% url 'property_grid' i.id %}"><button  class="btn btn-success"style="border-color:white;">{{i.name}}</button></a>
+              
+                <a href="{% url 'property_grid' i.id %}">
+                <button  class="btn btn-success"style="border-color:white;">{{i.name}}</button>
+                </a>
                
               </div>
             </div><!-- End Stats Item -->
