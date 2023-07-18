@@ -176,12 +176,23 @@ EMAIL_USE_SSL = False
 
 
 # boto3 library needed for connecting uploads to aws s3 bucket
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 
-AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
-AWS_QUERYSTRING_AUTH = config('AWS_QUERYSTRING_AUTH',cast=bool)
+#AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+#AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+#AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+#AWS_QUERYSTRING_AUTH = config('AWS_QUERYSTRING_AUTH',cast=bool)
+
+#AZURE_ACCOUNT_NAME = 'your-storage-account-name'
+AZURE_ACCOUNT_NAME = 'enema'
+
+#AZURE_ACCOUNT_KEY = 'your-storage-account-key'
+AZURE_ACCOUNT_KEY = 'Y3YrCCY/6LKh6+XIAILpnCNL+ssBUjN5YKBpUrLk0p89+8mdVCs9E0b3AESwcIWH46b+ZOIidZbJ+ASttcBHOQ=='
+
+#AZURE_CONTAINER = 'your-container-name'
+AZURE_CONTAINER = 'enemapics'
+
 
  
 #twilio message settings

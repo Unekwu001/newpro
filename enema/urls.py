@@ -1,4 +1,4 @@
-from django.conf import settings
+from django.conf import settings  
 from django.conf.urls.static import static
 #the above 2 imports help to serve media files
 from django.urls import path

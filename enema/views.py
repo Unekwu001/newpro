@@ -63,6 +63,7 @@ def agent_reg(request):
 
 
 
+
 def agent_login(request):
     session_collected=request.session.get('loggedin')
     if session_collected:
@@ -85,6 +86,7 @@ def agent_login(request):
                 return redirect(agent_login)
 
 
+
 def agent_dash(request):
     session_collected=request.session.get('loggedin')
     if session_collected:
@@ -95,6 +97,8 @@ def agent_dash(request):
     else:
         messages.info(request,'Kindly login to continue.') 
         return redirect(agent_login)
+
+
 
 
 def edit_profile(request):
