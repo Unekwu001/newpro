@@ -92,6 +92,7 @@ DATABASES = {
         'PORT': '7737',
     }
 }
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -184,6 +185,8 @@ AWS_QUERYSTRING_AUTH = config('AWS_QUERYSTRING_AUTH',cast=bool)
 
  
 #twilio message settings
+#RD5-oLznvVtoZOby1sauBfAO9t0X648Gztq1wX5L - twilio recovery code
+# +19894742184 - twilio phone number
 account_sid=config('account_sid')
 auth_token=config('auth_token')
 client = Client(account_sid, auth_token)
