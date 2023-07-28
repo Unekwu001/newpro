@@ -28,7 +28,7 @@
               		{% for pic in allpics %}
               		{% if pic.lodgeid_id == record.id %}
                 <div class="carousel-item-b swiper-slide" style="text-align:center;max-height:70vh">{% load static %}
-                  <img src="https://enema.s3.amazonaws.com/{{pic.picname}}" alt=""class="img-fluid"id="img-caro">
+                  <img src="{{pic.picname.url}}" alt=""class="img-fluid"id="img-caro">
                 </div>
                 	{% endif %}
                 	{% endfor %}

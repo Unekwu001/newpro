@@ -14,6 +14,9 @@ from pathlib import Path
 from twilio.rest import Client
 from enema.deets import Collect
 from decouple import config
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
     'paystack',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -175,24 +179,12 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 
-# boto3 library needed for connecting uploads to aws s3 bucket
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-
-#AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-#AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-#AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
-#AWS_QUERYSTRING_AUTH = config('AWS_QUERYSTRING_AUTH',cast=bool)
-
-#AZURE_ACCOUNT_NAME = 'your-storage-account-name'
-AZURE_ACCOUNT_NAME = 'enema'
-
-#AZURE_ACCOUNT_KEY = 'your-storage-account-key'
-AZURE_ACCOUNT_KEY = 'Y3YrCCY/6LKh6+XIAILpnCNL+ssBUjN5YKBpUrLk0p89+8mdVCs9E0b3AESwcIWH46b+ZOIidZbJ+ASttcBHOQ=='
-
-#AZURE_CONTAINER = 'your-container-name'
-AZURE_CONTAINER = 'enemapics'
-
+#cloudinary settings
+cloudinary.config( 
+  cloud_name = "ds5iyguss", 
+  api_key = "228112699986674", 
+  api_secret = "PpLkQZvt6Gf_P9Nxo1XmWy-dLg8" 
+)
 
  
 #twilio message settings

@@ -1,4 +1,4 @@
 {
   "TestFramework": "Pytest",
-  "Interpreter": "Workspace|Workspace|vagar"
+  "Interpreter": "Global|VisualStudio|enemaVirtualEnvironment"
 }

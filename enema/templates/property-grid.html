@@ -136,7 +136,7 @@
                 		{% if pic.lodgeid_id == lodge.id and pic.sn == 1 %}
             			
               <div class="img-box-a"style="text-align:center;max-height:50vh">
-                <img src="https://enema.s3.amazonaws.com/{{pic.picname}}" alt="" class="img-a img-fluid" width="500vw" height="500vh">
+                <img src="{{pic.picname.url}}" alt="" class="img-a img-fluid" width="500vw" height="500vh">
               </div>
               			{% endif %}
                 		{% endfor %}

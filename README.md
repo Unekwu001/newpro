@@ -1,4 +1,9 @@
 # newpro
+
+create Virtual environment:
+- python -m venv vagar.
+
+
 To activate and run your Django virtual environment called "vagar", you can follow these steps:
 
 1. Open a terminal or command prompt.
@@ -6,7 +11,7 @@ To activate and run your Django virtual environment called "vagar", you can foll
 3. Activate the virtual environment by running the appropriate activation command depending on your operating system:
 
 For Windows:
-vager\Scripts\activate
+vagar\Scripts\activate
 For macOS and Linux:
 source vager/bin/activate
 
@@ -21,3 +26,29 @@ Run the Django development server by executing the following command in the term
 Django will start the development server, and you will see the server address (usually http://127.0.0.1:8000/) in the terminal output.
 Open your web browser and navigate to the server address shown in the terminal to access your Django application.
 By following these steps, you will activate and run your Django virtual environment called "vagar" and start the development server to run your Django application.
+
+
+migration commands
+--------------------------------
+# migrating the app and database changes
+$ python manage.py makemigrations
+
+# final migrations
+$ python manage.py migrate
+
+
+Creating superAdmin
+----------------------------
+python manage.py createsuperuser 
+
+available superUser
+-------------------
+name: theo
+email:unekwutheophilus@gmail.com
+pwd:Otusegwa360@
+
+Visiting the admin url
+------------------------
+http://localhost:8000/admin/
+
+

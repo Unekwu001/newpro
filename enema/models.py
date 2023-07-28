@@ -1,6 +1,5 @@
 from django.db import models
-# from enema.deets import Collect
-# from twilio.rest import Client
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Schools(models.Model):
@@ -18,7 +17,7 @@ class Agents(models.Model):
     address = models.CharField(max_length=230,unique=False,default="Null")
     id_type = models.CharField(max_length=30,unique=False,default="Null")
     id_numb = models.CharField(max_length=30,unique=False,default="Null")
-    pic = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
+    pic = CloudinaryField('image',default="Null")
     points= models.CharField(max_length=15,unique=False,default="Null")
     status = models.CharField(max_length=15,null=True,blank=True,default='unverified')
     date_joined = models.DateTimeField(auto_now_add=True,null=True,blank=True)
@@ -44,7 +43,7 @@ class Lodges(models.Model):
 
 
 class Lodgepics(models.Model):
-    picname = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
+    picname = CloudinaryField('image',default="Null")
     lodgeid = models.ForeignKey(Lodges,on_delete=models.CASCADE)
     agentid = models.CharField(max_length=15,unique=False,default="Null")
     sn=models.IntegerField(null=True,blank=True)
@@ -66,16 +65,16 @@ class Roomates(models.Model):
     religion = models.CharField(max_length=30,unique=False,default="Null")
     lodgerent = models.CharField(max_length=30,unique=False,default="Null")
     location = models.CharField(max_length=100,unique=False,default="Null")
-    pic = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
+    pic = CloudinaryField('image',default="Null")
     lodgetype = models.CharField(max_length=30,unique=False,default="Null")
     pricesharing = models.CharField(max_length=15,unique=False,default="Null")
     tiled = models.CharField(max_length=15,unique=False,default="Null")
     light = models.CharField(max_length=15,unique=False,default="Null")
     water = models.CharField(max_length=15,unique=False,default="Null")
     date_uploaded = models.DateTimeField(auto_now_add=True)
-    pic1 = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
-    pic2 = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
-    pic3 = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
+    pic1 = CloudinaryField('image',default="Null")
+    pic2 = CloudinaryField('image',default="Null")
+    pic3 = CloudinaryField('image',default="Null")
 
     class Meta:
         db_table='roomates'
@@ -140,9 +139,9 @@ class Hosts(models.Model):
     bankname = models.CharField(max_length=100,unique=False,default="Null")
     accountnumber = models.CharField(max_length=100,unique=False,default="Null")
     accountname = models.CharField(max_length=100,unique=False,default="Null")
-    pic1 = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
-    pic2 = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
-    pic3 = models.FileField(null=True,blank=True,default='Null',upload_to='media/')
+    pic1 = CloudinaryField('image',default="Null")
+    pic2 = CloudinaryField('image',default="Null")
+    pic3 = CloudinaryField('image',default="Null")
     date_uploaded = models.DateTimeField(auto_now_add=True)
     
     class Meta:
