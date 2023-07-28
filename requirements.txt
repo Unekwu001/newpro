@@ -45,6 +45,6 @@ Werkzeug==2.2.2
 whitenoise==6.3.0
 wikipedia==1.4.0
 django-azure-storage==0.20.0
-cloudinary-1.33.0 
+cloudinary==1.33.0 
  
  
